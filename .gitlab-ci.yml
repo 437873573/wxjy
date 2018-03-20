@@ -1,3 +1,6 @@
 before_script:
     - which node && node --version
+    - which npm && npm --version
+script:
+    - echo "start build test"
     
