@@ -1,0 +1,87 @@
+.form-block {
+  position: relative;
+  margin-top: 25px;
+  max-width: 360px;
+  @extend %clearfix;
+  input {
+    display: block;
+    box-sizing: border-box;
+    width: 360px;
+    height: 53px;
+    padding: 0 40px;
+    background-color: #ffffff;
+    border-radius: 2px;
+    border: solid 1px #d9e1e5;
+    font-family: MicrosoftYaHei;
+    font-size: 14px;
+    color: #cccccc;
+    outline: none;
+  }
+  select {
+    float:left;
+    margin-right: 16px;
+    width: 109px;
+    height: 53px;
+    background-color: #ffffff;
+    border-radius: 2px;
+    border: solid 1px #d9e1e5;
+    font-size: 14px;
+    color: #666666;
+    &.last{
+      margin-right: 0;
+    }
+  }
+  .left-icon {
+    position: absolute;
+    left: 14px;
+    top: 19px;
+  }
+  .right-link {
+    position: absolute;
+    right: 15px;
+    top: 19px;
+    color: #00caa6;
+  }
+  .label {
+    font-size: 14px;
+    margin-bottom: -10px;
+  }
+  &.two {
+    @extend %clearfix;
+    input {
+      float: left; 
+      width: 150px;
+      padding: 0 15px;
+    }
+    img {
+      float: right;
+      width: 153px;
+      height: 53px;
+    }
+    .label {
+      float: left;
+      margin-right: 16px;
+      width: 150px;
+    }
+  }
+  &.no-icon {
+    input {
+      padding: 0 15px;
+    }
+  }
+  .label {
+    line-height: 53px;
+  }
+}
+
+.form-tips {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #999;
+  a {
+    color: #00e290;
+  }
+  &_warning {
+    color: #f00;
+  }
+}

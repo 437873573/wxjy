@@ -1,0 +1,78 @@
+---
+layout: default.hbs
+title: 报名资料
+keywords: 报名资料
+description: 报名资料
+stylesheet: order
+script: submitInfo
+hiido_wid:
+big_header: 1
+---
+
+<div class="page-order-express submit-info-wrapper">
+    <div class="page-inner">
+        <div class="pay-status">
+            <i class="icon-success"></i>
+            <div class="txt">恭喜您成功购买课程！</div>
+            <p class="tips">为了提供更好的学习效果，请您完善以下学习报名信息，以便我们的老师帮助您制定适合的备考计划</p>
+        </div>
+
+        <div class="content">
+            <div class="main">
+                <h3 class="title">报名资料</h3>
+                <form action="">
+                    <div class="form-block two">
+                        <select name="" id="stage">
+                            <option value="">留学阶段</option>
+                        </select>
+                        <select name="" id="country">
+                            <option value="">留学国家</option>
+                        </select>
+                    </div>
+                    <div class="form-block two">
+                        <input type="text" id="profession" placeholder="目前专业">
+                        <input type="text" id="score" placeholder="平均成绩(GPA)">
+                    </div>
+                    <div class="form-block">
+                        <div class="label">计划考试时间</div>
+                    </div>
+                    <div class="form-block">
+                        <select name="" id="year">
+                            <option value="">待定</option>
+                        </select>
+                        <select name="" id="month">
+                            <option value="">待定</option>
+                        </select>
+                        <select class="last" name="" id="day">
+                            <option value="">待定</option>
+                        </select>
+                        <input type="hidden" name="exam_date" >
+                    </div>
+                    <div class="form-block two">
+                        <div class="label">基础情况</div>
+                        <div class="label">每天复习时间</div>
+                    </div>
+                    <div class="form-block two">
+                        <select name="" id="status">
+                            <option value="">薄弱</option>
+                        </select>
+                        <select name="" id="time">
+                            <option value="">>3小时</option>
+                        </select>
+                    </div>
+                    <div class="form-block no-icon">
+                        <input type="text" placeholder="薄弱科目" id="subject">
+                    </div>
+
+                    <button class="wx-butn">完 成</button>
+                </form>
+            </div>
+
+            <div class="sidebar">
+                <div class="code-img">
+                    <i class="icon-2wm"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

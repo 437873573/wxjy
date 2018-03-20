@@ -1,0 +1,56 @@
+---
+layout: default.hbs
+title: 登录
+keywords: 登录
+description: 登录
+stylesheet: login
+script: index
+small_header: 1
+---
+
+<div class="page-login">
+  {{!-- 登录 --}}
+  <div class="page-login-block">
+    <h3>欢迎登陆维夕教育</h3>
+    <form action="">
+    <div class="form-block">
+      <input type="text" placeholder="请输入手机号/邮箱">
+      <span class="icon-icon-user left-icon"></span>
+    </div>
+    <div class="form-block">
+      <input type="text" placeholder="请输入密码">
+      <span class="icon-icon-locked left-icon"></span>
+    </div>
+
+    <div class="form-block two">
+      <input type="text" placeholder="请输入验证码">
+      <img src="http://placeimg.com/153/53" alt="">
+    </div>
+    <div class="page-login-chcke">
+      <input type="checkbox" name="" id="remember">
+      <label for="remember">下次自动登录</label>      
+      <a href="" class="fr">忘记密码？</a>
+    </div>
+    <button class="wx-butn">登 录</button>
+    </form>
+  </div>
+  {{!-- 第三方登录 --}}
+  <div class="page-login-three">
+    <h3 class="icon-quick-title"></h3>
+    <div class="logo-list">
+      <a href="javascript:;">
+        <span class="icon-icon-qq"></span>
+        <b>QQ注册</b>
+      </a>
+      <a href="javascript:;">
+        <span class="icon-ic_weixin"></span>
+        <b>微信注册</b>
+      </a>
+      <a href="javascript:;" class="last">
+        <span class="icon-ic_weibo"></span>
+        <b>微博注册</b>
+      </a>
+    </div>
+    <p class="no-account">还没有账号？<a href="javascript:;">马上注册</a></p>
+  </div>
+</div>

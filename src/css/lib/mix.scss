@@ -1,0 +1,72 @@
+
+$themeColor: #00e290;
+
+@mixin clearfix {
+  
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+  &:after {
+    clear: both;
+    overflow: hidden;
+  }
+}
+
+%clearfix {
+  @include clearfix;
+}
+
+%ellipsis {
+  box-sizing: border-box;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+.popprompt{
+  box-sizing: border-box;
+  padding: 10px 30px;
+  background: $themeColor;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  line-height: 20px;
+  position: fixed;
+  top: 90px;
+  left: 50%;
+  transform: translate3d(-50%,-50px,0);
+  z-index: 100;
+  visibility: hidden;
+  &.on{
+    animation: pop 0.3s forwards;
+  }
+  &.off{
+    animation: out 0.3s forwards;
+  }
+}
+@keyframes pop {
+  from{
+    transform: translate3d(-50%,-50px,0);
+    opacity: 0;
+    visibility: visible;
+  }
+  to{
+    transform: translate3d(-50%,0,0);
+    opacity: 1;
+    visibility: visible;
+  }
+}
+@keyframes out {
+  from{
+    transform: translate3d(-50%,0,0);
+    opacity: 1;
+    visibility: visible;
+  }
+  to{
+    transform: translate3d(-50%,-50px,0);
+    opacity: 0;
+    visibility: hidden;
+  }
+}

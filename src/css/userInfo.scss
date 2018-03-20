@@ -1,0 +1,21 @@
+@import './lib/mix';
+@import './lib/base';
+@import './lib/normalize';
+@import './module/header';
+@import './module/footer';
+@import './module/sprite-common';
+@import './module/sprite-login';
+@import './common/button';
+@import './common/user';
+@import './common/form';
+@import './module/side-nav';
+@import './module/sprite-user';
+@import './module/sprite-login';
+
+.user-info-block {
+  padding: 46px 0;
+  .inner {
+    width: 360px;
+    margin: 0 auto;
+  }
+}

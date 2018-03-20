@@ -1,0 +1,64 @@
+---
+layout: default.hbs
+title: 个人中心——头像设置
+keywords: 个人中心——头像设置
+description: 个人中心——头像设置
+stylesheet: myHeader
+script: myHeader
+hiido_wid:
+otherjs: cropper.min
+big_header: 1
+---
+
+<div class="page-user">
+    <div class="page-user-inner">
+        {{> side-nav}}
+        <div class="content user-header-block">
+            <div class="inner">
+                <h3 class="title">头像设置</h3>
+                <div class="img-wrapper">
+                    <div class="left">
+                        <!--<img src="http://placeimg.com/336/336" alt=""> -->
+                        <div class="left-img">
+                            <input type="file" name="file" id="js-file">
+                            <a href="javascript:;" class="butn-upload" id="js-file-butn">+ 选择图片</a>
+                            <div class="crop">
+                                <div class="clipping">
+                                    <img class="clipping-img">
+                                </div>
+                                <div class="crop-close">×</div>
+                            </div>
+                        </div>
+                        <p class="butn-submit">提 交</p>
+                    </div>
+                    <div class="right">
+                        <div class="header-other" size="100">
+                            <div class="pb-16">
+                                <div class="preview"></div>
+                                <img src="./imgs/header.png" alt="">
+                            </div>
+                            <p>中尺寸（100X100）</p>
+                        </div>
+                        <div class="header-other" size="60">
+                            <div class="pb-16">
+                                <div class="preview"></div>
+                                <img src="./imgs/header.png" alt="">
+                            </div>
+                            <p>小尺寸（60X60）</p>
+                        </div>
+                        <div class="header-other" size="40">
+                            <div class="pb-16">
+                                <div class="preview"></div>
+                                <img src="./imgs/header.png" alt="">
+                            </div>
+                            <p>微尺寸（40X40）</p>
+                        </div>
+                        <div class="header-other">
+                            <p><a href="">跳过设置</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

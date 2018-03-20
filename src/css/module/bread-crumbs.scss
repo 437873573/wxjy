@@ -1,0 +1,15 @@
+.bread-crumbs {
+  padding: 20px 0;
+  font-size: 14px;
+  color: #666;
+  a {
+    margin: 0 5px;
+    color: #666;
+    &:hover {
+      color: $themeColor;
+    }
+  }
+  span {
+    margin: 0 5px;
+  }
+}

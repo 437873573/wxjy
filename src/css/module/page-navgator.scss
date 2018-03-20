@@ -1,0 +1,23 @@
+.page-navgator {
+  text-align: center;
+  padding: 40px;
+  a {
+    display: inline-block;
+    margin-right: 5px;
+    color: #666666;
+    font-size: 12px;
+    background-color: #ffffff;
+    border-radius: 2px;
+    border: solid 1px #999999;
+    height: 32px;
+    line-height: 32px;
+    padding: 0 18px;
+    &.active{
+      background: #00c27c;
+      color:#fff;
+    }
+    &.disabled{
+      background: #999999;
+    }
+  }
+}

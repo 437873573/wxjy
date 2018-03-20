@@ -1,0 +1,121 @@
+---
+layout: default.hbs
+title: 试题解析
+keywords: 试题解析
+description: 试题解析
+stylesheet: anaylsis
+script: anaylsis
+big_header: 1
+---
+<!--主体-->
+<main>
+    {{> bread-crumbs}}
+    <section class="anaylsis">
+        <header>
+            <div class="left">
+                <div class="prev">
+                    <i class="icon-left"></i>
+                </div>
+                <div class="testlist">
+                    <ul>
+                        <a href="/analysis/detail?test_volume_id=1&test_topic_id=100"><li class=>1</li></a>
+                        <a href="/analysis/detail?test_volume_id=2&test_topic_id=103"><li class="clicked">1</li></a>
+                        <a href="/analysis/detail?test_volume_id=1&test_topic_id=105"><li class=>1</li></a>
+                        <a href="/analysis/detail?test_volume_id=1&test_topic_id=105"><li class=>1</li></a>
+                        <a href="/analysis/detail?test_volume_id=1&test_topic_id=105"><li class=>1</li></a>
+                        <a href="/analysis/detail?test_volume_id=1&test_topic_id=105"><li class=>1</li></a>
+                        <a href="/analysis/detail?test_volume_id=1&test_topic_id=105"><li class=>1</li></a>
+                        <a href="/analysis/detail?test_volume_id=1&test_topic_id=105"><li class=>1</li></a>
+                        <a href="/analysis/detail?test_volume_id=1&test_topic_id=105"><li class=>1</li></a>
+                        <a href="/analysis/detail?test_volume_id=1&test_topic_id=105"><li class=>1</li></a>
+                        <a href="/analysis/detail?test_volume_id=1&test_topic_id=105"><li class=>1</li></a>
+                        <a href="/analysis/detail?test_volume_id=1&test_topic_id=105"><li class=>1</li></a>
+                        <a href="/analysis/detail?test_volume_id=1&test_topic_id=105"><li class=>1</li></a>
+                        <a href="/analysis/detail?test_volume_id=1&test_topic_id=105"><li class=>1</li></a>
+                        <a href="/analysis/detail?test_volume_id=1&test_topic_id=105"><li class=>1</li></a>
+                        <a href="/analysis/detail?test_volume_id=1&test_topic_id=105"><li class=>1</li></a>
+                        <a href="/analysis/detail?test_volume_id=1&test_topic_id=105"><li class=>1</li></a>
+                        <a href="/analysis/detail?test_volume_id=1&test_topic_id=105"><li class=>1</li></a>
+                        <a href="/analysis/detail?test_volume_id=1&test_topic_id=105"><li class=>1</li></a>
+                        <a href="/analysis/detail?test_volume_id=1&test_topic_id=105"><li class=>1</li></a>
+                        <a href="/analysis/detail?test_volume_id=1&test_topic_id=105"><li class=>1</li></a>
+                        <a href="/analysis/detail?test_volume_id=1&test_topic_id=105"><li class=>1</li></a>
+                        <a href="/analysis/detail?test_volume_id=1&test_topic_id=105"><li class=>1</li></a>
+                    </ul>
+                </div>
+                <div class="next">
+                    <i class="icon-right"></i>
+                </div>
+            </div>
+            <div class="right">
+                <span class="collect"><i class="icon-collection"></i>收藏</span>
+                <span class="domark"><i class="icon-mark"></i>笔记</span>
+                <a href="./anaylisisDetail.html#aa" target="iframe"><span><i class="icon-help"></i>求助</span></a>
+                <span class="repwrong"><i class="icon-wrong"></i>报错</span>
+            </div>
+        </header>
+    </section>
+    <!--做笔记-->
+    <section class="writeMarkBox">
+        <div class="writeMark">
+            <div class="head">
+                <h3>请记录你的笔记</h3>
+                <p>×</p>
+            </div>
+            <div class="inner">
+                <textarea placeholder="请添加内容" id="domark" name="domark"></textarea>
+            </div>
+            <div class="but">提交笔记</div>
+        </div>
+    </section>
+    <!--报错-->
+    <section class="reportWrongBox">
+        <div class="reportWrong">
+            <div class="head">
+                <h3>请填写您发现的错误</h3>
+                <p>×</p>
+            </div>
+            <div class="inner">
+                <textarea placeholder="请添加错误内容"></textarea>
+            </div>
+            <div class="but">提交错误</div>
+        </div>
+    </section>
+    <!--划词翻译-->
+    <section class="translation">
+        <div class="inner">
+            <div class="word">
+                <b>schedule</b>
+                <!--<a href="#" class="abut">报错</a>-->
+            </div>
+            <div class="phonetic">
+                <span>[edju:l]</span>
+                <!--<i class="icon-user-laba"></i>-->
+            </div>
+            <div class="meaning">
+                <div>
+                    <span></span>
+                </div>
+            </div>
+            <div class="example">
+                <div>
+                    <h5>例句</h5>
+                    <span>他被迫调整了自己的日程安排</span>
+                </div>
+            </div>
+            <!--<a href="#" class="abut">查看详细考法》</a>-->
+            <div class="but">添加到生词本</div>
+        </div>
+        <img src="http://placehold.it/330x85" alt="">
+    </section>
+    <iframe src="./anaylsisDetail.html" frameborder="no" width="100%" height="100%" scrolling="no" class="iframe" name="iframe"></iframe>
+</main>
+<script>
+    function pop(txt, color) {
+        let bg = color ? color : '#00e290'
+        $('.popprompt').text('').text(txt).css('background', bg).removeClass('off').addClass('on')
+        setTimeout(() => {
+            $('.popprompt').removeClass('on').addClass('off')
+        }, 2000)
+    }
+</script>

@@ -1,0 +1,45 @@
+@import "../module/sprite-user";
+.side-nav {
+  box-sizing: border-box;
+  padding: 24px 16px;
+  width: 209px;
+  background: #fff;
+  box-shadow: 1px 1px 1px 0 #eee;
+}
+
+.side-main-nav {
+  .title{
+    height: 52px;
+    line-height: 52px;
+    font-size: 18px;
+    color: #666;
+    font-weight: bold;
+    border-bottom: 1px solid #f2f2f2;
+    display: flex;
+    align-items: center;
+    &:last-child{
+      border-bottom: 0;
+    }
+    i{
+      margin-left: 4px;
+      margin-right: 16px;
+    }
+  }
+  a{
+    &:hover,&.active{
+      color: $themeColor;
+    }
+  }
+}
+
+.side-sub-nav {
+  text-align: left;
+  padding-left: 44px;
+  box-sizing: border-box;
+  a {
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    color: #999;
+  }
+}

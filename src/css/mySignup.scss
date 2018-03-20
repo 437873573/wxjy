@@ -1,0 +1,44 @@
+@import './lib/mix';
+@import './lib/base';
+@import './lib/normalize';
+@import './module/header';
+@import './module/footer';
+@import './module/sprite-common';
+@import './common/user';
+@import './module/side-nav';
+@import './common/button';
+@import './common/form';
+.content {
+  padding: 45px 100px 45px 185px;
+  background: #fff;
+  @extend %clearfix;
+}
+.main {
+  float: left;
+  width: 440px;
+  .form-block {
+    max-width: 440px;
+    input{
+      width: 200px;
+      margin-right: 16px;
+    }
+    input[id='subject'] {
+      width: 418px;
+    }
+    select {
+      width: 128px;
+    }
+    .label {
+      line-height: 20px;
+    }
+    &.two {
+      select,
+      .label {
+        width: 200px;
+      }
+    }
+  }
+  .wx-butn {
+    width: 418px;
+  }
+}

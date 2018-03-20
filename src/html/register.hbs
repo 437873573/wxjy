@@ -1,0 +1,62 @@
+---
+layout: default.hbs
+title: 注册
+keywords: 注册
+description: 注册
+stylesheet: login
+script: index
+small_header: 1
+---
+
+<div class="page-login">
+  {{!-- 注册 --}}
+  <div class="page-login-block">
+    <h3>欢迎您加入维夕教育</h3>
+    <form action="">
+      <div class="form-block">
+        <input type="text" placeholder="手机号/邮箱">
+        <span class="icon-login-phone left-icon"></span>
+      </div>
+      <div class="form-tips">用于手机/邮箱 登录或找回密码</div>
+      <div class="form-block">
+        <input type="text" placeholder="昵称">
+        <span class="icon-icon-user left-icon"></span>
+      </div>
+      <div class="form-tips">仅支持中文、英文字母、数字、5-14字符</div>
+      <div class="form-block">
+        <input type="text" placeholder="密码">
+        <span class="icon-icon-locked left-icon"></span>
+      </div>
+
+      <div class="form-block two">
+        <input type="text" placeholder="请输入验证码">
+        <img src="http://placeimg.com/153/53" alt="">
+      </div>
+      <button class="wx-butn">注 册</button>
+      <div class="form-tips">点击注册表明您已阅读并同意
+        <a href="#">《维夕教育用户协议》</a>
+      </div>
+    </form>
+  </div>
+  {{!-- 第三方登录 --}}
+  <div class="page-login-three">
+    <h3 class="icon-quick-title"></h3>
+    <div class="logo-list">
+      <a href="javascript:;">
+        <span class="icon-icon-qq"></span>
+        <b>QQ注册</b>
+      </a>
+      <a href="javascript:;">
+        <span class="icon-ic_weixin"></span>
+        <b>微信注册</b>
+      </a>
+      <a href="javascript:;" class="last">
+        <span class="icon-ic_weibo"></span>
+        <b>微博注册</b>
+      </a>
+    </div>
+    <p class="no-account">已有账号？<a href="javascript:;">马上登录</a></p>
+  </div>
+</div>
+
+{{>dialog}}

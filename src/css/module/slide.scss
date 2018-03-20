@@ -1,0 +1,30 @@
+.page-slide {
+  position: fixed;
+  right: 28px;
+  top: 50%;
+  height: 289px;
+  width: 94px;
+  margin-top: -144px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  z-index: 10;
+  a{
+    display: block;
+    padding: 16px 0 27px;
+    color: #999999;
+    font-size: 18px;
+    text-align: center;
+    border-bottom: 1px solid #e3e3e3;
+    &.last{
+      border-bottom: 0;
+    }
+    span{
+      display: block;
+      margin: 0 auto;
+      &.txt{
+        margin-top: 9px;
+      }
+    }
+    
+  }
+}

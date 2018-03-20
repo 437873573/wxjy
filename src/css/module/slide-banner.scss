@@ -1,0 +1,55 @@
+.page-banner {
+  position: relative;
+  min-width: 1200px;
+  overflow: hidden;
+  .bxslider {
+    height: 590px;
+    li{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        img {
+          display: block;
+          width: 100%;
+          min-width: 1600px;
+          //height: 590px;
+        }
+      }
+    }
+  }
+  .bx-pager {
+    position: absolute;
+    bottom: 22px;
+    left: 0;
+    width: 100%;
+    .bx-pager-link {
+      width: 18px;
+      height: 18px;
+      background: #fff !important;
+      &.active {
+        background: #00e290 !important;
+      }
+    }
+  }
+  .bx-wrapper {
+    border: none;
+    margin-bottom: 0;
+  }
+  .bx-pager {
+    padding-top: 0;
+  }
+  .bx-controls-direction {
+    position: absolute;
+    bottom: 300px;
+    left: 50%;
+    width: 1200px;
+    margin-left: - 600px;
+  }
+}

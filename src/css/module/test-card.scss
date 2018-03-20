@@ -1,0 +1,80 @@
+.test-card {
+  background: #fff;
+  margin: 10px 0;
+  padding: 20px 0 10px;
+}
+.card-item {
+  float: left;
+  width: 380px;
+  height: 340px;
+  box-sizing: border-box;
+  margin: 10px;
+  padding: 18px 15px;
+  border: 1px solid #f0f0f0;
+  font-size: 14px;
+  &:hover{
+    border-color: $themeColor;
+    box-shadow: 0 0 0 2px $themeColor;
+  }
+  .box {
+    position: relative;
+    width: 350px;
+    height: 220px;
+    overflow: hidden;
+    .img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    img {
+      width: 100%;
+    }
+  }
+  .info {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 30px 0 10px;
+    color: #666;
+    .col {
+      width: 100%;
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .name {
+      display: block;
+      width: 180px;
+      color: #666;
+      font-size: 20px;
+      font-weight: bold;
+      @extend %ellipsis;
+        &:hover {
+          color: $themeColor;
+        }
+      }
+    .tag {
+      color: $themeColor;
+    }
+
+    //.range {
+    //  float: right;
+    //  position: relative;
+    //  display: block;
+    //  margin-top: 5px;
+    //  width: 210px;
+    //  height: 7px;
+    //  background: #f1f1f1;
+    //  border-radius: 10px;
+    //  .cur {
+    //    position: absolute;
+    //    top: 0;
+    //    left: 0;
+    //    display: block;
+    //    height: 100%;
+    //    background: $themeColor;
+    //    border-radius: 10px;
+    //  }
+    //}
+  }
+}

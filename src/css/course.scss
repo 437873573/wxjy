@@ -1,0 +1,242 @@
+@import './lib/mix';
+@import './lib/base';
+@import './lib/normalize';
+@import './lib/bxslide.scss';
+
+@import './module/header';
+@import './module/footer';
+@import './module/slide';
+@import './module/sprite-common';
+@import './module/slide-banner';
+
+.page-course-index {
+  .card-tab {
+    margin: 100px auto;
+    background: #fff;
+    font-size: 18px;
+    text-align: center;
+    height: 50px;
+    .tab-list {
+      //width: 600px;
+      width: 371px;
+      height: 100%;
+      overflow: hidden;
+      margin: 0 auto; 
+    }
+    .tab-item {
+      float: left;
+      display: block;
+      box-sizing: border-box;
+      width: 85px;
+      height: 50px;
+      line-height: 50px;
+      border-bottom: 4px solid transparent;
+      color: #666;
+      &.active,
+      &:hover {
+        color: $themeColor;
+        border-bottom-color: $themeColor;
+
+      }
+    }
+    .line {
+      float: left;
+      display: block;
+      margin: 13px 100px;
+      width: 1px;
+      height: 24px;
+      background: #999;
+    }
+  }
+  .boutique {
+    width: 1450px;
+    margin: auto;
+  }
+  .course-item {
+    width: 100%;
+    height: 650px;
+    box-sizing: border-box;
+    margin-bottom: 90px;;
+    padding: 40px;
+    border: 1px solid #f0f0f0;
+    font-size: 14px;
+    .box {
+      position: relative;
+      // width: 100%;
+      // height: 100%;
+      img {
+        width: 100%;
+        height: 560px;
+        border-radius: 10px;
+      }
+    }
+    .box .fliter{
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 50%;
+      height: 100%;
+    }
+    .info {
+      position: absolute;
+      right: 50px;
+      top: -21px;
+      width: 740px;
+      height: 560px;
+      background: url(./../../imgs/course-bg.png) no-repeat;
+      .title {
+        position: absolute;
+        left: 190px;
+        top: 0;
+        width: 520px;
+        height: 58px;
+        line-height: 58px;
+        @extend %ellipsis;
+        font-size: 30px;
+        color: #fff;
+        text-align: center;
+      }
+      .list {
+        position: absolute;
+        left: 208px;
+        top: 130px;
+      }
+      .item {
+        float: left;
+        width: 106px;
+        height: 106px;
+        margin-right: 40px;
+        text-align: center;
+        .num {
+          margin: 25px auto 10px;
+          display: block;
+          font-size: 28px;
+          color: #666;
+        }
+        .txt {
+          display: block;
+          font-size: 18px;
+          color: #bfbfbf;
+        }
+      }
+      .desc {
+        position: absolute;
+        top: 260px;
+        left: 180px;
+        width: 450px;
+        font-size: 24px;
+        line-height: 36px;
+        height: 72px;
+        overflow: hidden;
+        color: #bfbfbf;
+      }
+      .btn-go {
+        position: absolute;
+        top: 360px;
+        left: 270px;
+        display: block;
+        width: 190px;
+        height: 60px;
+        line-height: 60px;
+        border-radius: 30px;
+        font-size: 28px;
+        text-align: center;
+        background: $themeColor;
+        color: #fff;
+      }
+      
+    }
+  }
+
+  // 公开课
+  .test-title {
+    margin: 50px auto;
+    font-size: 30px;
+    text-align: center;
+    color: $themeColor;
+    &:before,
+    &:after {
+      display: inline-block;
+      content: '';
+      margin: 0 20px;
+      width: 100px;
+      height: 4px;
+      background: $themeColor;
+      vertical-align: middle;
+    }
+  }
+  .test-card {
+    background: #fff;
+    margin: 10px 0 100px;
+  }
+  .test-item {
+    float: left;
+    box-sizing: border-box;
+    padding: 20px;
+    // border: 1px solid #f0f0f0;
+    font-size: 14px;
+    &:hover{
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      transform: translate3d(0,-2px,0);
+    }
+    .box {
+      position: relative;
+      // width: 350px;
+      // height: 220px;
+      overflow: hidden;
+      .img {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+      img {
+        width: 100%;
+      }
+    }
+    .info {
+      padding: 25px 0 5px;
+      color: #666;
+      font-size: 14px;
+      .name {
+        float: left;
+        display: block;
+        width: 210px;
+        font-size: 24px;
+        color: #666;
+        @extend %ellipsis;
+        
+        a {
+          color: #666;
+          &:hover {
+            color: $themeColor;
+          }
+        }
+      }
+      .price {
+        float: right;
+        font-size: 24px;
+        color: $themeColor;
+      }
+      .col {
+        margin-bottom: 15px;
+      }
+      .txt {
+        float: left;
+      }
+      .num {
+        margin-left: 20px;
+      }
+      .right {
+        float: right;
+        display: block;
+      }
+    }
+  }
+  .test-item-big {
+    .info {
+      .name {
+        width: 600px;
+      }
+    }
+  }
+}

@@ -1,0 +1,78 @@
+.course-item {
+  box-sizing: border-box;
+  height: 110px;
+  // @extend %clearfix;
+  .img {
+    display: block;
+    float: left;
+    width: 160px;
+    height: 110px;
+    overflow: hidden;
+    img {
+      width: 100%;
+    }
+  }
+
+  .intro {
+    position: relative;
+    float: left;
+    display: block;
+    margin-left: 22px;
+    // width: 345px;
+    height: 100%;
+    font-size: 14px;
+    color: #666;
+    .title {
+      display: block;
+      margin: 3px 0 10px;
+      font-size: 16px;
+      width: 300px;
+      @extend %ellipsis;
+      a {
+        color: #333;
+        &:hover {
+          color: #00caa6;
+        }
+      }
+    }
+    .desc {
+      line-height: 20px;
+    }
+    .footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+    .strong {
+      color: #00caa6;
+    }
+  }
+
+  .btns {
+    display: block;
+    float: right;
+    margin-top: 40px;
+    .btn-pay,
+    .btn-cancle {
+      float: left;
+      margin: 0;
+      margin-left: 15px;
+      display: block;
+      box-sizing: border-box;
+      padding: 0 15px;
+      height: 32px;
+      line-height: 32px;
+      font-size: 14px;
+      text-align: center;
+      border-radius: 50px;
+      border: 1px solid #00e290;
+    }
+    .btn-pay {
+      color: #fff;
+      background: #00e290;
+    }
+    .btn-cancle {
+      color: #00e290;
+    }
+  }
+}

@@ -1,0 +1,391 @@
+@import './lib/mix';
+@import './lib/base';
+@import './lib/normalize';
+@import './module/header';
+@import './module/footer';
+@import './module/sprite-common';
+@import './module/sprite-pay';
+@import './common/button';
+@import './common/form';
+@import './module/sprite-login';
+
+.page-order-express {
+  background: #f3f5f7;
+  .page-inner {
+    width: 1200px;
+    padding: 15px 0;
+  }
+}
+
+// 确认订单
+.order-progress {
+  margin-bottom: 15px;
+  background: #fff;
+  @extend %clearfix;
+  padding: 32px 0 32px 170px;
+
+  .item {
+    float: left;
+    margin-right: 50px;
+    width: 260px;
+    height: 73px;
+    line-height: 73px;
+    font-size: 14px;
+    color: #999;
+    @extend %clearfix;
+    .icon-bg {
+      float: left;
+      margin-right: 15px;
+      width: 73px;
+      height: 73px;
+      border-radius: 100%;
+    }
+    .txt {
+      float: left;
+    }
+    .arrow {
+      float: right;
+      // display: block;
+      // width: 0;
+      // height: 0;
+      margin-top: 19px;
+      // border: 17px dashed transparent;
+      // border-left: 17px solid #e3e3e3;
+    }
+  }
+
+  .item-1 {
+    .icon-bg {
+      background: #33e8a6;
+    }
+  }
+  .item-2 {
+    .icon-bg {
+      background: #fc9492;
+    }
+  }
+  .item-3 {
+    margin-right: 0;
+    .icon-bg {
+      background: #f9c568;
+    }
+  }
+}
+
+.table-order {
+  margin-bottom: 15px;
+  background: #fff;
+  font-size: 18px;
+  color: #666;
+  .table-hd {
+    padding-left: 20px;
+    height: 63px;
+    line-height: 63px;
+    background: #fcfcfc;
+    @extend %clearfix;
+  }
+  // .order-list {
+    // @extend %clearfix;
+  // }
+  .order-item {
+    padding: 20px 0 20px 20px;
+    @extend %clearfix;
+    .row-2,
+    .row-3,
+    .row-4,
+    .row-5 {
+      line-height: 190px;
+      @extend %ellipsis;
+    }
+  }
+  .row {
+    float: left;
+  }
+  .row-1 {
+    width: 330px;
+    img {
+      width: 300px;
+      height: 190px;
+      overflow: hidden;
+    }
+  }
+  .row-2 {
+    width: 260px;
+    margin-right: 20px;
+  }
+  .row-3,
+  .row-4,
+  .row-5 {
+    width: 190px;
+  }
+}
+
+.order-payment {
+  margin-bottom: 15px;
+  background: #fff;
+  .hd {
+    padding: 20px;
+    font-size: 18px;
+    color: #666;
+  }
+  .bd {
+    @extend %clearfix;
+  }
+  .list {
+    float: left;
+    @extend %clearfix;
+  }
+  .item {
+    float: left;
+    margin: 0 27px 27px 20px;
+    width: 240px;
+    height: 100px;
+    text-align: center;
+    .inner {
+      display: block;
+      box-sizing: border-box;
+      width: 100%;
+      height: 100%;
+      border: 1px solid transparent;
+    }
+    i {
+      margin-top: 17px;
+    }
+    a {
+      display: block;
+      box-sizing: border-box;
+      width: 100%;
+      height: 100%;
+      border: 1px solid #eee;
+      &.active {
+        position: relative;
+        border-color: $themeColor;
+        &:after {
+          display: block;
+          content: "";
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          background: url('../imgs/sprite-pay.png') no-repeat -212px -89px;
+          width: 37px;
+          height: 37px;
+        }
+        .inner {
+          border-color: $themeColor;
+        }
+      }
+    }
+  }
+  .btn-go {
+    float: right;
+    margin: 10px 50px 0 0;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0 52px;
+    height: 45px;
+    line-height: 45px;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 50px;
+    background: $themeColor;
+    color: #fff;
+  }
+}
+
+// 在线支付
+.pay-plat {
+  margin-bottom: 15px;
+  padding: 17px 20px 20px;
+  background: #fff;
+  @extend %clearfix;
+  .icon-payment-zfb,
+  .icon-payment-wx {
+    float: left;
+    // display: block;
+    margin-right: 10px;
+    // width: 170px;
+    // height: 60px;
+  }
+  .title {
+    float: left;
+    font-size: 18px;
+    line-height: 60px;
+    color: #666;
+  }
+}
+.pay-info {
+  padding: 5px 0;
+  font-size: 14px;
+  color: #666;
+  @extend %clearfix;
+  line-height: 22px;
+  .lf {
+    float: left;
+  }
+  .rg {
+    float: right;
+    margin-right: 50px;
+    text-align: right;
+  }
+  .buyer {
+    margin-left: 40px;
+  }
+  .num {
+    font-size: 30px;
+    color: #ff721a;
+  }
+  .link {
+    margin-right: 20px;
+    color: #666;
+    &:hover {
+      color: $themeColor;
+    }
+  }
+}
+.pay-doing {
+  padding: 60px 0;
+  border-top: 9px solid $themeColor;
+  background: #fff;
+  color: #666;
+  @extend %clearfix;
+  text-align: center;
+  .pay-code {
+    float: left;
+    text-align: center;
+    width: 945px;
+    .txt {
+      font-size: 18px;
+    }
+    .num {
+      display: block;
+      margin: 10px auto;
+      font-size: 38px;
+      color: #ff721a;
+    }
+    .code {
+      display: inline-block;
+      margin: 0 auto;
+      box-sizing: border-box;
+      padding: 25px 25px 0;
+      border: 1px solid #f0f0f0;
+      img {
+        width: 200px;
+        height: 200px;
+      }
+    }
+    .tips {
+      padding: 15px 0 12px;
+      font-size: 14px;
+      @extend %clearfix;
+      .txt {
+        float: right;
+        line-height: 24px;
+      }
+    }
+    .icon-scan {
+      float: left;
+      // display: block;
+      margin-top: 7px;
+      // width: 34px;
+      // height: 34px;
+    }
+  }
+  .login-pay {
+    float: right;
+    padding: 120px 20px;
+    box-sizing: border-box;
+    width: 250px;
+    border-left: 1px solid #e6e6e6;
+  }
+  .icon-diannao {
+    display: block;
+    margin: 0 auto 45px;
+    // width: 87px;
+    // height: 78px;
+  }
+  .icon-payment-zfb-s,
+  .icon-payment-wx-s {
+    margin: 19px auto;
+    width: 65px;
+    // height: 20px;
+  }
+  .btn-login {
+    display: inline-block;
+    padding: 0 20px;
+    height: 32px;
+    line-height: 32px;
+    font-size: 14px;
+    text-align: center;
+    background: #00aeef;
+    border-radius: 20px;
+    color: #fff;
+  }
+}
+
+// 支付成功，提交报名资料
+.submit-info-wrapper {
+  color: #666;
+  .pay-status {
+    margin-bottom: 15px;
+    padding: 35px;
+    background: #fff;
+    text-align: center;
+    .txt {
+      margin: 20px auto 15px;
+      font-size: 24px;
+      color: $themeColor;
+    }
+    .tips {
+      font-size: 14px;
+    }
+  }
+
+  .content {
+    padding: 45px 100px 45px 185px;
+    background: #fff;
+    @extend %clearfix;
+  }
+  .main {
+    float: left;
+    width: 440px;
+    .form-block {
+      max-width: 440px;
+      input{
+        width: 200px;
+        margin-right: 16px;
+        color: #666;
+      }
+      input[id='subject'] {
+        width: 418px;
+      }
+      select {
+        width: 128px;
+      }
+      .label {
+        line-height: 20px;
+      }
+      &.two {
+        select,
+        .label {
+          width: 200px;
+        }
+      }
+    }
+    .wx-butn {
+      width: 418px;
+    }
+  }
+  .sidebar {
+    float: right;
+    margin: 120px 0 120px 65px;
+    padding: 90px;
+    border-left: 1px solid #dce3e7;
+    .code-img {
+      padding: 20px;
+      border: 1px solid #d9e1e5;
+    }
+  }
+}
+
+
+

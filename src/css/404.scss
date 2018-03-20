@@ -1,0 +1,35 @@
+@import './lib/mix';
+@import './lib/base';
+@import './lib/normalize';
+@import './module/header';
+@import './module/footer';
+@import './module/sprite-common';
+@import './module/sprite-index';
+main{
+  text-align: center;
+}
+h1{
+  font-size: 160px;
+  color: $themeColor;
+}
+h2{
+  color: #171717;
+  font-size: 24px;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+h3 a{
+  display: inline-block;
+  margin-top: 30px;
+  width: 360px;
+  height: 53px;
+  background-color: #00e290;
+  border-radius: 2px;
+  text-align: center;
+  line-height: 53px;
+  font-size: 18px;
+  color:#fff;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 50px;
+}

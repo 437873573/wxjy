@@ -1,0 +1,58 @@
+@import './lib/mix';
+@import './lib/base';
+@import './lib/normalize';
+@import './module/header';
+@import './module/footer';
+@import './module/sprite-common';
+@import './common/user';
+@import './module/side-nav';
+@import './module/sprite-user';
+@import './module/course-item';
+
+
+.my-message-block {
+  padding: 46px 40px;
+  .item {
+    padding: 27px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+    @extend %clearfix;
+    &:last-child {
+      border-bottom: 0;
+    }
+    .avator {
+      float: left;
+      display: block;
+      overflow: hidden;
+      width: 65px;
+      height: 65px;
+      border-radius: 100%;
+      img {
+        width: 100%;
+      }
+    }
+    .info {
+      float: left;
+      width: 400px;
+      margin-left: 15px;
+      color: #333;
+      .hd {
+        margin: 10px 0;
+      }
+      .name {
+        margin-right: 20px;
+        color: #00caa6;
+      }
+      .txt {
+        @extend %ellipsis;
+      }
+    }
+    .right-info {
+      float: right;
+      text-align: right;
+      .date-time {
+        color: #999;
+      }
+    }
+  }
+}

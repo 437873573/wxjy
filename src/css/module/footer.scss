@@ -1,0 +1,80 @@
+@import '../lib/mix';
+.page-footer {
+  background-color: #272727;
+  &__inner {
+    width: 1200px;
+    margin: 0 auto;
+  }
+  &__top {
+    padding: 73px 0;
+    @extend %clearfix;
+    dl {
+      float: left;
+      max-width: 265px;
+      margin-right: 110px;
+      &.last {
+        margin-right: 0;
+      }
+    }
+    dt {
+      font-size: 20px;
+      color: #bbbbbb;
+      line-height: 20px;
+      padding-bottom: 20px;
+    }
+    dd {
+      font-size: 14px;
+      color: #909090;
+      line-height: 24px;
+      margin-bottom: 20px;
+      a {
+        color: #909090;
+        text-decoration: none;
+      }
+      span{
+        margin-right: 13px;
+        position: relative;
+        top: 4px;
+        &.icon-police{
+          top: 2px;
+        }
+        &.icon-email{
+          top: 2px;
+        }
+      }
+    }
+  }
+  &__bottom {
+    line-height: 76px;
+    border-top: 1px solid #4e4e4e;
+    @extend %clearfix;
+    .copy {
+      font-size: 12px;
+      color: #666666;
+      float: right;
+    }
+    span,
+    a {
+      font-size: 12px;
+      color: #666666;
+      float: left;
+      display: block;
+    }
+    a {
+      margin-left: 20px;
+      &:hover,
+      &:active {
+        color: #fff;
+      }
+    }
+  }
+
+  // 小的
+  &-small{
+    line-height: 42px;
+    color: #ffffff;
+    font-size: 12px;
+    text-align: center;
+    background: url('../../imgs/common/bg-bottom.png') repeat-x top center;
+  }
+}

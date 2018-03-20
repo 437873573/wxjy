@@ -1,0 +1,101 @@
+.plan-column {
+  padding: 20px;
+  border-top: 1px solid #f0f0f0;
+  background: #fff;
+  .column-hd {
+    h3 {
+      margin-left: 30px;
+      font-size: 24px;
+      color: $themeColor;
+      font-weight: 700;
+    }
+  }
+
+  .column-title {
+    margin: 20px 0 4px 30px;
+    @extend %clearfix;
+    .title {
+      float: left;
+      font-size: 18px;
+    }
+    .done-progress {
+      float: right;
+      .txt {
+        float: left;
+      }
+    }
+    .done-range {
+      float: left;
+      position: relative;
+      display: block;
+      margin: 3px 10px 0;
+      width: 188px;
+      height: 12px;
+      background: #f1f1f1;
+      border-radius: 10px;
+      overflow: hidden;
+      .cur {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        height: 100%;
+        background: $themeColor;
+        border-radius: 10px 0 0 10px;
+      }
+    }
+  }
+
+  .column-bd {
+    .list {
+      font-size: 16px;
+      color: #666;
+    }
+    .item {
+      padding: 10px 0;
+      border-bottom: 1px solid #f0f0f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      &:last-child{
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+    }
+    input {
+      vertical-align: middle;
+      width: 16px;
+      height: 16px;
+      margin-right: 10px;
+    }
+    .row {
+      width: 150px;
+      font-size: 14px;
+      margin-right: 10px;
+      @extend %ellipsis;
+    }
+    .btns {
+      .btn-go,
+      .btn-cancle {
+        float: left;
+        margin-left: 15px;
+        display: block;
+        box-sizing: border-box;
+        padding: 0 15px;
+        height: 32px;
+        line-height: 32px;
+        font-size: 14px;
+        text-align: center;
+        border-radius: 50px;
+        border: 1px solid #00e290;
+      }
+      .btn-go {
+        color: #fff;
+        background: #00e290;
+      }
+      .btn-cancle {
+        color: #00e290;
+      }
+    }
+  }
+}

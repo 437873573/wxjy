@@ -1,0 +1,867 @@
+@import './lib/mix';
+@import './lib/base';
+@import './lib/normalize';
+@import './module/header';
+@import './module/footer';
+@import './module/sprite-common';
+@import './module/sprite-index';
+@import './module/plan-column';
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+.page-plan-index {
+  background: #f3f5f7;
+  position: relative;
+  z-index: 1;
+  .page-inner {
+    width: 1200px;
+    padding: 15px 0;
+  }
+  .done-circle {
+    float: left;
+    position: relative;
+    box-sizing: border-box;
+    width: 84px;
+    height: 84px;
+    color: #666;
+    text-align: center;
+    .inner {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 0;
+      width: 84px;
+      font-size: 16px;
+    }
+  }
+
+  .done-progress {
+    float: right;
+    .txt {
+      float: left;
+    }
+  }
+  .done-range {
+    float: left;
+    position: relative;
+    display: block;
+    margin: 3px 10px 0;
+    width: 224px;
+    height: 12px;
+    background: #f1f1f1;
+    border-radius: 10px;
+    overflow: hidden;
+    .cur {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      height: 100%;
+      background: $themeColor;
+      border-radius: 10px 0 0 10px;
+    }
+  }
+}
+
+.user-info-banner {
+  margin: 0 auto 15px;
+  height: 140px;
+  background: #fff;
+  .btn {
+    width: 200px;
+    height: 50px;
+    background: $themeColor;
+    border-radius: 100px;
+    font-size: 18px;
+    color: #fff;
+    line-height: 50px;
+    text-align: center;
+    margin: 40px 60px 0 0;
+  }
+  .user-info {
+    float: left;
+    padding: 40px 20px 40px 60px;
+    font-size: 14px;
+    @extend %clearfix;
+    .avator {
+      float: left;
+      overflow: hidden;
+      width: 60px;
+      height: 60px;
+      border-radius: 100%;
+      img {
+        width: 100%;
+      }
+    }
+    .info {
+      float: left;
+      width: 340px;
+      margin-left: 15px;
+      @extend %ellipsis;
+    }
+    .name {
+      margin: 10px 0 15px;
+      color: #00c27c;
+    }
+    .txt {
+      color: #333;
+    }
+  }
+
+  .day-plan {
+    float: left;
+    padding: 28px 20px 0 0;
+    .plan-title {
+      float: left;
+      margin-right: 15px;
+      font-size: 18px;
+      line-height: 84px;
+      font-weight: 700;
+    }
+  }
+
+  .day-distance {
+    float: right;
+    margin: 25px 30px;
+    box-sizing: border-box;
+    min-width: 230px;
+    height: 97px;
+    border: 1px solid #f0f0f0;
+    cursor: pointer;
+    .day-title {
+      margin: -10px auto 10px;
+      width: 130px;
+      font-size: 18px;
+      background: #fff;
+      text-align: center;
+      font-weight: 700;
+    }
+    .day-item {
+      float: left;
+      min-width: 76px;
+      margin: 15px 0;
+      font-size: 14px;
+      color: #999;
+      text-align: center;
+      .num {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 24px;
+        color: #333;
+        &.day {
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}
+
+.timeline {
+  .head {
+    background: white;
+    height: 60px;
+    padding: 0 32px;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .left {
+      font-size: 16px;
+      .month {
+        border-left: 4px solid $themeColor;
+        padding: 0 20px;
+        color: #333;
+      }
+      .addplan {
+        padding: 10px 16px;
+        border: 1px solid #999;
+        border-radius: 3px;
+        color: #999;
+        cursor: pointer;
+        &:hover {
+          background: $themeColor;
+          color: white;
+          border-color: $themeColor;
+        }
+      }
+    }
+    .right {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      li {
+        margin-left: 12px;
+        padding: 10px 16px;
+        border: 1px solid #999;
+        border-radius: 3px;
+        color: #999;
+        cursor: pointer;
+        &:hover, &.showed {
+          background: $themeColor;
+          color: white;
+          border-color: $themeColor;
+        }
+      }
+    }
+  }
+  .calendar {
+    background: white;
+    ul, .day {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      li {
+        width: 116px;
+        cursor: pointer;
+        text-align: center;
+        font-size: 12px;
+        &.clicked {
+          background: #f0f0f0;
+        }
+      }
+    }
+    .week {
+      padding: 0 88px;
+      li {
+        padding-top: 22px;
+        color: #999;
+      }
+    }
+    .day {
+      padding: 0 58px;
+      ul {
+        flex: 1;
+        li {
+          padding: 18px 0 38px;
+          font-size: 20px;
+          position: relative;
+          a {
+            color: #666666;
+          }
+          &.today {
+            &::after {
+              content: '';
+              display: block;
+              width: 12px;
+              height: 12px;
+              background: $themeColor;
+              border-radius: 50%;
+              position: absolute;
+              top: 60%;
+              left: 50%;
+              transform: translateX(-5px);
+            }
+          }
+          &.currentMonth {
+            color: #000;
+          }
+          &.otherMonth {
+            color: #999;
+          }
+        }
+      }
+      div {
+        height: 76px;
+        width: 30px;
+        text-align: center;
+        line-height: 60px;
+        font-size: 24px;
+        color: #999;
+        cursor: pointer;
+        &:hover {
+          color: #000;
+        }
+      }
+    }
+  }
+}
+
+.plan-col {
+  @extend %clearfix;
+  .col-lf {
+    float: left;
+    width: 810px;
+    margin: 15px 15px 15px 0;
+  }
+  .col-rg {
+    float: right;
+    margin-top: 15px;
+    width: 370px;
+  }
+  .ad {
+    display: block;
+    margin-top: 15px;
+  }
+}
+
+.plan-summary {
+  background: #fff;
+  .hd {
+    position: relative;
+    padding: 20px 25px 20px 30px;
+    border-bottom: 1px solid #f0f0f0;
+    .title {
+      @extend %clearfix;
+      font-size: 18px;
+      .line {
+        float: left;
+        display: block;
+        margin-right: 14px;
+        width: 4px;
+        height: 15px;
+        background: $themeColor;
+      }
+    }
+    .tools {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+    .btn-share,
+    .btn-prev,
+    .btn-next {
+      float: left;
+      display: block;
+      line-height: 20px;
+      font-size: 14px;
+      color: $themeColor;
+    }
+    .switch {
+      float: left;
+      margin-left: 30px;
+      .line {
+        float: left;
+        display: block;
+        margin: 2px 5px;
+        width: 1px;
+        height: 16px;
+        background: $themeColor;
+      }
+    }
+  }
+
+  .bd {
+    padding: 30px;
+    @extend %clearfix;
+    .lf {
+      float: left;
+      width: 410px;
+      margin-left: 15px;
+    }
+    .rg {
+      float: right;
+      margin-right: 40px;
+      width: 150px;
+      text-align: center;
+    }
+    .lf-hd {
+      @extend %clearfix;
+    }
+    .lf-bd {
+      clear: both;
+    }
+    .row {
+      float: left;
+    }
+    .row-1 {
+      width: 300px;
+    }
+    .row-2 {
+      width: 110px;
+      text-align: center;
+    }
+    .done-progress {
+      padding-top: 30px;
+      float: none;
+      color: #666;
+      font-size: 14px;
+      @extend %clearfix;
+      .txt {
+        width: 50px;
+      }
+      .num {
+        float: left;
+        display: block;
+        width: 110px;
+        text-align: center;
+      }
+    }
+    .done-circle {
+      float: none;
+      margin: 30px auto 0;
+      width: 160px;
+      height: 160px;
+      .inner {
+        width: 160px;
+        font-size: 24px;
+      }
+    }
+  }
+}
+
+.done-rank {
+  background: #fff;
+  .hd {
+    position: relative;
+    padding: 20px 15px 20px 15px;
+    .title {
+      @extend %clearfix;
+      font-size: 18px;
+      .line {
+        float: left;
+        display: block;
+        margin-right: 14px;
+        width: 4px;
+        height: 15px;
+        background: $themeColor;
+      }
+    }
+    .tools {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+    .btn-prev,
+    .btn-next {
+      float: left;
+      display: block;
+      line-height: 20px;
+      font-size: 14px;
+      color: $themeColor;
+    }
+    .switch {
+      float: left;
+      margin-left: 30px;
+      .line {
+        float: left;
+        display: block;
+        margin: 2px 5px;
+        width: 1px;
+        height: 16px;
+        background: $themeColor;
+      }
+    }
+  }
+  .list {
+    padding-top: 4px;
+    // padding: 0 15px;
+  }
+  .item {
+    position: relative;
+    padding: 15px 0;
+    @extend %clearfix;
+    border-bottom: 1px solid #f0f0f0;
+    color: #666;
+    font-size: 18px;
+    line-height: 60px;
+    &:last-child {
+      border-bottom: 0;
+    }
+    .no {
+      float: left;
+      margin-left: 15px;
+      width: 30px;
+      font-size: 24px;
+    }
+    .avator {
+      float: left;
+      display: block;
+      width: 60px;
+      height: 60px;
+      overflow: hidden;
+      border-radius: 100%;
+      img {
+        width: 100%;
+      }
+    }
+    .name {
+      float: left;
+      margin-left: 10px;
+      display: block;
+      width: 150px;
+      @extend %ellipsis;
+      color: #666;
+      &:hover {
+        color: $themeColor;
+      }
+    }
+    .num {
+      float: right;
+      margin-right: 15px;
+      text-align: right;
+    }
+  }
+  .first-item {
+    border-bottom: 15px solid #f3f5f7;
+  }
+  .icon {
+    position: absolute;
+    top: 42px;
+    left: 88px;
+  }
+}
+
+.scheduleBox, .month_scheduleBox {
+  display: none;
+  background: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 200;
+}
+
+.schedule, .month_schedule {
+  width: 680px;
+  height: 375px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background: white;
+  .top {
+    box-sizing: border-box;
+    padding: 20px 24px;
+    border-bottom: 3px solid $themeColor;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    h3 {
+      border-left: 3px solid $themeColor;
+      padding-left: 8px;
+    }
+    a {
+      display: block;
+      color: #999;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  }
+  .main {
+    box-sizing: border-box;
+    padding: 34px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #666;
+    font-size: 18px;
+    .form {
+      width: 100%;
+      margin-top: 46px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      select {
+        width: 180px;
+        height: 74px;
+        box-sizing: border-box;
+        border-radius: 3px;
+        padding: 24px;
+        outline: none;
+        font-size: 18px;
+        color: #666;
+      }
+    }
+  }
+  .bot {
+    margin: 0 auto;
+    width: 190px;
+    height: 60px;
+    border-radius: 100px;
+    background: $themeColor;
+    color: white;
+    text-align: center;
+    line-height: 60px;
+    cursor: pointer;
+  }
+}
+
+.month_schedule {
+  width: 904px;
+  height: 740px;
+  .top {
+    .year-month, .monthclose {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      div {
+        color: #666;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        line-height: 20px;
+        cursor: pointer;
+        font-size: 24px;
+      }
+      span {
+        display: block;
+        margin: 0 50px;
+      }
+      li {
+        list-style: none;
+        margin-left: 12px;
+        padding: 10px 16px;
+        border: 1px solid #999;
+        border-radius: 3px;
+        color: #999;
+        cursor: pointer;
+        &:hover, &.showed {
+          background: #00e290;
+          color: white;
+          border-color: #00e290;
+        }
+      }
+    }
+  }
+  table {
+    th {
+      width: 129px;
+      height: 50px;
+      border: none;
+      background: white;
+      color: #999;
+      text-align: center;
+      line-height: 50px;
+    }
+    td {
+      text-align: center;
+      width: 126px;
+      height: 104px;
+      border: 1px solid #d9d9d9;
+      box-sizing: border-box;
+      padding-top: 20px;
+      font-size: 16px;
+      b {
+        display: block;
+        margin-bottom: 27px;
+      }
+      &.today {
+        b {
+          position: relative;
+          &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: $themeColor;
+            left: 50%;
+            top: 20px;
+            transform: translateX(-6px);
+          }
+        }
+      }
+      &.currentMonth {
+        background: white;
+        color: black;
+      }
+      &.otherMonth {
+        background: #fafafa;
+        color: #999;
+      }
+    }
+  }
+}
+
+.plan {
+  width: 100%;
+  height: 40px;
+  box-sizing: border-box;
+  border-left: 4px solid $themeColor;
+  background: #e5fcf4;
+  color: #666;
+  text-align: center;
+  line-height: 40px;
+  font-size: 12px;
+  position: relative;
+  cursor: pointer;
+}
+
+.planshow {
+  display: none;
+  position: absolute;
+  z-index: 201;
+  width: 490px;
+  background: white;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  .top {
+    height: 60px;
+    box-sizing: border-box;
+    padding: 20px 30px;
+    border-color: #f0f0f0;
+    h3 {
+      line-height: 20px;
+    }
+  }
+  .dayprogress {
+    height: 160px;
+    box-sizing: border-box;
+    border-bottom: 3px solid #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    .done-circle {
+      position: relative;
+      margin-top: 8px;
+      height: 112px;
+      width: 112px;
+      box-sizing: border-box;
+      color: #666;
+      text-align: center;
+    }
+    .inner {
+      width: 112px;
+      font-size: 24px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 0;
+    }
+    p {
+      font-size: 18px;
+      color: #666;
+    }
+  }
+  &.l {
+    left: 116px;
+  }
+  &.r {
+    right: 116px;
+  }
+  &.t {
+    top: -66px;
+  }
+  &.b {
+    bottom: -66px;
+  }
+  &.l.t {
+    &::before {
+      top: 75px;
+      left: -11px;
+      border-right: 10px solid rgba(0, 0, 0, 0.1);
+      border-left: 0;
+    }
+    &::after {
+      top: 75px;
+      left: -10px;
+      border-right: 10px solid white;
+      border-left: 0;
+    }
+  }
+  &.r.t {
+    &::before {
+      top: 75px;
+      right: -11px;
+      border-left: 10px solid rgba(0, 0, 0, 0.1);
+      border-right: 0;
+    }
+    &::after {
+      top: 75px;
+      right: -10px;
+      border-left: 10px solid white;
+      border-right: 0;
+    }
+  }
+  &.l.b {
+    &::before {
+      bottom: 75px;
+      left: -11px;
+      border-right: 10px solid rgba(0, 0, 0, 0.1);
+      border-left: 0;
+    }
+    &::after {
+      bottom: 75px;
+      left: -10px;
+      border-right: 10px solid white;
+      border-left: 0;
+    }
+  }
+  &.r.b {
+    &::before {
+      bottom: 75px;
+      right: -11px;
+      border-left: 10px solid rgba(0, 0, 0, 0.1);
+      border-right: 0;
+    }
+    &::after {
+      bottom: 75px;
+      right: -10px;
+      border-left: 10px solid white;
+      border-right: 0;
+    }
+  }
+  &::before, &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+  }
+}
+
+.mon-day-plan {
+  height: 200px;
+  overflow-y: scroll;
+}
+
+.mon-day-plan > li {
+  box-sizing: border-box;
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  border-bottom: 1px solid #f0f0f0;
+  .title {
+    color: $themeColor;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 1;
+  }
+  .subtitle {
+    font-size: 18px;
+    color: black;
+    margin: 10px 0 0;
+  }
+  .dayplan {
+    width: 100%;
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: row;
+      span {
+        display: block;
+        color: #666;
+        font-size: 16px;
+        margin: 0;
+      }
+    }
+  }
+}
+
+.toDetailPlan {
+  margin: 25px auto;
+  width: 190px;
+  height: 50px;
+  border-radius: 100px;
+  background: $themeColor;
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+  line-height: 50px;
+}

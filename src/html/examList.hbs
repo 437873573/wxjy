@@ -1,0 +1,145 @@
+---
+layout: default.hbs
+title: 模考习题册列表
+keywords: 模考习题册列表
+description: 模考习题册列表
+stylesheet: test
+script: testList
+hiido_wid:
+big_header: 1
+---
+
+<div class="page-test-list">
+    <div class="page-inner">
+
+        {{>bread-crumbs}}
+
+        <div class="progress-wrapper">
+            <div class="hd">
+                <h5>GRE必考词汇</h5>
+                <span>试题4套</span>
+            </div>
+            <ul class="info clearfix">
+                <li class="item">
+                    <span class="num">10</span>
+                    <span class="title">试题数量</span>
+                </li>
+                <li class="item">
+                    <span class="num">60%</span>
+                    <span class="title">当前进度</span>
+                </li>
+                <li class="item">
+                    <span class="num">90%</span>
+                    <span class="title">正确率</span>
+                </li>
+                <li class="item">
+                    <span class="num">中</span>
+                    <span class="title">难度系数</span>
+                </li>
+            </ul>
+        </div>
+        <div class="table-test">
+            <div class="table-hd clearfix">
+                <div class="row row-1">
+                    <span class="title">练习册</span>
+                </div>
+                <div class="row row-2">
+                    <span class="title">已做&nbsp;|&nbsp;总题</span>
+                </div>
+                <div class="row row-3">
+                    <span class="title">总耗时&nbsp;|&nbsp;建议耗时</span>
+                </div>
+                <div class="row row-4">
+                    <span class="title">正确率</span>
+                </div>
+            </div>
+            <div class="table-bd clearfix">
+                <ul class="test-list">
+                    <li class="test-item clearfix">
+                        <div class="row row-1">
+                            <a href="#" class="title">Exercise 01</a>
+                        </div>
+                        <div class="row row-2">
+                            <span class="strong">10</span>&nbsp;|&nbsp;10
+                        </div>
+                        <div class="row row-3">14m15s&nbsp;|&nbsp;14m15s
+                        </div>
+                        <div class="row row-4">92%</div>
+                        <div class="row row-5">
+                            <div class="status done"><i class="icon-done">✔</i></div>
+                            <div class="btns">
+                                <a href="#" class="btn btn-go" target="_blank">做题</a>
+                                <a href="#" class="btn">视频</a>
+                                <a href="#" class="btn">解析</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="test-item clearfix">
+                        <div class="row row-1">
+                            <a href="#" class="title">Exercise 01</a>
+                        </div>
+                        <div class="row row-2">
+                            <span class="strong">10</span>
+                            |
+                            10
+                        </div>
+                        <div class="row row-3">
+                            14m15s
+                            |
+                            14m15s
+                        </div>
+                        <div class="row row-4">
+                            92%
+                        </div>
+                        <div class="row row-5">
+                            <div class="status undone">未完成</div>
+                            <div class="btns clearfix">
+                                <div class="btn btn-go new-go">
+                                    <span>做题</span>
+                                    <div class="reorco hidden">
+                                        <div class="reorconwrap">
+                                            <div class="top">
+                                                <h3>提示</h3>
+                                                <a href="#" class="reorco_close">×</a>
+                                            </div>
+                                            <div class="main">
+                                                <p>您上次在该试题集测试还没完成，是否继续？</p>
+                                            </div>
+                                            <div class="bot">
+                                                <a href="#" target="_blank" class="btn btn-go">继续上次</a>
+                                                <a href="#" target="_blank" class="btn">重新开始</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="#" class="btn">视频</a>
+                                <a href="#" class="btn">解析</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="test-item clearfix">
+                        <div class="row row-1">
+                            <a href="#" class="title">Exercise 01</a>
+                        </div>
+                        <div class="row row-2">
+                            <span class="strong">10</span>
+                            |
+                            10
+                        </div>
+                        <div class="row row-3">
+                            14m15s
+                            |
+                            14m15s
+                        </div>
+                        <div class="row row-4">
+                            92%
+                        </div>
+                        <div class="row row-5">
+                            <a href="" class="unuser ">查看解析</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

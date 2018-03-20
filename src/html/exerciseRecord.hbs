@@ -1,0 +1,124 @@
+---
+layout: default.hbs
+title: 刷题记录
+keywords: 刷题记录
+description: 刷题记录
+stylesheet: test
+script: exerciseRecord
+hiido_wid:
+big_header: 1
+---
+
+<div class="page-exercise-index">
+    <div class="page-inner">
+
+        <div class="user-info-score">
+            <div class="user-info">
+                <div class="avator">
+                    <img src="http://placehold.it/60x60" alt="">
+                </div>
+                <div class="info">
+                    <div class="name">My robber</div>
+                    <div class="txt">当前等级：
+                        <span>小学</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="user-score">
+                <div class="score-item">
+                    <span class="num">18题</span>
+                    <span class="txt">今天完成</span>
+                </div>
+                <div class="score-item">
+                    <span class="num">218题</span>
+                    <span class="txt">本周完成</span>
+                </div>
+                <div class="score-item">
+                    <span class="num">78题</span>
+                    <span class="txt">计划完成</span>
+                </div>
+            </div>
+        </div>
+
+        {{>exercise-types}}
+
+        <div class="table-exercise table-test">
+            <div class="table-hd">
+                <div class="row row-1">
+                    题型
+                </div>
+                <div class="row row-2">
+                    题目
+                </div>
+            </div>
+            <div class="table-bd">
+                <ul class="exercise-list">
+                    <li class="exercise-item test-item">
+                        <div class="row row-1">
+                            单选
+                        </div>
+                        <div class="row row-2">
+                            <div class="question">Until recently astronomers have been puzzled by the fate of red giant
+                                and supergiant stars.
+                            </div>
+                            <ul class="answers">
+                                <li>offer a method of calculating the age of circum-stellar clouds offer a method of
+                                    calculating the age of circum-stellar cloudsoffer a method of calculating the age of
+                                    circum-stellar clouds
+                                </li>
+                                <li>describe the conditions that result in a star‘s expiring as a supernova.</li>
+                                <li>discuss new evidence concerning the composition of planetary nebulas.</li>
+                                <li>explain why fewer stars than predicted expire as supernovas</li>
+                                <li>survey conflicting theories concerning the composition of circumstellar clouds</li>
+                            </ul>
+                            <div class="result right">
+                                <i class="icon-right">✔</i>
+                                <p><span class="status">对</span>耗时6秒 2017-10-24 17:40:09<span
+                                        class="tips">参考答案为：B</span></p>
+                            </div>
+                        </div>
+                        <div class="row row-3">
+                            <div class="btns" data-test-volume-id="191" data-test-topic-id="119">
+                                <a href="javaScript:;" class="btn btn-go">收藏</a>
+                                <a href="javaScript:;" class="btn btn-cancle">查看</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="exercise-item test-item">
+                        <div class="row row-1">
+                            单选
+                        </div>
+                        <div class="row row-2">
+                            <div class="question">Until recently astronomers have been puzzled by the fate of red giant
+                                and supergiant stars.
+                            </div>
+                            <ul class="answers">
+                                <li>offer a method of calculating the age of circum-stellar clouds offer a method of
+                                    calculating the age of circum-stellar cloudsoffer a method of calculating the age of
+                                    circum-stellar clouds
+                                </li>
+                                <li>describe the conditions that result in a star‘s expiring as a supernova.</li>
+                                <li>discuss new evidence concerning the composition of planetary nebulas.</li>
+                                <li>explain why fewer stars than predicted expire as supernovas</li>
+                                <li>survey conflicting theories concerning the composition of circumstellar clouds</li>
+                            </ul>
+                            <div class="result wrong">
+                                <i class="icon-wrong">✖</i>
+                                <p><span class="status">错</span>耗时6秒 2017-10-24 17:40:09<span class="tips">参考答案为：B 你的答案为：C</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row row-3">
+                            <div class="btns">
+                                <a href="javaScript:;" class="btn btn-go">收藏</a>
+                                <a href="#" class="btn btn-cancle">查看</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        {{> page-navgator}}
+    </div>
+</div>
