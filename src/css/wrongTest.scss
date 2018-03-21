@@ -96,6 +96,9 @@
         left: -20px;
         background: $themeColor;
       }
+      &.clear i{
+        left: 0;
+      }
     }
     .toRecord a{
       float: right;

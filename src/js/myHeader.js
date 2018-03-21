@@ -2,7 +2,7 @@ import './modules/header'
 $(function () {
   $('#js-file-butn').on('click', function(e){
     $('#js-file').trigger('click');
-    $('.crop,.preview').toggle()
+    $('.crop').toggle()
   });
   $('#js-file').change(function (){
       var file=this
@@ -34,6 +34,9 @@ $(function () {
         }
     });
     $('.butn-submit').click(function () {
+        if($(".crop").attr('display')=='none'){
+            return
+        }
         if ($(".clipping-img").attr("src") == null ){
             return false;
         }else{
@@ -45,7 +48,7 @@ $(function () {
                data:{avatar:base64url},
                success:function (mess) {
                    if(mess&&mess.code==0){
-                       $('.preview').siblings('img').prop("src",mess.data.avatar);
+                       // $('.preview').siblings('img').prop("src",mess.data.avatar);
                        pop('头像设置成功')
                    }else{
                        pop('设置失败，请重试','red')
@@ -54,11 +57,11 @@ $(function () {
            });
             //关闭裁剪框
             $('.clipping-img').cropper("clear");
-            $('.crop,.preview').toggle()
+            $('.crop').toggle()
         }
     });
     $('.crop-close').click(()=>{
         $('.clipping-img').cropper("clear");
-        $('.crop,.preview').toggle()
+        $('.crop').toggle()
     })
 });

@@ -128,6 +128,9 @@
     left: 50%;
     background: #fff;
     transform: translateX(-50%);
+    img{
+      border-radius: 0;
+    }
   }
   a{
     font-size: 14px;

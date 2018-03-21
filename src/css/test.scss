@@ -498,8 +498,13 @@ body {
       width: 730px;
       margin: 0;
       text-align: left;
+      li{
+        list-style-type: upper-latin;
+        list-style-position: inside;
+      }
       p,p span,td{
         color: #666666 !important;
+        background: transparent !important;
         font: 14px/24px "Hiragino Sans GB","STHeiti","Microsoft Yahei" !important;
       }
       table{
@@ -512,7 +517,7 @@ body {
       display: none;
       margin-left: 0;
       margin-right: 20px;
-      width: 150px;
+      width: 160px;
       .btn{
         float: left;
       }
