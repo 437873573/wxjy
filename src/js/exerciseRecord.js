@@ -2,7 +2,6 @@ import './modules/header';
 
 $(function () {
     $('.btns').click(function (e) {
-        e.preventDefault();
         let vid=$(this).data('testVolumeId'),tid=$(this).data('testTopicId');
         if(e.target==$('.btn-go')[0]) {
             let a = $(e.target);
