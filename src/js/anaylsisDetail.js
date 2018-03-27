@@ -34,7 +34,7 @@ $(function () {
         });
         // console.log(comment,collect.topicId,collect.volumeId)
         $.ajax({
-            url: '/comment',
+            url: '/api/comment',
             type: 'POST',
             data: {
                 content: comment,
@@ -141,7 +141,7 @@ $(function () {
                     top = e.clientY + sh + 240;
                 if (txt) {
                     $.ajax({
-                        url: '/word/query',
+                        url: '/api/word/query',
                         data: {word: txt},
                         success: function (mess) {
                             if (mess.code === 0 && mess.data.word) {

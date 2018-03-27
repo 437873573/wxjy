@@ -6,7 +6,7 @@ $(function () {
         if(e.target==$('.btn-go')[0]) {
             let a = $(e.target);
             $.ajax({
-                url: '/collect',
+                url: '/api/collect',
                 type: 'POST',
                 data: {test_topic_id: tid, test_volume_id: vid},
                 success: function (mess) {

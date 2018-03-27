@@ -38,11 +38,11 @@ $(function () {
     $('.title-zan').click(function () {
         let id=$(this).parent().data('testVolumeId'),that=this;
         if(!$(this).hasClass('added-zan')){
-            $.post('/volume/vote',{test_volume_id:id,vote_type:1},function (mess) {
+            $.post('/api/volume/vote',{test_volume_id:id,vote_type:1},function (mess) {
                 if(mess&&mess.code===0){jia(that,'icon-video-nozan-big','icon-video-zan-big')}
             })
         }else{
-            $.post('/volume/vote',{test_volume_id:id,vote_type:0},function (mess) {
+            $.post('/api/volume/vote',{test_volume_id:id,vote_type:0},function (mess) {
                 if(mess&&mess.code===0){jian(that,'icon-video-zan-big','icon-video-nozan-big')}
             })
         }
@@ -50,18 +50,18 @@ $(function () {
     $('.foot>span:first-of-type').click(function () {
         let id=$(this).parent().data('commentId'),that=this;
         if(!$(this).hasClass('added-zan')){
-            $.post('/comment/vote',{comment_id:id,vote_type:1},function (mess) {
+            $.post('/api/comment/vote',{comment_id:id,vote_type:1},function (mess) {
                 if(mess&&mess.code===0){jia(that,'icon-video-nozan','icon-video-zan')}
             })
         }else{
-            $.post('/comment/vote',{comment_id:id,vote_type:0},function (mess) {
+            $.post('/api/comment/vote',{comment_id:id,vote_type:0},function (mess) {
                 if(mess&&mess.code===0){jian(that,'icon-video-zan','icon-video-nozan')}
             })
         }
     });
     $('.form-wrapper input').click(function () {
         let id=$(this).parent().data('testVolumeId'),c=$(this).siblings('textarea').val();
-        $.post('/volume/addComment',{test_volume_id:id,content:c},()=>window.location.reload())
+        $.post('/api/volume/addComment',{test_volume_id:id,content:c},()=>window.location.reload())
     });
     function jia(that,c1,c2) {
         $(that).addClass('added-zan').find('span').text(parseInt($(that).find('span').text())+1).end().find('i').removeClass(c1).addClass(c2)

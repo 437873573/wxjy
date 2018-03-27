@@ -44,7 +44,7 @@ $(function () {
     function getplan(w) {
         // console.log(w)
         $.ajax({
-            url: '/plan/info',
+            url: '/api/plan/info',
             data: `planDate=${w}`,
             success: function (mess) {
                 $('.detailplan,.recite,.program').html('');
@@ -69,7 +69,8 @@ $(function () {
                                                 </div>
                                             </li>
                                         </ul>
-                                    </div>`});
+                                    </div>`
+                        });
                         $(`<div class="plan-column">
                             <div class="column-hd">
                                 <h3 class="title">日程</h3>
@@ -186,7 +187,7 @@ $(function () {
 
     function word(id, sta) {
         $.ajax({
-            url: '/plan/word/changeStatus',
+            url: '/api/plan/word/changeStatus',
             type: 'post',
             data: {plan_word_id: id, status: sta}
         })
@@ -336,7 +337,7 @@ $(function () {
         }
         // console.log(date)
         $.ajax({
-            url: '/plan/info',
+            url: '/api/plan/info',
             data: `planDate=${date}`,
             success: function (mess) {
                 $('.planshow').html('');
@@ -431,7 +432,7 @@ $(function () {
     function getmonthplan() {
         $('.plan').remove()
         $.ajax({
-            url: '/plan/monthView',
+            url: '/api/plan/monthView',
             data: {startDate: $('#monthfirst').attr('data'), endDate: $('#monthlast').attr('data')},
             // data: {startDate: '2018-01-01', endDate: '2018-01-31'},
             success: function (r) {
@@ -484,7 +485,7 @@ $(function () {
             let day = $('#day').val() > 9 ? $('#day').val() : '0' + $('#day').val()
             let time = $('#year').val() + '-' + month + '-' + day
             $.ajax({
-                url: '/plan/changeDate',
+                url: '/api/plan/changeDate',
                 type: 'post',
                 data: {exam_date: time},
                 success: function (mess) {
@@ -518,7 +519,7 @@ $(function () {
         // console.log(s.substring(0,4)+'-'+s.substring(5,7)+'-01')
         let month = s.substring(0, 4) + '-' + s.substring(5, 7) + '-01'
         $.ajax({
-            url: '/plan/summary',
+            url: '/api/plan/summary',
             data: {planMonth: month},
             success: function (mess) {
                 if (mess && mess.data) {
@@ -605,7 +606,7 @@ $(function () {
     });
     //添加日程
     $('.addplan').click(() => {
-        $('.todo .bot').attr('id',0);
+        $('.todo .bot').attr('id', 0);
         $('.todoBox').show()
     });
     $('.todo_close').click(() => {
@@ -614,23 +615,24 @@ $(function () {
     });
     $('.todo .bot').click(function () {
         $('.todoBox').hide();
-        let id=$(this).attr('id');
+        let id = $(this).attr('id');
         let date = getDateStr(new Date());
         let title = $('input[name="todoTitle"]').val(), cont = $('textarea[name="todoContent"]').val();
         if (title && cont) {
             $.ajax({
-                url: '/saveTodo',
+                url: '/api/saveTodo',
                 type: 'post',
                 data: {
                     todo_title: title,
                     todo_content: cont,
                     todo_date: date,
-                    todo_id:id
+                    todo_id: id
                 },
                 success: function (mess) {
                     if (mess && mess.code == 0) {
                         pop('日程添加成功');
-                        $('.todo input').val('');$('.todo textarea').val('');
+                        $('.todo input').val('');
+                        $('.todo textarea').val('');
                         todayplan()
                     }
                 },
@@ -641,22 +643,24 @@ $(function () {
         let ei = $(e.target), id = ei.parent().attr('id'), s = ei.parent().data('status');
         // console.log(id,s,ei.attr('id'))
         if (s == 0 && ei.attr('id') == 2) {
-            $.post('/saveTodo',{todo_id:id,status:1},function (mess) {
-                if(mess&&mess.code===0){
+            $.post('/api/saveTodo', {todo_id: id, status: 1}, function (mess) {
+                if (mess && mess.code === 0) {
                     $(ei.closest('li').find('input')).prop('checked', true);
                     ei.parent().data('status', 1)
                 }
             })
         } else if (s == 1 && ei.attr('id') == 1) {
-            $.post('/saveTodo',{todo_id:id,status:0},function (mess) {
-                if(mess&&mess.code===0){
+            $.post('/api/saveTodo', {todo_id: id, status: 0}, function (mess) {
+                if (mess && mess.code === 0) {
                     $(ei.closest('li').find('input')).prop('checked', false);
                     ei.parent().data('status', 0)
                 }
             })
-        }else if(ei.attr('id') == 3){
-            let t=ei.data('title'),c=ei.data('content');
-            $('.todo input').val(t);$('.todo textarea').val(c);$('.todo .bot').attr('id',id)
+        } else if (ei.attr('id') == 3) {
+            let t = ei.data('title'), c = ei.data('content');
+            $('.todo input').val(t);
+            $('.todo textarea').val(c);
+            $('.todo .bot').attr('id', id)
             $('.todoBox').show()
         }
     })

@@ -1,8 +1,9 @@
 import './modules/header';
+
 $(function () {
-    let collect=[], arr=[], tlist = $('.testlist ul');
+    let collect = [], arr = [], tlist = $('.testlist ul');
     arr = $('.clicked').parent().attr('href');
-    $(arr.split('&')).each((i,v)=>{
+    $(arr.split('&')).each((i, v) => {
         collect.push(v.split('=')[1])
         // console.log(collect)
     });
@@ -24,20 +25,21 @@ $(function () {
         }
     });
     $('.testlist ul a').click(function () {
-        arr='';collect=[];
+        arr = '';
+        collect = [];
         $(this).find('li').addClass('clicked').end().siblings().find('li').removeClass('clicked');
         $('.collect i').removeClass('icon-collection1').addClass('icon-collection');
         arr = $('.clicked').parent().attr('href');
-        $(arr.split('&')).each((i,v)=>{
+        $(arr.split('&')).each((i, v) => {
             collect.push(v.split('=')[1])
             // console.log(collect)
         });
         $('.translation').hide()
     });
-    $(document).click((e)=>{
-        if(e.target==$('.writeMarkBox').get(0)){
+    $(document).click((e) => {
+        if (e.target == $('.writeMarkBox').get(0)) {
             $('.writeMarkBox').hide()
-        }else if(e.target==$('.reportWrongBox').get(0)){
+        } else if (e.target == $('.reportWrongBox').get(0)) {
             $('.reportWrongBox').hide()
         }
     })
@@ -57,11 +59,11 @@ $(function () {
 
     //收藏
     $('.collect').click(() => {
-        if($('.collect i').hasClass('icon-collection')){
+        if ($('.collect i').hasClass('icon-collection')) {
             $.ajax({
-                url: '/collect',
+                url: '/api/collect',
                 type: 'POST',
-                data: {test_topic_id: collect[1] ,test_volume_id: collect[0]},
+                data: {test_topic_id: collect[1], test_volume_id: collect[0]},
                 success: function (mess) {
                     if (mess.code == 0) {
                         pop('收藏成功')
@@ -71,8 +73,8 @@ $(function () {
                     }
                 },
             })
-        }else{
-            pop('已添加收藏','#fa8c16')
+        } else {
+            pop('已添加收藏', '#fa8c16')
         }
     });
 
@@ -81,7 +83,7 @@ $(function () {
         let mark = $('#domark').val();
         // console.log($('.iframe').get(0))
         $.ajax({
-            url: '/save_note',
+            url: '/api/save_note',
             type: 'POST',
             data: {
                 note_content: mark,
@@ -98,7 +100,7 @@ $(function () {
                     $('.writeMarkBox').hide()
                 }
             },
-            error:function () {
+            error: function () {
                 pop('网络原因，请稍后再试', 'red')
                 $('.writeMarkBox').hide()
             }
@@ -110,7 +112,7 @@ $(function () {
         let mark = $('.reportWrong textarea').val();
         // console.log($('.iframe').get(0))
         $.ajax({
-            url: '/report',
+            url: '/api/report',
             type: 'POST',
             data: {
                 content: mark,
@@ -126,7 +128,7 @@ $(function () {
                     $('.reportWrongBox').hide()
                 }
             },
-            error:function () {
+            error: function () {
                 pop('网络原因，请稍后再试', 'red')
                 $('.reportWrongBox').hide()
             }
@@ -135,27 +137,27 @@ $(function () {
 
     //添加生词
     $('.translation .but').click(function () {
-        if($(this).attr('id')!=0){
-            if($(this).hasClass('added')){
+        if ($(this).attr('id') != 0) {
+            if ($(this).hasClass('added')) {
                 return;
             }
             $.ajax({
-                url:'/word/mark',
-                type:'post',
-                data:{word_id:$(this).attr('id')},
-                success:function (mess) {
-                    if(mess.code==0){
+                url: '/api/word/mark',
+                type: 'post',
+                data: {word_id: $(this).attr('id')},
+                success: function (mess) {
+                    if (mess.code == 0) {
                         pop('添加成功');
                         $('.translation .but').addClass('added').text('已添加到生词本')
-                    }else{
-                        pop('添加失败，请重试','red')
+                    } else {
+                        pop('添加失败，请重试', 'red')
                     }
                 }
             })
         }
     })
-    
-    $(document).click(function (e){
+
+    $(document).click(function (e) {
         if (e.target !== $('.translate')[0] && $('.translate').css('display') == 'block') {
             $('.translate').hide()
         }

@@ -43,7 +43,7 @@ $(function () {
             var cas = $('.clipping-img').cropper('getCroppedCanvas');//获取被裁剪后的canvas
             var base64url = cas.toDataURL('image/png'); //转换为base64地址形式
            $.ajax({
-               url:'/user/saveAvatar',
+               url:'/api/user/saveAvatar',
                type:'post',
                data:{avatar:base64url},
                success:function (mess) {
