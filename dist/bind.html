@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>第三方登录完善信息</title>
+    <meta name="keywords" content="第三方登录完善信息">
+    <meta name="description" content="第三方登录完善信息">
+    <meta name="format-detection" content="telephone=no, email=no">
+    <meta name="applicable-device" content="mobile">
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="icon" href="./imgs/common/favicon.png">
+    <!--*----------Dragon be here!----------/-->
+    <!--* 　　　┏┓　　　┏┓-->
+    <!--* 　　┏┛┻━━━┛┻┓-->
+    <!--* 　　┃　　　　　　　┃-->
+    <!--* 　　┃　　　━　　　┃-->
+    <!--* 　　┃　┳┛　┗┳　┃-->
+    <!--* 　　┃　　　　　　　┃-->
+    <!--* 　　┃　　　┻　　　┃-->
+    <!--* 　　┃　　　　　　　┃-->
+    <!--* 　　┗━┓　　　┏━┛-->
+    <!--* 　　　　┃　　　┃神兽保佑-->
+    <!--* 　　　　┃　　　┃代码无BUG！-->
+    <!--* 　　　　┃　　　┗━━━┓-->
+    <!--* 　　　　┃　　　　　　　┣┓-->
+    <!--* 　　　　┃　　　　　　　┏┛-->
+    <!--* 　　　　┗┓┓┏━┳┓┏┛-->
+    <!--* 　　　　　┃┫┫　┃┫┫-->
+    <!--* 　　　　　┗┻┛　┗┻┛-->
+    <!--* ━━━━━━神兽出没━━━━━━-->
+</head>
+<body>
+<div class="page-header">
+    <div class="page-header__inner">
+        <a href="javascript:;" class="page-header__logo fl">
+            <span class=" icon-logo"></span>
+        </a>
+        <ul class="page-header__nav fl">
+            <li>
+                <a href="/" class="active">首页</a>
+            </li>
+            <li>
+                <a href="javascript:;">报名</a>
+            </li>
+            <li>
+                <a href="javascript:;" class="has-second">题库 <span class="icon-nav-bottom"></span></a>
+                <div class="page-header_sec ">
+                    <span class="sanjiao"></span>
+                    <span class="sanjiao-2"></span>
+                    <a href="javascript:;">
+                        <span class="icon-class-1"></span>
+                        <b>词汇</b>
+                    </a>
+                    <a href="javascript:;">
+                        <span class="icon-class-2"></span>
+                        <b>填空</b>
+                    </a>
+                    <a href="javascript:;">
+                        <span class="icon-class-3"></span>
+                        <b>阅读</b>
+                    </a>
+                    <a href="javascript:;">
+                        <span class="icon-class-4"></span>
+                        <b>数学</b>
+                    </a>
+                    <a href="javascript:;">
+                        <span class="icon-class-5"></span>
+                        <b>逻辑</b>
+                    </a>
+                    <a href="javascript:;" class="last">
+                        <span class="icon-class-6"></span>
+                        <b>作文</b>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <a href="javascript:;" class="has-second">模考 <span class="icon-nav-bottom"></span></a>
+                <div class="page-header_sec mokao">
+                    <span class="sanjiao"></span>
+                    <span class="sanjiao-2"></span>
+                    <a href="javascript:;">
+                        <span class="icon-class-1"></span>
+                        <b>词汇</b>
+                    </a>
+                    <a href="javascript:;">
+                        <span class="icon-class-2"></span>
+                        <b>填空</b>
+                    </a>
+                    <a href="javascript:;">
+                        <span class="icon-class-3"></span>
+                        <b>阅读</b>
+                    </a>
+                    <a href="javascript:;">
+                        <span class="icon-class-4"></span>
+                        <b>数学</b>
+                    </a>
+                    <a href="javascript:;">
+                        <span class="icon-class-5"></span>
+                        <b>逻辑</b>
+                    </a>
+                    <a href="javascript:;" class="last">
+                        <span class="icon-class-6"></span>
+                        <b>作文</b>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <a href="javascript:;">错题本</a>
+            </li>
+        </ul>
+        <div class="page-header__search fl">
+            <span class="icon-soso"></span>
+            <input type="text" placeholder="搜索试题／论坛／视频">
+            <a href="javascript:;" class="butn-soso">搜索</a>
+        </div>
+
+        <div class="page-header__login fr">
+            <!--<a href="javascript:;">登录</a>-->
+            <!--<span>|</span>-->
+            <!--<a href="javascript:;">注册</a>-->
+            <a href="javascript:;" class="js-login-info">
+                <img src="http://placeimg.com/200/200" alt="">
+                <b> xxxx</b>
+            </a>
+            <span>|</span>
+            <a href="javascript:;">退出</a>
+            <div class="tips-user js-tips-user">
+                <i class="sanjiao"></i>
+                <i class="sanjiao2"></i>
+                <div>
+                    <a href="javascript:;" class="link-center">备考中心 &gt;</a>
+                    <i class="">今天已完成进度：</i>
+                    <div class="circle" data-num="80">
+                        <svg width="70" height="70" viewbox="0 0 70 70">
+                            <circle cx="35" cy="35" r="32" stroke-width="5" stroke="#ffde00" fill="none"></circle>
+                            <circle cx="35" cy="35" r="32" stroke-width="5" stroke="#00e290" fill="none"
+                                    transform="matrix(0,-1,1,0,0,70)" stroke-dasharray="0 200"></circle>
+                        </svg>
+                        <span class="persent">0%</span>
+                    </div>
+                </div>
+                <p><a href="javascript:;"><span class="icon-user icon-user-laba"><span
+                        class="message-number">7</span></span>我的消息</a></p>
+                <p><a href="javascript:;"><span class="icon-user icon-user-book"></span>我的课程</a></p>
+                <p><a href="javascript:;"><span class="icon-user icon-user-settings"></span>个人设置</a></p>
+                <a href="javascript:;" class="butn-logout">退出登录</a>
+            </div>
+        </div>
+    </div>
+</div><div class="page-login page-bind">
+  <div class="page-login-block ">
+    <h3 class="bind-tab">
+      <a href="javascript:;" class="active">完善账号信息</a>
+      <span>|</span>
+      <a href="javascript:;">绑定已有账号</a>
+    </h3>
+    <form action="">
+    <div class="form-block">
+      <input type="text" placeholder="QQ的昵称">
+      <span class="icon-icon-user left-icon"></span>
+    </div>
+    <div class="form-block">
+      <input type="text" placeholder="手机/邮箱">
+      <span class="icon-login-phone left-icon"></span>
+      <i class="form-tips">用于手机登录或找回密码</i>
+    </div>
+
+    <div class="form-block two">
+      <input type="text" placeholder="请输入验证码">
+      <a href="javascript:;" class="butn-code">获取验证码</a>
+    </div>
+    
+    <button class="wx-butn">完  成</button>
+    <p class="bind-tips">完善信息后可获得完整的备考数据</p>
+    </form>
+  </div>
+</div>
+<div class="page-footer-small">
+  © 2013~2016 维夕教育 版权所有 粤ICP备15101646号
+</div>
+
+</body>
+</html>
+<script src="./js/lib/jquery.1.9.1.js"></script>
+<script src="./js/index.js"></script>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>课程视频播放</title>
+    <meta name="keywords" content="课程视频播放">
+    <meta name="description" content="课程视频播放">
+    <meta name="format-detection" content="telephone=no, email=no">
+    <meta name="applicable-device" content="mobile">
+    <link rel="stylesheet" href="./css/courseVideo.css">
+    <link rel="icon" href="./imgs/common/favicon.png">
+    <!--*----------Dragon be here!----------/-->
+    <!--* 　　　┏┓　　　┏┓-->
+    <!--* 　　┏┛┻━━━┛┻┓-->
+    <!--* 　　┃　　　　　　　┃-->
+    <!--* 　　┃　　　━　　　┃-->
+    <!--* 　　┃　┳┛　┗┳　┃-->
+    <!--* 　　┃　　　　　　　┃-->
+    <!--* 　　┃　　　┻　　　┃-->
+    <!--* 　　┃　　　　　　　┃-->
+    <!--* 　　┗━┓　　　┏━┛-->
+    <!--* 　　　　┃　　　┃神兽保佑-->
+    <!--* 　　　　┃　　　┃代码无BUG！-->
+    <!--* 　　　　┃　　　┗━━━┓-->
+    <!--* 　　　　┃　　　　　　　┣┓-->
+    <!--* 　　　　┃　　　　　　　┏┛-->
+    <!--* 　　　　┗┓┓┏━┳┓┏┛-->
+    <!--* 　　　　　┃┫┫　┃┫┫-->
+    <!--* 　　　　　┗┻┛　┗┻┛-->
+    <!--* ━━━━━━神兽出没━━━━━━-->
+</head>
+<body>
+<div class="page-header">
+    <div class="page-header__inner">
+        <a href="javascript:;" class="page-header__logo fl">
+            <span class=" icon-logo"></span>
+        </a>
+        <ul class="page-header__nav fl">
+            <li>
+                <a href="/" class="active">首页</a>
+            </li>
+            <li>
+                <a href="javascript:;">报名</a>
+            </li>
+            <li>
+                <a href="javascript:;" class="has-second">题库 <span class="icon-nav-bottom"></span></a>
+                <div class="page-header_sec ">
+                    <span class="sanjiao"></span>
+                    <span class="sanjiao-2"></span>
+                    <a href="javascript:;">
+                        <span class="icon-class-1"></span>
+                        <b>词汇</b>
+                    </a>
+                    <a href="javascript:;">
+                        <span class="icon-class-2"></span>
+                        <b>填空</b>
+                    </a>
+                    <a href="javascript:;">
+                        <span class="icon-class-3"></span>
+                        <b>阅读</b>
+                    </a>
+                    <a href="javascript:;">
+                        <span class="icon-class-4"></span>
+                        <b>数学</b>
+                    </a>
+                    <a href="javascript:;">
+                        <span class="icon-class-5"></span>
+                        <b>逻辑</b>
+                    </a>
+                    <a href="javascript:;" class="last">
+                        <span class="icon-class-6"></span>
+                        <b>作文</b>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <a href="javascript:;" class="has-second">模考 <span class="icon-nav-bottom"></span></a>
+                <div class="page-header_sec mokao">
+                    <span class="sanjiao"></span>
+                    <span class="sanjiao-2"></span>
+                    <a href="javascript:;">
+                        <span class="icon-class-1"></span>
+                        <b>词汇</b>
+                    </a>
+                    <a href="javascript:;">
+                        <span class="icon-class-2"></span>
+                        <b>填空</b>
+                    </a>
+                    <a href="javascript:;">
+                        <span class="icon-class-3"></span>
+                        <b>阅读</b>
+                    </a>
+                    <a href="javascript:;">
+                        <span class="icon-class-4"></span>
+                        <b>数学</b>
+                    </a>
+                    <a href="javascript:;">
+                        <span class="icon-class-5"></span>
+                        <b>逻辑</b>
+                    </a>
+                    <a href="javascript:;" class="last">
+                        <span class="icon-class-6"></span>
+                        <b>作文</b>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <a href="javascript:;">错题本</a>
+            </li>
+        </ul>
+        <div class="page-header__search fl">
+            <span class="icon-soso"></span>
+            <input type="text" placeholder="搜索试题／论坛／视频">
+            <a href="javascript:;" class="butn-soso">搜索</a>
+        </div>
+
+        <div class="page-header__login fr">
+            <!--<a href="javascript:;">登录</a>-->
+            <!--<span>|</span>-->
+            <!--<a href="javascript:;">注册</a>-->
+            <a href="javascript:;" class="js-login-info">
+                <img src="http://placeimg.com/200/200" alt="">
+                <b> xxxx</b>
+            </a>
+            <span>|</span>
+            <a href="javascript:;">退出</a>
+            <div class="tips-user js-tips-user">
+                <i class="sanjiao"></i>
+                <i class="sanjiao2"></i>
+                <div>
+                    <a href="javascript:;" class="link-center">备考中心 &gt;</a>
+                    <i class="">今天已完成进度：</i>
+                    <div class="circle" data-num="80">
+                        <svg width="70" height="70" viewbox="0 0 70 70">
+                            <circle cx="35" cy="35" r="32" stroke-width="5" stroke="#ffde00" fill="none"></circle>
+                            <circle cx="35" cy="35" r="32" stroke-width="5" stroke="#00e290" fill="none"
+                                    transform="matrix(0,-1,1,0,0,70)" stroke-dasharray="0 200"></circle>
+                        </svg>
+                        <span class="persent">0%</span>
+                    </div>
+                </div>
+                <p><a href="javascript:;"><span class="icon-user icon-user-laba"><span
+                        class="message-number">7</span></span>我的消息</a></p>
+                <p><a href="javascript:;"><span class="icon-user icon-user-book"></span>我的课程</a></p>
+                <p><a href="javascript:;"><span class="icon-user icon-user-settings"></span>个人设置</a></p>
+                <a href="javascript:;" class="butn-logout">退出登录</a>
+            </div>
+        </div>
+    </div>
+</div><div class="page-banner">
+    <div class="video-block">
+        <h3>
+            <span class="icon-arow-left"></span> 当前课程：GRE备考专讲
+            <a href="" class="fr js-more-class"><span class="icon-video-down-r"></span> 其他章节</a>
+            <a href="" class="fr"><span class="icon-video-share-butn"></span> 分享课程</a>
+        </h3>
+        <!--<div class="video-wrapper">-->
+            <!--<video id="my-player" class="video-js" controls preload="auto" poster="//vjs.zencdn.net/v/oceans.png"-->
+                   <!--data-setup='{}'>-->
+                <!--<source src="//vjs.zencdn.net/v/oceans.mp4" type="video/mp4"></source>-->
+                <!--<source src="//vjs.zencdn.net/v/oceans.webm" type="video/webm"></source>-->
+                <!--<source src="//vjs.zencdn.net/v/oceans.ogv" type="video/ogg"></source>-->
+                <!--<p class="vjs-no-js">-->
+                    <!--To view this video please enable JavaScript, and consider upgrading to a-->
+                    <!--web browser that-->
+                    <!--<a href="http://videojs.com/html5-video-support/" target="_blank">-->
+                        <!--supports HTML5 video-->
+                    <!--</a>-->
+                <!--</p>-->
+            <!--</video>-->
+        <!--</div>-->
+        <!--<div class="video-right js-video-right">-->
+            <!--<h4>当前视频：课程名称 &gt; 章节名</h4>-->
+            <!--<div class="content">-->
+                <!--<ul class="class-list">-->
+                    <!--<li class="active">-->
+                        <!--<p>GRE新手教程第 1 节 <span class="fr">1:56:45</span></p>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<a href="javascript:;">-->
+                            <!--<span>GRE新手教程第 2 节 <i class="fr icon-video-play-s"></i></span>-->
+                            <!--<span>1:56:45</span>-->
+                        <!--</a>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+</div>
+
+<div class="page-content" data-test-volume-id="1">
+    <!--已赞-->
+    <!--<div class="title-zan added-zan"><i class="icon-video-zan-big"></i> 点赞 <span>64</span></div>-->
+    <!--未赞(默认)-->
+    <div class="title-zan"><i class="icon-video-nozan-big"></i> 点赞 <span>64</span></div>
+
+    <div class="img-list">
+        <img src="./imgs/header.png" alt="">
+        <img src="./imgs/header.png" alt="">
+        <img src="./imgs/header.png" alt="">
+        <img src="./imgs/header.png" alt="">
+        <img src="./imgs/header.png" alt="">
+        <img src="./imgs/header.png" alt="">
+        <img src="./imgs/header.png" alt="">
+        <img src="./imgs/header.png" alt="">
+        <img src="./imgs/header.png" alt="">
+        <img src="./imgs/header.png" alt="">
+        <img src="./imgs/header.png" alt="">
+        <img src="./imgs/header.png" alt="">
+        <img src="./imgs/header.png" alt="">
+    </div>
+    <div class="commont-list">
+        <h3>
+            答疑互动（65）
+            <!--<a href="javascript:;" class="butn-sort fr">默认排序 <span class="message icon-video-arrow-down2"></span></a>-->
+        </h3>
+        <ul>
+            <li>
+                <div class="left">
+                    <img src="./imgs/header.png" alt="">
+                </div>
+                <div class="right">
+                    <p class="title">MR robber</p>
+                    <p>timing到底是什么意思？ 瞬间？时机？ 为什么感觉解析里的“时间安排”无法解释？</p>
+                    <p class="foot" data-comment-id="1">
+                        <!--未赞(默认)-->
+                        <span><i class="icon-video-nozan"></i> 赞同 <span>2</span></span>
+                        <!--已赞-->
+                        <span><i class="icon-video-zan"></i> 赞同 <span>2</span></span>
+                        <!--<span><i class="icon-video-message"></i> 评论 <span>2</span></span>-->
+                        <!--<span><i class="icon-video-share"></i> 分享 <span>2</span></span>-->
+                        <span class="fr">2017-10-25 16：30：25</span>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="left">
+                    <img src="./imgs/header.png" alt="">
+                </div>
+                <div class="right">
+                    <p class="title">MR robber</p>
+                    <p>timing到底是什么意思？ 瞬间？时机？ 为什么感觉解析里的“时间安排”无法解释？</p>
+                    <p>
+                        <span><i class="icon-video-nozan"></i> 赞同 <span>2</span></span>
+                        <!--<span><i class="icon-video-message"></i> 评论 <span>2</span></span>-->
+                        <!--<span><i class="icon-video-share"></i> 分享 <span>2</span></span>-->
+                        <span class="fr">2017-10-25 16：30：25</span>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="left">
+                    <img src="./imgs/header.png" alt="">
+                </div>
+                <div class="right">
+                    <p class="title">MR robber</p>
+                    <p>timing到底是什么意思？ 瞬间？时机？ 为什么感觉解析里的“时间安排”无法解释？</p>
+                    <p>
+                        <span><i class="icon-video-nozan"></i> 赞同 <span>2</span></span>
+                        <!--<span><i class="icon-video-message"></i> 评论 <span>2</span></span>-->
+                        <!--<span><i class="icon-video-share"></i> 分享 <span>2</span></span>-->
+                        <span class="fr">2017-10-25 16：30：25</span>
+                    </p>
+                </div>
+            </li>
+        </ul>
+        <div class="page-navgator">
+          <a href="" class="disabled">上一页</a>
+          <a href="" class="active">1</a>
+          <a href="">2</a>
+          <a href="">3</a>
+          <a href="">下一页</a>
+        </div>
+        <div class="form-wrapper" data-test-volume-id="1">
+            <textarea name="content" placeholder="我也说两句.."></textarea>
+            <input type="submit" value="发表评论">
+        </div>
+    </div>
+</div>
+
+<div class="page-footer">
+  <div class="page-footer__inner">
+    <div class="page-footer__top">
+      <dl>
+        <dt>关于我们</dt>
+        <dd>这里有ger备考的优质课程，助力你在考试 中实战获胜这里有ger备考的优质课程，助 力你在考试中实战获胜。
+        </dd>
+        <dd><a href="/">了解更多 &gt;</a></dd>
+      </dl>
+      <dl>
+        <dt>联系我们</dt>
+        <dd>
+          <a href="/"><span class="icon-info"></span>反馈建议</a>
+        </dd>
+        <dd>
+          <a href="/"><span class="icon-police"></span>投诉举报</a>
+        </dd>
+        <dd><span class="icon-phone1"></span>1589308789 </dd>
+        <dd>
+          <a href="/"><span class="icon-email"></span>xiaojing@szlanyou.com</a>
+        </dd>
+      </dl>
+      <dl>
+        <dt>关注我们</dt>
+        <dd><span class="icon-code"></span></dd>
+      </dl>
+      <dl class="last">
+        <dt>维夕教育</dt>
+        <dd>这里有ger备考的优质课程，助力你在考试 中实战获胜这里有ger备考的优质课程，助 力你在考试中实战获胜。
+        </dd>
+      </dl>
+    </div>
+
+  </div>
+  <div class="page-footer__bottom">
+    <div class="page-footer__inner">
+      <span>友情链接：</span>
+      <a href="javascript:;">ger官网</a>
+      <a href="javascript:;">备考网</a>
+      <a href="javascript:;">一线网</a>
+      <a href="javascript:;">刑帅教育</a>
+      <a href="javascript:;">九鸣教育</a>
+      <a href="javascript:;">yy教育</a>
+      <a href="javascript:;">网易云课堂</a>
+      <a href="javascript:;">腾讯大讲堂</a>
+
+      <span class="copy">© 2013~2016 维夕教育 版权所有 粤ICP备15101646号</span>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
+<script src="./js/lib/jquery.1.9.1.js"></script>
+    <script src="./js/lib/video.js"></script>
+<script src="./js/courseVideo.js"></script>
