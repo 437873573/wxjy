@@ -14,7 +14,7 @@
       slideSelector: '',
       infiniteLoop: true,
       hideControlOnEnd: false,
-      speed: 500,
+      speed: 800,
       easing: null,
       slideMargin: 0,
       startSlide: 0,
@@ -23,7 +23,7 @@
       ticker: false,
       tickerHover: false,
       adaptiveHeight: false,
-      adaptiveHeightSpeed: 500,
+      adaptiveHeightSpeed: 800,
       video: false,
       useCSS: true,
       preloadImages: 'visible',
@@ -66,12 +66,12 @@
       autoControlsSelector: null,
   
       // AUTO
-      auto: false,
+      auto: true,
       pause: 4000,
       autoStart: true,
       autoDirection: 'next',
       stopAutoOnClick: false,
-      autoHover: false,
+      autoHover: true,
       autoDelay: 0,
       autoSlideForOnePage: false,
   

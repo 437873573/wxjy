@@ -119,15 +119,18 @@ body {
     }
   }
   .img-list {
-    padding-bottom: 30px;
-    a {
-      display: inline-block;
-      width: 36px;
-      height: 36px;
+    padding: 40px 0;
+    &:after{
+      content: '';
+      display: block;
+      clear: both;
     }
     img {
       width: 36px;
       height: 36px;
+      border-radius: 50%;
+      margin: 0 4px;
+      float: left;
     }
   }
 }
