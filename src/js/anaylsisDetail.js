@@ -152,11 +152,11 @@ $(function () {
                                 tran.find('.meaning div span').html(data.interpretation)
                                 tran.find('.example div span').html(data.example)
                                 if (data.is_marked) {
-                                    tran.find('.but').attr('id', 0)
+                                    tran.find('.but').attr('id', 0);
                                     tran.find('.but').addClass('added').text('已添加到生词本')
                                 } else {
-                                    tran.find('.but').attr('id', data.id)
-                                    tran.find('.but').text('添加到生词本')
+                                    tran.find('.but').attr('id', data.id);
+                                    tran.find('.but').removeClass('added').text('添加到生词本')
                                 }
                             } else {
                                 tran.css("display", "none");

@@ -67,11 +67,16 @@ if(location.hostname=='localhost'){
 }
 $.ajaxSetup({
     statusCode: {
+        200:function (mess) {
+          if(!mess.code==0){
+              pop(mess.message,'#fa8c16')
+          }
+        },
         401: function () {
             window.location.href = '/login'
         },
         500: function () {
-            alert('网络异常，请稍后再试')
+            pop('网络异常，请稍后再试','red')
         }
     },
     error: function (mess) {

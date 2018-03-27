@@ -193,18 +193,18 @@ html, body {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      li {
+      li ,select{
         margin-left: 12px;
         padding: 10px 16px;
         border: 1px solid #999;
         border-radius: 3px;
         color: #999;
         cursor: pointer;
-        &:hover, &.showed {
-          background: $themeColor;
-          color: white;
-          border-color: $themeColor;
-        }
+      }
+      li:hover, li.showed {
+        background: $themeColor;
+        color: white;
+        border-color: $themeColor;
       }
     }
   }
@@ -505,7 +505,7 @@ html, body {
   }
 }
 
-.scheduleBox, .month_scheduleBox {
+.scheduleBox, .month_scheduleBox,.todoBox {
   display: none;
   background: rgba(0, 0, 0, 0.7);
   position: fixed;
@@ -517,9 +517,9 @@ html, body {
   z-index: 200;
 }
 
-.schedule, .month_schedule {
+.schedule, .month_schedule ,.todo{
   width: 680px;
-  height: 375px;
+  height: 339px;
   position: absolute;
   top: 0;
   left: 0;
@@ -548,7 +548,7 @@ html, body {
   }
   .main {
     box-sizing: border-box;
-    padding: 34px 40px;
+    padding: 30px 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -557,7 +557,7 @@ html, body {
     font-size: 18px;
     .form {
       width: 100%;
-      margin-top: 46px;
+      margin-top: 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -864,4 +864,29 @@ html, body {
   font-size: 18px;
   text-align: center;
   line-height: 50px;
+}
+.todo{
+  height: 397px;
+  input,textarea{
+    font: 18px/18px "MicrosoftYaHei";
+    font-weight: normal;
+    color: #000000;
+    font-size: 16px;
+    width: 100%;
+    padding: 16px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #cccccc;
+    margin-bottom: 18px;
+  }
+  textarea{
+    line-height: 24px;
+    height: 110px;
+    resize: none;
+    margin-bottom: 0;
+  }
+  .bot{
+    font-size: 20px;
+  }
 }

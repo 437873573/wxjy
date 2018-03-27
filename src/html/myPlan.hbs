@@ -62,7 +62,9 @@ big_header: 1
                     <span class="addplan">添加日程</span>
                 </div>
                 <ul class="right">
-                    <li class="task">任务</li>
+                    <select>
+                        <option value="任务">任务</option>
+                    </select>
                     <li class="thistoday showed">今天</li>
                     <li class="thismon">本月</li>
                 </ul>
@@ -92,18 +94,8 @@ big_header: 1
                 </div>
             </div>
         </div>
-        <div class="recite">
-            <div class="plan-column">
-                <div class="column-hd">
-                    <h3 class="title">背诵</h3>
-                </div>
-                <div class="colunmdetail">
-                    <div class="column-title">
-                        <div class="title">外部词汇</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="recite"></div>
+        <div class="program"></div>
         <div class="detailplan"></div>
         <div class="plan-col">
             <div class="col-lf">
@@ -370,5 +362,18 @@ big_header: 1
                 <td id="monthlast"><b>7</b></td>
             </tr>
         </table>
+    </div>
+</div>
+<div class="todoBox">
+    <div class="todo">
+        <div class="top">
+            <h3>请添加你的日程安排</h3>
+            <a class="todo_close">×</a>
+        </div>
+        <div class="main">
+            <input type="text" class="title" placeholder="请添加标题" name="todoTitle">
+            <textarea name="todoContent" placeholder="请添加日程的详细内容,限100字" maxlength="100"></textarea>
+        </div>
+        <div class="bot">提交</div>
     </div>
 </div>

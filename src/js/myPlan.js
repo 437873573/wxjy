@@ -46,13 +46,42 @@ $(function () {
         $.ajax({
             url: '/plan/info',
             data: `planDate=${w}`,
-            // data: `planDate=2018-03-11`,
             success: function (mess) {
-                $('.detailplan,.recite').html('');
+                $('.detailplan,.recite,.program').html('');
                 if (mess && mess.plan) {
+                    if (mess.planTodos.length >= 1) {
+                        let lis = '', todo = mess.planTodos;
+                        $.each(todo, (i, v) => {
+                            lis += `<div class="column-title">
+                                        <div class="title">${v.todo_title}</div>
+                                    </div>
+                                    <div class="column-bd">
+                                        <ul class="list">
+                                            <li class="item">
+                                                <div class="situation">
+                                                    <input type="checkbox" disabled ${v.status == 1 ? "checked" : ""}>
+                                                    <span class="row row-1" style="width: 410px;display: inline-block;margin-bottom: -2px">${v.todo_content}</span>
+                                                </div>
+                                                <div class="btns" id=${v.id} data-status=${v.status}>
+                                                    <a href="javaScript:;" class="btn-go do" id="3" data-title=${v.todo_title} data-content=${v.todo_content}>查看编辑</a>
+                                                    <a href="javaScript:;" class="btn-go do" id="2">完成</a>
+                                                    <a href="javaScript:;" class="btn-cancle" id="1">未完成</a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>`});
+                        $(`<div class="plan-column">
+                            <div class="column-hd">
+                                <h3 class="title">日程</h3>
+                            </div>
+                            <ul class="colunmdetail">
+                                ${lis}
+                            </ul>
+                        </div>`).appendTo('.program')
+                    }
                     if (mess.plan.external_words.length >= 1) {
                         let word = mess.plan.external_words;
-                        let lis=''
+                        let lis = '';
                         $.each(word, (i, v) => {
                             lis += `<li class="item">
                                 <div class="situation">
@@ -145,11 +174,11 @@ $(function () {
     $('.recite').click(function (e) {
         let ei = $(e.target), id = ei.parent().attr('id'), s = ei.parent().data('status');
         if (s == 1 && ei.attr('id') == 2) {
-            $(ei.closest('li').find('input')).prop('checked', true)
+            $(ei.closest('li').find('input')).prop('checked', true);
             word(id, 2)
             ei.parent().data('status', 2)
         } else if (s == 2 && ei.attr('id') == 1) {
-            $(ei.closest('li').find('input')).prop('checked', false)
+            $(ei.closest('li').find('input')).prop('checked', false);
             word(id, 1)
             ei.parent().data('status', 1)
         }
@@ -175,25 +204,25 @@ $(function () {
         var titleStr = _dateStr.substr(0, 4) + "年" + _dateStr.substr(4, 2) + "月";
         $('.month').text(`${titleStr}`);
         $('.year-month span').text(`${titleStr}`);
-        $('.plan-summary .title span').text(`${titleStr}`)
+        $('.plan-summary .title span').text(`${titleStr}`);
         var _firstDay = new Date(_year, _month - 1, 1);  // 当前月第一天
         // 设置时间轴中的日期数据
         $(".day ul li").each((i, v) => {
-            $(v).removeClass('today')
-            let dayweek = date.getDay() == 0 ? 7 : date.getDay()
+            $(v).removeClass('today');
+            let dayweek = date.getDay() == 0 ? 7 : date.getDay();
             var _thisDay = new Date(_year, _month - 1, date.getDate() + i + 1 - dayweek);
             var _thisDayStr = getDateStr(_thisDay);
             var w = _thisDayStr.substring(0, 4) + '-' + _thisDayStr.substring(4, 6) + '-' + _thisDayStr.substring(6, 8)
             $(v).attr('data', w);
-            $(v).text(_thisDay.getDate())
+            $(v).text(_thisDay.getDate());
             if (_thisDayStr == getDateStr(new Date())) {
-                $(v).addClass('today clicked')
+                $(v).addClass('today clicked');
                 $('.week li').eq(i).addClass('clicked')
             } else if (_thisDayStr.substr(0, 6) == getDateStr(_firstDay).substr(0, 6)) {
-                $(v).removeClass('otherMonth')
+                $(v).removeClass('otherMonth');
                 $(v).addClass('currentMonth')
             } else {
-                $(v).removeClass('currentMonth')
+                $(v).removeClass('currentMonth');
                 $(v).addClass('otherMonth')
             }
         });
@@ -205,14 +234,14 @@ $(function () {
             var _thisDayStr = getDateStr(_thisDay);
             var w = _thisDayStr.substring(0, 4) + '-' + _thisDayStr.substring(4, 6) + '-' + _thisDayStr.substring(6, 8)
             $(v).attr('data', w);
-            $(v).children('b').text(_thisDay.getDate())
+            $(v).children('b').text(_thisDay.getDate());
             if (_thisDayStr == getDateStr(new Date())) {    // 当前天
                 $(v).addClass('today')
             } else if (_thisDayStr.substr(0, 6) == getDateStr(_firstDay).substr(0, 6)) {
-                $(v).removeClass('otherMonth')
+                $(v).removeClass('otherMonth');
                 $(v).addClass('currentMonth')  // 当前月
             } else {    // 其他月
-                $(v).removeClass('currentMonth')
+                $(v).removeClass('currentMonth');
                 $(v).addClass('otherMonth')
             }
         })
@@ -220,23 +249,23 @@ $(function () {
 
     $('.thistoday').click(() => {
         dateObj.setDate(new Date());
-        $('.clicked').removeClass('clicked')
+        $('.clicked').removeClass('clicked');
         showCalendarData();
         todayplan()
     });
     //时间轴时间选择
     $('.week li').click(function () {
-        $(this).addClass('clicked').siblings().removeClass("clicked")
+        $(this).addClass('clicked').siblings().removeClass("clicked");
         let index = $(this).index();
-        $('.day ul li').eq(index).addClass('clicked').siblings().removeClass("clicked")
-        let w = $(this).attr('data')
+        $('.day ul li').eq(index).addClass('clicked').siblings().removeClass("clicked");
+        let w = $(this).attr('data');
         getplan(w)
     });
     $('.day ul li').click(function () {
-        $(this).addClass('clicked').siblings().removeClass("clicked")
+        $(this).addClass('clicked').siblings().removeClass("clicked");
         let index = $(this).index();
-        $('.week li').eq(index).addClass('clicked').siblings().removeClass("clicked")
-        let w = $(this).attr('data')
+        $('.week li').eq(index).addClass('clicked').siblings().removeClass("clicked");
+        let w = $(this).attr('data');
         getplan(w)
     });
     //上一个星期，下一个星期时间
@@ -331,18 +360,19 @@ $(function () {
                             </div>
                             <ul class="mon-day-plan"></ul>`).appendTo('.planshow')
                     }
-                    if(mess.plan.external_words.length >= 1){
-                        let word=mess.plan.external_words;
-                        let aa=$(`<li>
+                    if (mess.plan.external_words.length >= 1) {
+                        let word = mess.plan.external_words;
+                        let aa = $(`<li>
                                     <h3 class="title">背诵</h3>
                                     <h3 class="subtitle">外部词汇</h3>
                                    </li>`).appendTo($('.mon-day-plan'));
-                        let lis='';
-                        $.each(word,(i,v)=>{
-                           lis+=`<li>
+                        let lis = '';
+                        $.each(word, (i, v) => {
+                            lis += `<li>
                                     <span>${v.plan_word}</span>
-                                    <span>${v.status==1?'未完成':'已完成'}</span>
-                                  </li>`})
+                                    <span>${v.status == 1 ? '未完成' : '已完成'}</span>
+                                  </li>`
+                        })
                         $(`<ul class="dayplan">${lis}</ul>`).appendTo(aa)
                     }
                     if (!$.isEmptyObject(mess.plan.testVolumeGroups)) {
@@ -375,7 +405,8 @@ $(function () {
     $('.month_schedule').on('click', '.planshow .close', () => {
         $('.planshow').hide();
         return false
-    })
+    });
+
     //月视图查看当日备考规划
     $('.month_schedule').on('click', '.planshow .toDetailPlan', () => {
         $('.planshow').hide();
@@ -408,7 +439,7 @@ $(function () {
                 // console.log(r.code==0)
                 // console.log(r.data.plan.length!=0)
                 if (r.code == 0 && r.data) {
-                    if (r.data.plan.length>=1) {
+                    if (r.data.plan.length >= 1) {
                         let plan = r.data.plan
                         // console.log(plan)
                         $.each(plan, (i, v) => {
@@ -437,15 +468,17 @@ $(function () {
             $('.scheduleBox').hide()
         } else if (e.target == $('.month_scheduleBox').get(0)) {
             $('.month_scheduleBox').hide()
+        } else if (e.target == $('.todoBox').get(0)) {
+            $('.todoBox').hide()
         }
-    })
+    });
     $('.day-distance').click(() => {
         $('.scheduleBox').show()
-    })
+    });
     $('.schedule_close').click(() => {
         $('.scheduleBox').hide()
-    })
-    $('.bot').click(function () {
+    });
+    $('.schedule .bot').click(function () {
         if ($('#year').val() != '0' && $('#month').val() != '0' && $('#day').val() != '0') {
             let month = $('#month').val() > 9 ? $('#month').val() : '0' + $('#month').val()
             let day = $('#day').val() > 9 ? $('#day').val() : '0' + $('#day').val()
@@ -561,7 +594,7 @@ $(function () {
         var titleStr = _dateStr.substr(0, 4) + "年" + _dateStr.substr(4, 2) + "月";
         $('.plan-summary .title span').text(`${titleStr}`);
         summary()
-    })
+    });
     $('.btn-next').click(() => {
         let date = dateObj.getDate()
         dateObj.setDate(new Date(date.getFullYear(), date.getMonth() + 1, 1));
@@ -569,5 +602,62 @@ $(function () {
         var titleStr = _dateStr.substr(0, 4) + "年" + _dateStr.substr(4, 2) + "月";
         $('.plan-summary .title span').text(`${titleStr}`)
         summary()
+    });
+    //添加日程
+    $('.addplan').click(() => {
+        $('.todo .bot').attr('id',0);
+        $('.todoBox').show()
+    });
+    $('.todo_close').click(() => {
+        $('.todoBox').hide();
+        return false
+    });
+    $('.todo .bot').click(function () {
+        $('.todoBox').hide();
+        let id=$(this).attr('id');
+        let date = getDateStr(new Date());
+        let title = $('input[name="todoTitle"]').val(), cont = $('textarea[name="todoContent"]').val();
+        if (title && cont) {
+            $.ajax({
+                url: '/saveTodo',
+                type: 'post',
+                data: {
+                    todo_title: title,
+                    todo_content: cont,
+                    todo_date: date,
+                    todo_id:id
+                },
+                success: function (mess) {
+                    if (mess && mess.code == 0) {
+                        pop('日程添加成功');
+                        $('.todo input').val('');$('.todo textarea').val('');
+                        todayplan()
+                    }
+                },
+            })
+        }
+    });
+    $('.program').click(function (e) {
+        let ei = $(e.target), id = ei.parent().attr('id'), s = ei.parent().data('status');
+        // console.log(id,s,ei.attr('id'))
+        if (s == 0 && ei.attr('id') == 2) {
+            $.post('/saveTodo',{todo_id:id,status:1},function (mess) {
+                if(mess&&mess.code===0){
+                    $(ei.closest('li').find('input')).prop('checked', true);
+                    ei.parent().data('status', 1)
+                }
+            })
+        } else if (s == 1 && ei.attr('id') == 1) {
+            $.post('/saveTodo',{todo_id:id,status:0},function (mess) {
+                if(mess&&mess.code===0){
+                    $(ei.closest('li').find('input')).prop('checked', false);
+                    ei.parent().data('status', 0)
+                }
+            })
+        }else if(ei.attr('id') == 3){
+            let t=ei.data('title'),c=ei.data('content');
+            $('.todo input').val(t);$('.todo textarea').val(c);$('.todo .bot').attr('id',id)
+            $('.todoBox').show()
+        }
     })
 });

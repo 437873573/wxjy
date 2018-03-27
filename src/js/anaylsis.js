@@ -136,6 +136,9 @@ $(function () {
     //添加生词
     $('.translation .but').click(function () {
         if($(this).attr('id')!=0){
+            if($(this).hasClass('added')){
+                return;
+            }
             $.ajax({
                 url:'/word/mark',
                 type:'post',
