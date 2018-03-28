@@ -68,8 +68,6 @@ $(function () {
                     if (mess.code == 0) {
                         pop('收藏成功')
                         $('.collect i').removeClass('icon-collection').addClass('icon-collection1')
-                    } else {
-                        pop('网络原因，请重新收藏', 'red')
                     }
                 },
             })
@@ -94,14 +92,11 @@ $(function () {
                 if (mess.code == 0) {
                     pop('笔记添加成功');
                     $('.iframe').contents().find('.mymark').text(mark)
-                    $('.writeMarkBox').hide()
-                } else {
-                    pop('网络原因，请重新添加提交', 'red')
-                    $('.writeMarkBox').hide()
                 }
+                $('.writeMarkBox').hide()
+
             },
             error: function () {
-                pop('网络原因，请稍后再试', 'red')
                 $('.writeMarkBox').hide()
             }
         })
@@ -122,21 +117,17 @@ $(function () {
             success: function (mess) {
                 if (mess.code == 0) {
                     pop('报错成功，感谢您的支持');
-                    $('.reportWrongBox').hide()
-                } else {
-                    pop('网络原因，请重新添加提交', 'red')
-                    $('.reportWrongBox').hide()
                 }
+                $('.reportWrongBox').hide()
             },
             error: function () {
-                pop('网络原因，请稍后再试', 'red')
                 $('.reportWrongBox').hide()
             }
         })
     });
 
     //添加生词
-    $('.translation .but').click(function () {
+    $('.translation .addWord').click(function () {
         if ($(this).attr('id') != 0) {
             if ($(this).hasClass('added')) {
                 return;
@@ -149,20 +140,106 @@ $(function () {
                     if (mess.code == 0) {
                         pop('添加成功');
                         $('.translation .but').addClass('added').text('已添加到生词本')
-                    } else {
-                        pop('添加失败，请重试', 'red')
                     }
                 }
             })
         }
-    })
+    });
 
     $(document).click(function (e) {
         if (e.target !== $('.translate')[0] && $('.translate').css('display') == 'block') {
             $('.translate').hide()
         }
+    });
+    $('.translation .select .btn').click(function () {
+        let w = $(this).siblings('input').val();
+        $.get('/api/word/query', {word: w, type: 'search'}, function (mess) {
+            if (mess && mess.code === 0) {
+                let tran=$('.translation'),data=mess.data.word;
+                tran.find('.word b').html(w);
+                tran.attr('id', data.id);
+                tran.find('.phonetic span').html(data.phonetic);
+                tran.find('.meaning div span').html(data.interpretation);
+                tran.find('.example div span').html(data.example);
+                if (data.test_method!='') {
+                    tran.find('.moreMeaning p').html(data.test_method)
+                } else {
+                    tran.find('.moreMeaning').hide()
+                }
+                if (data.note) {
+
+                } else {
+                    tran.find('.wordMark').hide()
+                }
+                if (data.is_marked) {
+                    tran.find('.addWord').attr('id', 0);
+                    tran.find('.addWord').addClass('added').text('已添加到生词本')
+                } else {
+                    tran.find('.addWord').attr('id', data.id);
+                    tran.find('.addWord').removeClass('added').text('添加到生词本')
+                }
+            }
+            $('.selRec').hide()
+        })
     })
-})
+    $('.translation .select input').click(() => {
+        if ($('.selRec').is(':hidden')) {
+            $.get('/api/word/history', function (mess) {
+                if (mess && mess.code === 0 && mess.data.histories.length >= 1) {
+                    $('.selRec ul').html('');
+                    $.each(mess.data.histories, (i, v) => {
+                        $(`<li class="clearfix">
+                                <span class="fl">${v.word}</span>
+                                <span class="fr">${v.total}人搜索过</span>
+                            </li>`).appendTo('.selRec ul')});
+                    $('.selRec').show()
+                }
+            })
+        }
+    });
+    $('.selRec .clearRec').click(() => {
+        $.post('/api/word/clear');
+        $('.selRec').hide()
+    });
+    $('.selRec ul').click(function (e) {
+        if($(e.target).hasClass('fl')){
+            let q = $(e.target).text();
+            $('.translation .select input').val(q);
+        }
+        $('.selRec').hide()
+    });
+    $('.translation .abut>span').click(() => $('.wordBug').show());
+    $('.wordBug .sub').click(function () {
+        let id = $(this).closest('.translation').attr('id');
+        let type = $('.translation input[name=type]').val();
+        let con = $('.translation textarea').val()
+        $.post('/api/report', {type: 2, word_id: id, subtype: type, content: con});
+        $('.wordBug').hide()
+    });
+    $('.wordBug .o').click(() => $('.wordBug').hide());
+    $('.translation .foot .doWordMark').click(()=>{
+        $('.addWordMark').show();
+        $('.translation .foot').hide()
+    });
+    $('.addWordMark .sub').click(function () {
+        let id = $(this).closest('.translation').attr('id');
+        let con=$(this).siblings('textarea').val();
+        $.post('/api/word/mark',{word_id:id,note_content:con},function (mess) {
+            if(mess&&mess.code==0){
+                $('.translation .wordMark p').html(con);
+                $('.addWordMark').hide();
+                $('.translation .foot').show()
+            }
+        })
+    });
+    $('.addWordMark .o').click(()=>{
+        $('.addWordMark').hide();
+        $('.translation .foot').show()
+    });
+    $('.translation .moreMeaning').click(function () {
+        $(this).find('p').slideToggle()
+    })
+});
 
 
 

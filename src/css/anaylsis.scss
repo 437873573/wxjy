@@ -111,9 +111,9 @@ main {
     }
     .question, .options, .mymark {
       p, p span, td {
-        font: 14px/24px "Hiragino Sans GB","STHeiti","Microsoft Yahei" !important;
+        font: 14px/24px "Hiragino Sans GB", "STHeiti", "Microsoft Yahei" !important;
       }
-      .translate{
+      .translate {
         cursor: pointer;
         border-bottom: 1px dashed #333;
         padding-bottom: 3px;
@@ -199,11 +199,11 @@ main {
               display: flex;
               justify-content: flex-start;
               align-items: flex-start;
-              i{
+              i {
                 flex: none;
                 margin: 4px 28px 4px 0;
               }
-              b{
+              b {
                 flex: none;
                 color: #000;
                 margin-right: 10px;
@@ -329,7 +329,7 @@ main {
           margin-right: 15px;
           border-radius: 50%;
           overflow: hidden;
-          img{
+          img {
             width: 100%;
             height: 100%;
           }
@@ -613,12 +613,85 @@ main {
   }
   &::after {
     top: -9px;
-    border-bottom-color: white;
+    border-bottom-color: #efefef;
+  }
+  .select {
+    position: relative;
+    background: #efefef;
+    height: 61px;
+    border-bottom: 1px solid #dedede;
+    padding: 12px;
+    box-sizing: border-box;
+    input {
+      height: 100%;
+      width: 180px;
+      padding: 10px 16px;
+      margin-right: 10px;
+      font-size: 16px;
+      box-sizing: border-box;
+      border: none;
+      outline: none;
+      background: #fff;
+      border-radius: 100px;
+    }
+    .btn {
+      height: 100%;
+      padding: 0 20px;
+      border-radius: 100px;
+      text-align: center;
+      line-height: 36px;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      background: $themeColor;
+    }
+    .tran-close {
+      font-size: 26px;
+      line-height: 36px;
+      color: #797979;
+      cursor: pointer;
+    }
+    .selRec {
+      display: none;
+      position: absolute;
+      top: 48px;
+      width: 180px;
+      background: white;
+      border: 1px solid #efefef;
+      li {
+        height: 36px;
+        font-size: 12px;
+        line-height: 36px;
+        cursor: pointer;
+        padding: 0 12px;
+        box-sizing: border-box;
+        .fl {
+          width: 50%;
+          @extend %ellipsis;
+        }
+        &:hover {
+          background: #efefef;
+        }
+      }
+      div {
+        border-top: 1px dashed #efefef;
+        height: 36px;
+        text-align: center;
+        color: $themeColor;
+        font-size: 12px;
+        line-height: 36px;
+        cursor: pointer;
+      }
+    }
   }
   .inner {
     box-sizing: border-box;
     padding: 20px;
     line-height: 20px;
+  }
+  .word, .phonetic, .meaning, .example, .moreMeaning, .wordMark {
+    margin-bottom: 16px;
+    font-size: 14px;
   }
   .word {
     display: flex;
@@ -629,9 +702,6 @@ main {
       color: black;
     }
   }
-  .word, .phonetic, .meaning, .example {
-    margin-bottom: 20px;
-  }
   .meaning div, .example div {
     margin-bottom: 10px;
   }
@@ -639,14 +709,162 @@ main {
     margin-left: 10px;
   }
   .abut {
-    color: $themeColor;
+    position: relative;
+    > span {
+      color: $themeColor;
+      cursor: pointer;
+    }
+    .wordBug{
+      display: none;
+      position: absolute;
+      left: -34px;
+      top: 30px;
+      width: 200px;
+      padding: 10px 20px;
+      box-sizing: border-box;
+      background: white;
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+      border: 1px solid #efefef;
+      &::before, &::after {
+        position: absolute;
+        top: -10px;
+        left: 40px;
+        content: '';
+        display: block;
+        border: 10px solid transparent;
+        border-top: 0;
+        border-bottom-color: rgba(0, 0, 0, 0.1);
+      }
+      &::after {
+        top: -9px;
+        border-bottom-color: #fff;
+      }
+      label {
+        display: block;
+        height: 36px;
+        font-size: 14px;
+        cursor: pointer;
+        input {
+          outline: none;
+          width: 16px;
+          height: 16px;
+          margin-right: 8px;
+          vertical-align: middle;
+        }
+      }
+      textarea {
+        outline: none;
+        width: 100%;
+        height: 110px;
+        resize: none;
+        padding: 10px;
+        box-sizing: border-box;
+        border: 1px solid #efefef;
+        border-radius: 3px;
+        line-height: 18px;
+        font-size: 14px;
+      }
+      .bug-but {
+        display: inline-block;
+        margin: 10px 10px 0 auto;
+        height: 30px;
+        padding: 0 20px;
+        border-radius: 100px;
+        text-align: center;
+        line-height: 30px;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        background: $themeColor;
+        &.o {
+          margin: 10px auto 0 0;
+          background: white;
+          border: 1px solid $themeColor;
+          color: $themeColor;
+        }
+      }
+    }
   }
-  .but {
-    margin: 30px auto;
-    &.added{
+  .moreMeaning {
+    font-size: 14px;
+    overflow: hidden;
+    .look {
+      color: $themeColor;
+      font-size: 12px;
+      line-height: 20px;
+      cursor: pointer;
+    }
+    p {
+      display: none;
+    }
+  }
+  .foot {
+    padding-left: 30px;
+    .btn {
+      margin: 0 10px 0 auto;
+      display: inline-block;
+      height: 36px;
+      background: $themeColor;
+      padding: 0 20px;
+      border-radius: 100px;
+      color: white;
+      font-size: 14px;
+      text-align: center;
+      line-height: 36px;
+      cursor: pointer;
+    }
+    .addWord.added {
       background: #ffffff;
       font-style: italic;
       color: $themeColor;
+    }
+  }
+  .wordMark {
+    border-top: 1px dashed #efefef;
+    padding-top: 10px;
+    h5 {
+      box-sizing: border-box;
+      padding: 0 10px;
+      margin-bottom: 8px;
+    }
+    p {
+      padding: 0 10px;
+      box-sizing: border-box;
+      font-size: 12px;
+    }
+  }
+  .addWordMark {
+    display: none;
+    textarea {
+      outline: none;
+      width: 100%;
+      height: 110px;
+      resize: none;
+      padding: 10px;
+      box-sizing: border-box;
+      border: 1px solid #efefef;
+      border-radius: 3px;
+      line-height: 18px;
+      font-size: 14px;
+    }
+    .bug-but {
+      display: inline-block;
+      margin: 10px 10px 0 auto;
+      height: 30px;
+      padding: 0 20px;
+      border-radius: 100px;
+      text-align: center;
+      line-height: 30px;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      background: $themeColor;
+      &.o {
+        margin: 10px auto 0 0;
+        background: white;
+        border: 1px solid $themeColor;
+        color: $themeColor;
+      }
     }
   }
 }

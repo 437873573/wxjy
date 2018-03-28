@@ -119,6 +119,7 @@ body {
     &.row-1 {
       margin-left: 50px;
       width: 200px;
+      @extend %ellipsis;
     }
     &.row-2 {
       width: 100px;

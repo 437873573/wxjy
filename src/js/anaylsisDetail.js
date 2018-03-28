@@ -1,4 +1,5 @@
 import './modules/header'
+
 $(function () {
     $('.iframe', window.parent.document).css('height', $('body').outerHeight() + 20);
     let play, audio = $('.audio').get(0);
@@ -147,16 +148,27 @@ $(function () {
                             if (mess.code === 0 && mess.data.word) {
                                 let data = mess.data.word
                                 tran.css({"display": "block", "left": `${left}px`, "top": `${top}px`})
-                                tran.find('.word b').html(txt)
-                                tran.find('.phonetic span').html(data.phonetic)
-                                tran.find('.meaning div span').html(data.interpretation)
-                                tran.find('.example div span').html(data.example)
-                                if (data.is_marked) {
-                                    tran.find('.but').attr('id', 0);
-                                    tran.find('.but').addClass('added').text('已添加到生词本')
+                                tran.find('.word b').html(txt);
+                                tran.attr('id', data.id);
+                                tran.find('.phonetic span').html(data.phonetic);
+                                tran.find('.meaning div span').html(data.interpretation);
+                                tran.find('.example div span').html(data.example);
+                                if (data.test_method!='') {
+                                    tran.find('.moreMeaning p').html(data.test_method)
                                 } else {
-                                    tran.find('.but').attr('id', data.id);
-                                    tran.find('.but').removeClass('added').text('添加到生词本')
+                                    tran.find('.moreMeaning').hide()
+                                }
+                                if (data.note) {
+
+                                } else {
+                                    tran.find('.wordMark').hide()
+                                }
+                                if (data.is_marked) {
+                                    tran.find('.addWord').attr('id', 0);
+                                    tran.find('.addWord').addClass('added').text('已添加到生词本')
+                                } else {
+                                    tran.find('.addWord').attr('id', data.id);
+                                    tran.find('.addWord').removeClass('added').text('添加到生词本')
                                 }
                             } else {
                                 tran.css("display", "none");
@@ -175,5 +187,5 @@ $(function () {
         if (e.target !== translate[0] && translate.css('display') == 'block') {
             translate.hide()
         }
-    })
+    });
 })

@@ -83,10 +83,43 @@ big_header: 1
     </section>
     <!--划词翻译-->
     <section class="translation">
+        <div class="select clearfix">
+            <input type="text" placeholder="搜索英/汉词语" name="word-sel" class="fl" maxlength="30">
+            <div class="btn fl">搜索</div>
+            <div class="tran-close fr">×</div>
+            <div class="selRec">
+                <ul></ul>
+                <div class="clearRec">
+                    清空历史搜索记录
+                </div>
+            </div>
+        </div>
         <div class="inner">
             <div class="word">
                 <b>schedule</b>
-                <!--<a href="#" class="abut">报错</a>-->
+                <div class="abut">
+                    <span>报错</span>
+                    <div class="wordBug">
+                        <label for="type1">
+                            <input type="radio" name="type" value="1" id="type1">
+                            单词错误
+                        </label>
+                        <label for="type2">
+                            <input type="radio" name="type" value="2" id="type2">
+                            音标/发音错误
+                        </label>
+                        <label for="type3">
+                            <input type="radio" name="type" value="3" id="type3">
+                            基础释义错误
+                        </label>
+                        <label for="type4">
+                            <input type="radio" name="type" value="4" id="type4">
+                            基础释义有待补充
+                        </label>
+                        <textarea name="bugText" placeholder="你可以补充解释或指出其中的错误"></textarea>
+                        <div class="bug-but sub">提交</div><div class="bug-but o">取消</div>
+                    </div>
+                </div>
             </div>
             <div class="phonetic">
                 <span>[edju:l]</span>
@@ -99,21 +132,35 @@ big_header: 1
             </div>
             <div class="example">
                 <div>
-                    <h5>例句</h5>
+                    <h5>[例句]</h5>
                     <span>他被迫调整了自己的日程安排</span>
                 </div>
             </div>
-            <!--<a href="#" class="abut">查看详细考法》</a>-->
-            <div class="but">添加到生词本</div>
+            <div class="moreMeaning">
+                <span class="look">查看详细考法》</span>
+                <p></p>
+            </div>
+            <div class="wordMark">
+                <h5>我的笔记</h5>
+                <p></p>
+            </div>
+            <div class="foot">
+                <div class="btn doWordMark">添加笔记</div>
+                <div class="btn addWord">添加到生词本</div>
+            </div>
+            <div class="addWordMark">
+                <textarea name="" placeholder="在这里记录你的笔记内容"></textarea>
+                <div class="bug-but sub">提交</div><div class="bug-but o">取消</div>
+            </div>
         </div>
-        <img src="http://placehold.it/330x85" alt="">
+        <img src="http://placeimg.com/330/85" alt="">
     </section>
     <iframe src="./anaylsisDetail.html" frameborder="no" width="100%" height="100%" scrolling="no" class="iframe" name="iframe"></iframe>
 </main>
 <script>
     function pop(txt, color) {
-        let bg = color ? color : '#00e290'
-        $('.popprompt').text('').text(txt).css('background', bg).removeClass('off').addClass('on')
+        let bg = color ? color : '#00e290';
+        $('.popprompt').text('').text(txt).css('background', bg).removeClass('off').addClass('on');
         setTimeout(() => {
             $('.popprompt').removeClass('on').addClass('off')
         }, 2000)
