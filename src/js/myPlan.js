@@ -342,25 +342,23 @@ $(function () {
             success: function (mess) {
                 $('.planshow').html('');
                 if (mess && mess.plan) {
-                    if (mess.plan.today_complete_rate) {
-                        let rate = mess.plan.today_complete_rate;
-                        $(`<div class="top">
-                                <h3>${mess.plan.plan_date}</h3>
-                                <a class="close">×</a>
-                                </div>
-                            <div class="dayprogress">
-                                <div class="done-circle">
-                                    <svg width="112" height="112" viewbox="0 0 112 112">
-                                        <circle cx="56" cy="56" r="48" stroke-width="10" stroke="#ffde00" fill="none"></circle>
-                                        <circle cx="56" cy="56" r="48" stroke-width="10" stroke="#00e290" fill="none"
-                                                transform="matrix(0,-1,1,0,0,112)" stroke-dasharray="${rate / 100 * 300} ${300 - rate / 100 * 300}"></circle>
-                                    </svg>
-                                    <span class="inner">${rate}%</span>
-                                </div>
-                                <p>当日计划完成</p>
+                    let rate = mess.plan.today_complete_rate;
+                    $(`<div class="top">
+                            <h3>${mess.plan.plan_date}</h3>
+                            <a class="close">×</a>
                             </div>
-                            <ul class="mon-day-plan"></ul>`).appendTo('.planshow')
-                    }
+                        <div class="dayprogress">
+                            <div class="done-circle">
+                                <svg width="112" height="112" viewbox="0 0 112 112">
+                                    <circle cx="56" cy="56" r="48" stroke-width="10" stroke="#ffde00" fill="none"></circle>
+                                    <circle cx="56" cy="56" r="48" stroke-width="10" stroke="#00e290" fill="none"
+                                            transform="matrix(0,-1,1,0,0,112)" stroke-dasharray="${rate / 100 * 300} ${300 - rate / 100 * 300}"></circle>
+                                </svg>
+                                <span class="inner">${rate}%</span>
+                            </div>
+                            <p>当日计划完成</p>
+                        </div>
+                        <ul class="mon-day-plan"></ul>`).appendTo('.planshow')
                     if (mess.plan.external_words.length >= 1) {
                         let word = mess.plan.external_words;
                         let aa = $(`<li>

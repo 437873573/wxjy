@@ -151,6 +151,23 @@ $(function () {
             $('.translate').hide()
         }
     });
+    //显示历史记录（如果有）
+    $('.translation .select input').click(() => {
+        if ($('.selRec').is(':hidden')) {
+            $.get('/api/word/history', function (mess) {
+                if (mess && mess.code === 0 && mess.data.histories.length >= 1) {
+                    $('.selRec ul').html('');
+                    $.each(mess.data.histories, (i, v) => {
+                        $(`<li class="clearfix">
+                                <span class="fl">${v.word}</span>
+                                <span class="fr">${v.total}人搜索过</span>
+                            </li>`).appendTo('.selRec ul')});
+                    $('.selRec').show()
+                }
+            })
+        }
+    });
+    //划词输入框查询单词功能
     $('.translation .select .btn').click(function () {
         let w = $(this).siblings('input').val();
         $.get('/api/word/query', {word: w, type: 'search'}, function (mess) {
@@ -167,7 +184,7 @@ $(function () {
                     tran.find('.moreMeaning').hide()
                 }
                 if (data.note) {
-
+                    tran.find('.wordMark p').html(data.note.note_content);
                 } else {
                     tran.find('.wordMark').hide()
                 }
@@ -182,25 +199,14 @@ $(function () {
             $('.selRec').hide()
         })
     });
-    $('.translation .select input').click(() => {
-        if ($('.selRec').is(':hidden')) {
-            $.get('/api/word/history', function (mess) {
-                if (mess && mess.code === 0 && mess.data.histories.length >= 1) {
-                    $('.selRec ul').html('');
-                    $.each(mess.data.histories, (i, v) => {
-                        $(`<li class="clearfix">
-                                <span class="fl">${v.word}</span>
-                                <span class="fr">${v.total}人搜索过</span>
-                            </li>`).appendTo('.selRec ul')});
-                    $('.selRec').show()
-                }
-            })
-        }
-    });
+    //关闭
+    $('.translation .tran-close').click(()=>$('.translation').hide());
+    //清空历史记录
     $('.selRec .clearRec').click(() => {
         $.post('/api/word/clear');
         $('.selRec').hide()
     });
+    //获取历史记录的单词
     $('.selRec ul').click(function (e) {
         if($(e.target).hasClass('fl')){
             let q = $(e.target).text();
@@ -208,7 +214,9 @@ $(function () {
         }
         $('.selRec').hide()
     });
+    //显示划词报错页面
     $('.translation .abut>span').click(() => $('.wordBug').show());
+    //划词报错
     $('.wordBug .sub').click(function () {
         let id = $(this).closest('.translation').attr('id');
         let type = $('.translation input[name=type]').val();
@@ -216,13 +224,16 @@ $(function () {
         $.post('/api/report', {type: 2, word_id: id, subtype: type, content: con});
         $('.wordBug').hide()
     });
+    //划词报错关闭
     $('.wordBug .o').click(() => $('.wordBug').hide());
+    //添加单词笔记
     $('.translation .foot .doWordMark').click(()=>{
         let w=$('.translation .wordMark p').html();
         $('.translation .addWordMark textarea').val(w);
         $('.addWordMark').show();
         $('.translation .foot').hide()
     });
+    //提交笔记
     $('.addWordMark .sub').click(function () {
         let id = $(this).closest('.translation').attr('id');
         let con=$(this).siblings('textarea').val();
@@ -234,10 +245,12 @@ $(function () {
             }
         })
     });
+    //关闭做笔记
     $('.addWordMark .o').click(()=>{
         $('.addWordMark').hide();
         $('.translation .foot').show()
     });
+    //展开详细考法（如果有）
     $('.translation .moreMeaning').click(function () {
         $(this).find('p').slideToggle()
     })

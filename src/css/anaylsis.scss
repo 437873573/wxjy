@@ -138,10 +138,12 @@ main {
       .table-custom tw-p3 {
         width: 33.333333%;
       }
-      img{
+      img {
+        display: inline-block;
         vertical-align: middle;
         font-size: 20px;
-      }      .multiple {
+      }
+      .multiple {
         .options {
           display: flex;
           justify-content: center;
@@ -730,7 +732,7 @@ main {
       color: $themeColor;
       cursor: pointer;
     }
-    .wordBug{
+    .wordBug {
       display: none;
       position: absolute;
       left: -34px;

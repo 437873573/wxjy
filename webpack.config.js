@@ -16,7 +16,7 @@ module.exports = {
     entry: tmpEntry,
     output: {
         path: __dirname + '/dist',
-        filename: "js/[name].js"
+        filename: "static/js/[name].js"
     },
     module: {
         loaders: [{

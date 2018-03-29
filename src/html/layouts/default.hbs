@@ -7,8 +7,8 @@
     <meta name="description" content="{{description}}">
     <meta name="format-detection" content="telephone=no, email=no">
     <meta name="applicable-device" content="mobile">
-    <link rel="stylesheet" href="./css/{{stylesheet}}.css">
-    <link rel="icon" href="./imgs/common/favicon.png">
+    <link rel="stylesheet" href="./static/css/{{stylesheet}}.css">
+    <link rel="icon" href="./static/imgs/common/favicon.png">
     {{>test}}
 </head>
 <body>
@@ -17,8 +17,8 @@
 {{> footer}}
 </body>
 </html>
-<script src="./js/lib/jquery.1.9.1.js"></script>
+<script src="./static/js/lib/jquery.1.9.1.js"></script>
 {{#if otherjs}}
-    <script src="./js/lib/{{otherjs}}.js"></script>
+    <script src="./static/js/lib/{{otherjs}}.js"></script>
 {{/if}}
-<script src="./js/{{script}}.js"></script>
+<script src="./static/js/{{script}}.js"></script>

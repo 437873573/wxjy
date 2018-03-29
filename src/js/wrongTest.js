@@ -4,13 +4,13 @@ $(function () {
         if($(this).hasClass('clear')){
             $.post('/api/wrong/clear',{flag:0},function (mess) {
                 if(mess&&mess.code==0){
-                    $(this).removeClass('clear').find('i').animate({left:"-20px"},100)
+                    $('.clearSet').removeClass('clear').find('i').animate({left:"-20px"},100)
                 }
             })
         }else{
             $.post('/api/wrong/clear',{flag:1},function (mess) {
                 if(mess&&mess.code==0){
-                    $(this).addClass('clear').find('i').animate({left:0},100)
+                    $('.clearSet').addClass('clear').find('i').animate({left:0},100)
                 }
             })
         }

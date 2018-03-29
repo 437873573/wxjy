@@ -130,56 +130,65 @@ $(function () {
     };
     // selectWord($('.translation', window.parent.document), $('.inner>section'))
     //新移词翻译
+    let timer = null;
 
     function hoverWord(tran, ele) {
-        ele.mouseover(function (e) {
-            if (tran.css('display') == 'none') {
-                e = e || window.event;
-                var txt = $(this).text(),
-                    pw = window.parent.document.documentElement.clientWidth,
-                    sh = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-                var left = pw - 1200 >= 0 ? (pw - 1200) / 2 + e.clientX - 40 : e.clientX - 40,
-                    top = e.clientY + sh + 240;
-                if (txt) {
-                    $.ajax({
-                        url: '/api/word/query',
-                        data: {word: txt},
-                        success: function (mess) {
-                            if (mess.code === 0 && mess.data.word) {
-                                let data = mess.data.word
-                                tran.css({"display": "block", "left": `${left}px`, "top": `${top}px`})
-                                tran.find('.word b').html(txt);
-                                tran.attr('id', data.id);
-                                tran.find('.phonetic span').html(data.phonetic);
-                                tran.find('.meaning div span').html(data.interpretation);
-                                tran.find('.example div span').html(data.example);
-                                if (data.test_method!='') {
-                                    tran.find('.moreMeaning p').html(data.test_method)
-                                } else {
-                                    tran.find('.moreMeaning').hide()
+        ele.hover(
+            function (e) {
+                let that=this
+                timer = setTimeout(function () {
+                    if (tran.css('display') == 'none') {
+                        e = e || window.event;
+                        var txt = $(that).text(),
+                            pw = window.parent.document.documentElement.clientWidth,
+                            sh = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+                        var left = pw - 1200 >= 0 ? (pw - 1200) / 2 + e.clientX - 40 : e.clientX - 40,
+                            top = e.clientY + sh + 240;
+                        if (txt) {
+                            $.ajax({
+                                url: '/api/word/query',
+                                data: {word: txt},
+                                success: function (mess) {
+                                    if (mess.code === 0 && mess.data.word) {
+                                        let data = mess.data.word
+                                        tran.css({"display": "block", "left": `${left}px`, "top": `${top}px`})
+                                        tran.find('.word b').html(txt);
+                                        tran.attr('id', data.id);
+                                        tran.find('.phonetic span').html(data.phonetic);
+                                        tran.find('.meaning div span').html(data.interpretation);
+                                        tran.find('.example div span').html(data.example);
+                                        if (data.test_method != '') {
+                                            tran.find('.moreMeaning p').html(data.test_method)
+                                        } else {
+                                            tran.find('.moreMeaning').hide()
+                                        }
+                                        if (data.note) {
+                                            tran.find('.wordMark p').html(data.note.note_content);
+                                        } else {
+                                            tran.find('.wordMark').hide()
+                                        }
+                                        if (data.is_marked) {
+                                            tran.find('.addWord').attr('id', 0);
+                                            tran.find('.addWord').addClass('added').text('已添加到生词本')
+                                        } else {
+                                            tran.find('.addWord').attr('id', data.id);
+                                            tran.find('.addWord').removeClass('added').text('添加到生词本')
+                                        }
+                                    } else {
+                                        tran.css("display", "none");
+                                    }
                                 }
-                                if (data.note) {
-                                    tran.find('.wordMark p').html(data.note.note_content);
-                                } else {
-                                    tran.find('.wordMark').hide()
-                                }
-                                if (data.is_marked) {
-                                    tran.find('.addWord').attr('id', 0);
-                                    tran.find('.addWord').addClass('added').text('已添加到生词本')
-                                } else {
-                                    tran.find('.addWord').attr('id', data.id);
-                                    tran.find('.addWord').removeClass('added').text('添加到生词本')
-                                }
-                            } else {
-                                tran.css("display", "none");
-                            }
+                            })
+                        } else {
+                            tran.css("display", "none");
                         }
-                    })
-                } else {
-                    tran.css("display", "none");
-                }
+                    }
+                }, 300)
+            },
+            function () {
+                clearTimeout(timer)
             }
-        })
+        )
     };
     let translate = $('.translation', window.parent.document)
     hoverWord(translate, $('.inner>section .translate'))

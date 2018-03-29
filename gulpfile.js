@@ -56,7 +56,7 @@ gulp.task('sass', function () {
     .pipe(gulpif(isPro,sass.sync({outputStyle: 'compressed'}).on('error', sass.logError)))
     .pipe(gulpif(!isPro,sass.sync().on('error', sass.logError)))
     .pipe(postcss(plugins))
-    .pipe(gulp.dest("dist/css"))
+    .pipe(gulp.dest("dist/static/css"))
     .pipe(reload({
       stream: true
     }));
@@ -66,11 +66,11 @@ gulp.task('sass', function () {
 gulp.task('imgs', () =>
   gulp.src('src/imgs/**/*.*')
   .pipe(imagemin())
-  .pipe(gulp.dest('dist/imgs'))
+  .pipe(gulp.dest('dist/static/imgs'))
 );
 
 gulp.task('copy', () => gulp.src('src/js/lib/**/*.js')
-.pipe(gulp.dest('dist/js/lib')))
+.pipe(gulp.dest('dist/static/js/lib')))
 
 gulp.task('serve', ['sass', 'scripts', 'imgs', 'assemble', 'copy'], function () {
 
@@ -80,11 +80,11 @@ gulp.task('serve', ['sass', 'scripts', 'imgs', 'assemble', 'copy'], function () 
   });
 
   gulp.watch("src/css/**/*.scss", ['sass']);
-  gulp.watch("dist/css/**/*.css").on('change', reload);
+  gulp.watch("dist/static/css/**/*.css").on('change', reload);
   gulp.watch("src/js/**/*.js", ['scripts']);
   gulp.watch("src/js/lib/*.js", ['copy']);
   gulp.watch("src/imgs/**/*.*", ['imgs']);
-  gulp.watch("dist/js/**/*.js").on('change', reload);
+  gulp.watch("dist/static/js/**/*.js").on('change', reload);
   gulp.watch("src/html/**/*.hbs", ['assemble']).on('change', reload);
   gulp.watch("dist/*.html").on('change', reload);
 });
