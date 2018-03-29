@@ -159,7 +159,7 @@ $(function () {
                                     tran.find('.moreMeaning').hide()
                                 }
                                 if (data.note) {
-
+                                    tran.find('.wordMark p').html(data.note.note_content);
                                 } else {
                                     tran.find('.wordMark').hide()
                                 }

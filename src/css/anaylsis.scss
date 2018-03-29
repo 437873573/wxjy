@@ -125,7 +125,23 @@ main {
       line-height: 24px;
     }
     .test {
-      .multiple {
+      .table-custom {
+        width: 100%;
+      }
+      .table-custom td {
+        border: none;
+        text-align: center;
+      }
+      .table-custom tw-p2 {
+        width: 50%;
+      }
+      .table-custom tw-p3 {
+        width: 33.333333%;
+      }
+      img{
+        vertical-align: middle;
+        font-size: 20px;
+      }      .multiple {
         .options {
           display: flex;
           justify-content: center;

@@ -181,7 +181,7 @@ $(function () {
             }
             $('.selRec').hide()
         })
-    })
+    });
     $('.translation .select input').click(() => {
         if ($('.selRec').is(':hidden')) {
             $.get('/api/word/history', function (mess) {
@@ -212,12 +212,14 @@ $(function () {
     $('.wordBug .sub').click(function () {
         let id = $(this).closest('.translation').attr('id');
         let type = $('.translation input[name=type]').val();
-        let con = $('.translation textarea').val()
+        let con = $('.translation .wordBug textarea').val();
         $.post('/api/report', {type: 2, word_id: id, subtype: type, content: con});
         $('.wordBug').hide()
     });
     $('.wordBug .o').click(() => $('.wordBug').hide());
     $('.translation .foot .doWordMark').click(()=>{
+        let w=$('.translation .wordMark p').html();
+        $('.translation .addWordMark textarea').val(w);
         $('.addWordMark').show();
         $('.translation .foot').hide()
     });
@@ -226,7 +228,7 @@ $(function () {
         let con=$(this).siblings('textarea').val();
         $.post('/api/word/mark',{word_id:id,note_content:con},function (mess) {
             if(mess&&mess.code==0){
-                $('.translation .wordMark p').html(con);
+                $('.translation .wordMark').show().find('p').html(con);
                 $('.addWordMark').hide();
                 $('.translation .foot').show()
             }
