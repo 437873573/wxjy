@@ -48,11 +48,10 @@ $(function () {
             data: `planDate=${w}`,
             success: function (mess) {
                 $('.detailplan,.recite,.program').html('');
-                if (mess && mess.plan) {
-                    if (mess.planTodos.length >= 1) {
-                        let lis = '', todo = mess.planTodos;
-                        $.each(todo, (i, v) => {
-                            lis += `<div class="column-title">
+                if (mess.planTodos.length >= 1) {
+                    let lis = '', todo = mess.planTodos;
+                    $.each(todo, (i, v) => {
+                        lis += `<div class="column-title">
                                         <div class="title">${v.todo_title}</div>
                                     </div>
                                     <div class="column-bd">
@@ -70,8 +69,8 @@ $(function () {
                                             </li>
                                         </ul>
                                     </div>`
-                        });
-                        $(`<div class="plan-column">
+                    });
+                    $(`<div class="plan-column">
                             <div class="column-hd">
                                 <h3 class="title">日程</h3>
                             </div>
@@ -79,7 +78,8 @@ $(function () {
                                 ${lis}
                             </ul>
                         </div>`).appendTo('.program')
-                    }
+                }
+                if (mess && mess.plan) {
                     if (mess.plan.external_words.length >= 1) {
                         let word = mess.plan.external_words;
                         let lis = '';
@@ -93,25 +93,23 @@ $(function () {
                                     <a href="javaScript:;" class="btn-go do" id="2">完成</a>
                                     <a href="javaScript:;" class="btn-cancle" id="1">未完成</a>
                                 </div>
-                           </li>`
-                        });
+                           </li>`});
                         $(`<div class="plan-column">
-                            <div class="column-hd">
-                                <h3 class="title">背诵</h3>
-                            </div>
-                            <div class="colunmdetail">
-                                <div class="column-title">
-                                    <div class="title">外部词汇</div>
+                                <div class="column-hd">
+                                    <h3 class="title">背诵</h3>
                                 </div>
-                                <div class="column-bd">
-                                    <ul class="list">${lis}</ul>
+                                <div class="colunmdetail">
+                                    <div class="column-title">
+                                        <div class="title">外部词汇</div>
+                                    </div>
+                                    <div class="column-bd">
+                                        <ul class="list">${lis}</ul>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>`).appendTo('.recite')
+                            </div>`).appendTo('.recite')
                     }
                     if (!$.isEmptyObject(mess.plan.testVolumeGroups)) {
                         let data = mess.plan.testVolumeGroups;
-                        let lis = '';
                         $.each(data, (key, value) => {
                             // console.log(key, value)
                             var planColumn = $(`<div class="plan-column">
@@ -121,45 +119,62 @@ $(function () {
                                        </div>`).appendTo('.detailplan')
                             $.each(value, (k, v) => {
                                 var planul = $(`<div class="colunmdetail">
-                                            <div class="column-title">
-                                                <div class="title">${k}</div>
-                                                <div class="done-progress">
-                                                    <span class="txt">完成</span>
-                                                    <span class="done-range">
-                                                        <span class="cur" style="width: ${v.testBookPercentage}%;"></span>
-                                                    </span>
-                                                    <span class="num">${v.testBookPercentage}%</span>
-                                                </div>
-                                            </div>
-                                     </div>`).appendTo(planColumn)
+                                                    <div class="column-title">
+                                                        <div class="title">${k}</div>
+                                                        <div class="done-progress">
+                                                            <span class="txt">完成</span>
+                                                            <span class="done-range">
+                                                                <span class="cur" style="width: ${v.testBookPercentage}%;"></span>
+                                                            </span>
+                                                            <span class="num">${v.testBookPercentage}%</span>
+                                                        </div>
+                                                    </div>
+                                                 </div>`).appendTo(planColumn)
                                 // console.log(k, v)
                                 let lis = ''
                                 $.each(v.datas, (i, t) => {
                                     let time = t.time_count == 0 ? '0s' :
                                         parseInt(t.time_count / 60) == 0 ? `${t.time_count}s` :
-                                            `${parseInt(t.time_count / 60)}min${t.time_count % 60}s`
+                                            `${parseInt(t.time_count / 60)}min${t.time_count % 60}s`;
                                     lis += `<li class="item">
-                                    <div class="situation">
-                                        <input type="checkbox" disabled ${t.done_num == t.total_num ? "checked" : ""}>
-                                        <span class="row row-1">${t.test_volume_name}</span>
-                                        <span class="row row-2">已做题 ${t.done_num}/${t.total_num}</span>
-                                        <span class="row row-3">总耗时 ${time}</span>
-                                        <span class="row row-4">正确率 ${t.correct_rate}%</span>
-                                    </div>
-                                    <div class="btns">
-                                        <a href=${t.test_do_url} class="btn-go do" target="_blank">做题</a>
-                                        <a href=${t.test_view_url} class="btn-cancle see">查看</a>
-                                        <a href=${t.test_video_url} class="btn-cancle video">视频</a>
-                                        <a href=${t.test_download_url} class="btn-cancle download">下载</a>
-                                    </div>
-                                </li>`
-                                    // console.log(i, t)
-                                });
+                                                <div class="situation">
+                                                    <input type="checkbox" disabled ${t.done_num == t.total_num ? "checked" : ""}>
+                                                    <span class="row row-1">${t.test_volume_name}</span>
+                                                    <span class="row row-2">已做题 ${t.done_num}/${t.total_num}</span>
+                                                    <span class="row row-3">总耗时 ${time}</span>
+                                                    <span class="row row-4">正确率 ${t.correct_rate}%</span>
+                                                </div>
+                                                <div class="btns">
+                                                    ${t.done_num==0?
+                                                    `<a href=${t.test_do_url+'?restart=0'} class="btn-go do" target="_blank">做题</a>`:
+                                                    `<div class="btn btn-go new-go">
+                                                        <span>做题</span>
+                                                        <div class="reorco hidden">
+                                                            <div class="reorconwrap">
+                                                                <div class="top">
+                                                                    <h3>提示</h3>
+                                                                    <a href="javaScript:;" class="reorco_close">×</a>
+                                                                </div>
+                                                                <div class="main">
+                                                                    <p>您上次在该试题集测试还没完成，是否继续？</p>
+                                                                </div>
+                                                                <div class="bot">
+                                                                    <a href=${t.test_do_url+'?restart=0'} target="_blank" class="btn btn-go">继续上次</a>
+                                                                    <a href=${t.test_do_url+'?restart=1'} target="_blank" class="btn">重新开始</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>`}
+                                                    <a href=${t.test_view_url} class="btn-cancle see">查看</a>
+                                                    <a href=${t.test_video_url} class="btn-cancle video">视频</a>
+                                                    <a href=${t.test_download_url} class="btn-cancle download">下载</a>
+                                                </div>
+                                            </li>`});
                                 $(`<div class="column-bd">
-                                <ul class="list">
-                                    ${lis}
-                                </ul>
-                            </div>`).appendTo(planul)
+                                        <ul class="list">
+                                            ${lis}
+                                        </ul>
+                                    </div>`).appendTo(planul)
                             })
                         })
                     }
@@ -170,6 +185,14 @@ $(function () {
             }
         })
     }
+    //重做选择弹窗显示
+    $('.detailplan').click(function (e) {
+        if($(e.target).text()=='做题'){
+            $('.new-go').click(()=> $('.reorco').show());
+        }else if(e.target==$('.reorco a')[0]){
+            $('.reorco').hide()
+        }
+    });
 
     //发送背诵完成状态
     $('.recite').click(function (e) {
@@ -614,7 +637,7 @@ $(function () {
     $('.todo .bot').click(function () {
         $('.todoBox').hide();
         let id = $(this).attr('id');
-        let date = getDateStr(new Date());
+        let date = $('.day ul li.clicked').attr('data');
         let title = $('input[name="todoTitle"]').val(), cont = $('textarea[name="todoContent"]').val();
         if (title && cont) {
             $.ajax({
@@ -631,7 +654,7 @@ $(function () {
                         pop('日程添加成功');
                         $('.todo input').val('');
                         $('.todo textarea').val('');
-                        todayplan()
+                        getplan(date)
                     }
                 },
             })

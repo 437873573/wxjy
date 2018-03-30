@@ -42,7 +42,7 @@ $(function () {
         } else if (e.target == $('.reportWrongBox').get(0)) {
             $('.reportWrongBox').hide()
         }
-    })
+    });
     $('.domark').click(() => {
         $('#domark').text($.trim($('.iframe').contents().find('.mymark').text()));
         $('.writeMarkBox').show()
@@ -80,6 +80,8 @@ $(function () {
     $('.writeMarkBox .but').click(() => {
         let mark = $('#domark').val();
         // console.log($('.iframe').get(0))
+        $('.writeMarkBox').hide();
+        if (!mark) return;
         $.ajax({
             url: '/api/save_note',
             type: 'POST',
@@ -93,19 +95,16 @@ $(function () {
                     pop('笔记添加成功');
                     $('.iframe').contents().find('.mymark').text(mark)
                 }
-                $('.writeMarkBox').hide()
-
             },
-            error: function () {
-                $('.writeMarkBox').hide()
-            }
-        })
+        });
     });
 
     //报错
     $('.reportWrongBox .but').click(() => {
         let mark = $('.reportWrong textarea').val();
         // console.log($('.iframe').get(0))
+        $('.reportWrongBox').hide()
+        if (!mark) return
         $.ajax({
             url: '/api/report',
             type: 'POST',
@@ -115,23 +114,17 @@ $(function () {
                 test_volume_id: collect[0]
             },
             success: function (mess) {
-                if (mess.code == 0) {
-                    pop('报错成功，感谢您的支持');
+                if (mess && mess.code == 0) {
+                    pop('提交成功，感谢您的帮助');
                 }
-                $('.reportWrongBox').hide()
             },
-            error: function () {
-                $('.reportWrongBox').hide()
-            }
         })
     });
 
     //添加生词
     $('.translation .addWord').click(function () {
         if ($(this).attr('id') != 0) {
-            if ($(this).hasClass('added')) {
-                return;
-            }
+            if ($(this).hasClass('added')) return;
             $.ajax({
                 url: '/api/word/mark',
                 type: 'post',
@@ -145,12 +138,13 @@ $(function () {
             })
         }
     });
-
+    //隐藏划词浮层
     $(document).click(function (e) {
         if (e.target !== $('.translate')[0] && $('.translate').css('display') == 'block') {
             $('.translate').hide()
         }
     });
+
     //显示历史记录（如果有）
     $('.translation .select input').click(() => {
         if ($('.selRec').is(':hidden')) {
@@ -161,7 +155,8 @@ $(function () {
                         $(`<li class="clearfix">
                                 <span class="fl">${v.word}</span>
                                 <span class="fr">${v.total}人搜索过</span>
-                            </li>`).appendTo('.selRec ul')});
+                            </li>`).appendTo('.selRec ul')
+                    });
                     $('.selRec').show()
                 }
             })
@@ -172,13 +167,13 @@ $(function () {
         let w = $(this).siblings('input').val();
         $.get('/api/word/query', {word: w, type: 'search'}, function (mess) {
             if (mess && mess.code === 0) {
-                let tran=$('.translation'),data=mess.data.word;
+                let tran = $('.translation'), data = mess.data.word;
                 tran.find('.word b').html(w);
                 tran.attr('id', data.id);
                 tran.find('.phonetic span').html(data.phonetic);
                 tran.find('.meaning div span').html(data.interpretation);
                 tran.find('.example div span').html(data.example);
-                if (data.test_method!='') {
+                if (data.test_method != '') {
                     tran.find('.moreMeaning p').html(data.test_method)
                 } else {
                     tran.find('.moreMeaning').hide()
@@ -200,7 +195,7 @@ $(function () {
         })
     });
     //关闭
-    $('.translation .tran-close').click(()=>$('.translation').hide());
+    $('.translation .tran-close').click(() => $('.translation').hide());
     //清空历史记录
     $('.selRec .clearRec').click(() => {
         $.post('/api/word/clear');
@@ -208,7 +203,7 @@ $(function () {
     });
     //获取历史记录的单词
     $('.selRec ul').click(function (e) {
-        if($(e.target).hasClass('fl')){
+        if ($(e.target).hasClass('fl')) {
             let q = $(e.target).text();
             $('.translation .select input').val(q);
         }
@@ -219,16 +214,18 @@ $(function () {
     //划词报错
     $('.wordBug .sub').click(function () {
         let id = $(this).closest('.translation').attr('id');
-        let type = $('.translation input[name=type]').val();
+        let subtype = $('.translation input[name=type]:checked').val();
         let con = $('.translation .wordBug textarea').val();
-        $.post('/api/report', {type: 2, word_id: id, subtype: type, content: con});
+        if (subtype && con) {
+            $.post('/api/report', {type: 2, word_id: id, subtype: subtype, content: con});
+        }
         $('.wordBug').hide()
     });
     //划词报错关闭
     $('.wordBug .o').click(() => $('.wordBug').hide());
     //添加单词笔记
-    $('.translation .foot .doWordMark').click(()=>{
-        let w=$('.translation .wordMark p').html();
+    $('.translation .foot .doWordMark').click(() => {
+        let w = $('.translation .wordMark p').html();
         $('.translation .addWordMark textarea').val(w);
         $('.addWordMark').show();
         $('.translation .foot').hide()
@@ -236,17 +233,18 @@ $(function () {
     //提交笔记
     $('.addWordMark .sub').click(function () {
         let id = $(this).closest('.translation').attr('id');
-        let con=$(this).siblings('textarea').val();
-        $.post('/api/word/mark',{word_id:id,note_content:con},function (mess) {
-            if(mess&&mess.code==0){
+        let con = $(this).siblings('textarea').val();
+        $('.addWordMark').hide();
+        $('.translation .foot').show();
+        if (con == '') return;
+        $.post('/api/word/mark', {word_id: id, note_content: con}, function (mess) {
+            if (mess && mess.code == 0) {
                 $('.translation .wordMark').show().find('p').html(con);
-                $('.addWordMark').hide();
-                $('.translation .foot').show()
             }
         })
     });
     //关闭做笔记
-    $('.addWordMark .o').click(()=>{
+    $('.addWordMark .o').click(() => {
         $('.addWordMark').hide();
         $('.translation .foot').show()
     });

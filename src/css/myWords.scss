@@ -108,6 +108,9 @@
       }
       &.row-3 {
         width: 340px;
+        .title{
+          cursor: pointer;
+        }
       }
     }
 
@@ -139,8 +142,10 @@
       .row-3 {
         padding: 12px 0 0;
         line-height: 24px;
-        .txt {
-          @extend %ellipsis;
+        .mean{
+          .other{
+            display: none;
+          }
         }
       }
       .row-4 {
@@ -150,17 +155,8 @@
         width: 140px;
         text-align: right;
       }
-
-      &.hidden-info {
-        .row-3 {
-          width: 180px;
-        }
-      }
-      &.checked {
-        background: #f6f6f6;
-        .row-4 {
-          display: block;
-        }
+      &.checked{
+        background: #f7f7f7;
       }
     }
 
