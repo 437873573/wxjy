@@ -36,25 +36,18 @@ $(function () {
         });
         $('.translation').hide()
     });
-    $(document).click((e) => {
-        if (e.target == $('.writeMarkBox').get(0)) {
-            $('.writeMarkBox').hide()
-        } else if (e.target == $('.reportWrongBox').get(0)) {
-            $('.reportWrongBox').hide()
-        }
-    });
     $('.domark').click(() => {
         $('#domark').text($.trim($('.iframe').contents().find('.mymark').text()));
-        $('.writeMarkBox').show()
+        $('.writeMark').show()
     });
     $('.writeMark .head p').click(() => {
-        $('.writeMarkBox').hide()
+        $('.writeMark').hide()
     });
     $('.repwrong').click(() => {
-        $('.reportWrongBox').show()
+        $('.reportWrong').show()
     });
     $('.reportWrong .head p').click(() => {
-        $('.reportWrongBox').hide()
+        $('.reportWrong').hide()
     });
 
     //收藏

@@ -1,57 +1,64 @@
 
 .icon-butn-down {
-  background: url('../imgs/sprite-analysis.png') no-repeat 0px -98px;
+  background: url('../imgs/sprite-analysis.png') no-repeat 0px -102px;
   width: 23px;
   height: 13px;
   display:inline-block;
 }
                 
 .icon-circle {
-  background: url('../imgs/sprite-analysis.png') no-repeat -32px -36px;
+  background: url('../imgs/sprite-analysis.png') no-repeat -72px -32px;
   width: 22px;
   height: 22px;
   display:inline-block;
 }
                 
 .icon-collection {
-  background: url('../imgs/sprite-analysis.png') no-repeat 0px -68px;
+  background: url('../imgs/sprite-analysis.png') no-repeat 0px -72px;
   width: 20px;
   height: 20px;
   display:inline-block;
 }
                 
 .icon-collection1 {
-  background: url('../imgs/sprite-analysis.png') no-repeat -60px -68px;
+  background: url('../imgs/sprite-analysis.png') no-repeat -60px -72px;
   width: 20px;
   height: 20px;
   display:inline-block;
 }
                 
 .icon-correct {
-  background: url('../imgs/sprite-analysis.png') no-repeat 0px -36px;
+  background: url('../imgs/sprite-analysis.png') no-repeat -72px 0px;
   width: 22px;
   height: 22px;
   display:inline-block;
 }
                 
 .icon-help {
-  background: url('../imgs/sprite-analysis.png') no-repeat -71px -30px;
+  background: url('../imgs/sprite-analysis.png') no-repeat -104px -30px;
   width: 20px;
   height: 20px;
   display:inline-block;
 }
                 
 .icon-left {
-  background: url('../imgs/sprite-analysis.png') no-repeat -129px -30px;
+  background: url('../imgs/sprite-analysis.png') no-repeat -134px -81px;
   width: 10px;
   height: 20px;
   display:inline-block;
 }
                 
 .icon-mark {
-  background: url('../imgs/sprite-analysis.png') no-repeat -30px -68px;
+  background: url('../imgs/sprite-analysis.png') no-repeat -30px -72px;
   width: 20px;
   height: 20px;
+  display:inline-block;
+}
+                
+.icon-mp3-parse {
+  background: url('../imgs/sprite-analysis.png') no-repeat 0px -36px;
+  width: 26px;
+  height: 26px;
   display:inline-block;
 }
                 
@@ -62,36 +69,43 @@
   display:inline-block;
 }
                 
+.icon-novolume {
+  background: url('../imgs/sprite-analysis.png') no-repeat -36px -36px;
+  width: 26px;
+  height: 26px;
+  display:inline-block;
+}
+                
 .icon-question-location {
-  background: url('../imgs/sprite-analysis.png') no-repeat 0px -121px;
+  background: url('../imgs/sprite-analysis.png') no-repeat 0px -125px;
   width: 12px;
   height: 15px;
   display:inline-block;
 }
                 
 .icon-right {
-  background: url('../imgs/sprite-analysis.png') no-repeat -129px 0px;
+  background: url('../imgs/sprite-analysis.png') no-repeat -134px -51px;
   width: 10px;
   height: 20px;
   display:inline-block;
 }
                 
 .icon-video-message {
-  background: url('../imgs/sprite-analysis.png') no-repeat -101px -54px;
+  background: url('../imgs/sprite-analysis.png') no-repeat -134px -26px;
   width: 16px;
   height: 15px;
   display:inline-block;
 }
                 
 .icon-video-share {
-  background: url('../imgs/sprite-analysis.png') no-repeat -101px -28px;
+  background: url('../imgs/sprite-analysis.png') no-repeat -134px 0px;
   width: 16px;
   height: 16px;
   display:inline-block;
 }
                 
 .icon-video-zan {
-  background: url('../imgs/sprite-analysis.png') no-repeat -101px 0px;
+  background: url('../imgs/sprite-analysis.png') no-repeat -104px -60px;
   width: 18px;
   height: 18px;
   display:inline-block;
@@ -99,13 +113,13 @@
                 
 .icon-volume {
   background: url('../imgs/sprite-analysis.png') no-repeat -36px 0px;
-  width: 25px;
+  width: 26px;
   height: 26px;
   display:inline-block;
 }
                 
 .icon-wrong {
-  background: url('../imgs/sprite-analysis.png') no-repeat -71px 0px;
+  background: url('../imgs/sprite-analysis.png') no-repeat -104px 0px;
   width: 20px;
   height: 20px;
   display:inline-block;

@@ -110,9 +110,8 @@ main {
       font-size: 22px;
     }
     .question, .options, .mymark {
-      p, p span, td {
-        font: 14px/24px "Hiragino Sans GB", "STHeiti", "Microsoft Yahei" !important;
-      }
+        font-size: 16px;
+        line-height: 24px;
       .translate {
         cursor: pointer;
         border-bottom: 1px dashed #333;
@@ -121,8 +120,6 @@ main {
     }
     .question {
       padding: 0 30px;
-      font-size: 14px;
-      line-height: 24px;
     }
     .test {
       .table-custom {
@@ -161,14 +158,16 @@ main {
             th {
               font-size: 22px;
               line-height: 35px;
+              border-bottom: 1px solid #666;
             }
             td {
+              padding: 5px;
               width: 290px;
-              &.user_answer {
-                color: red;
-              }
+              border: 1px solid #666;
+              border-top: none;
               &.answer {
-                color: $themeColor;
+                color: #fff;
+                background: $themeColor;
               }
             }
           }
@@ -198,8 +197,6 @@ main {
             overflow-y: scroll;
             p {
               padding: 0 30px;
-              font-size: 14px;
-              line-height: 24px;
             }
             ul {
               box-sizing: border-box;
@@ -539,61 +536,53 @@ main {
   }
 }
 
-.writeMarkBox, .reportWrongBox {
+.writeMark, .reportWrong {
   display: none;
   position: fixed;
   z-index: 102;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  background: rgba(0, 0, 0, 0.7);
-  overflow: hidden;
-  .writeMark, .reportWrong {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate3d(-50%, -50%, 0);
-    width: 900px;
-    padding-bottom: 30px;
-    background: white;
-    .head {
-      width: 100%;
-      box-sizing: border-box;
-      padding: 28px 28px 28px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #eee;
-      h3 {
-        border-left: 3px solid $themeColor;
-        padding-left: 20px;
-      }
-      p {
-        color: #999;
-        font-size: 50px;
-        line-height: 16px;
-        cursor: pointer;
-        font-weight: 300;
-      }
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  width: 900px;
+  padding-bottom: 30px;
+  box-sizing: border-box;
+  background: white;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+  .head {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 24px 28px 24px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #eee;
+    h3 {
+      border-left: 3px solid $themeColor;
+      padding-left: 20px;
     }
-    .inner {
-      padding: 30px 60px;
-      textarea {
-        width: 100%;
-        outline: none;
-        height: 250px;
-        box-sizing: border-box;
-        border-color: #f2f2f2;
-        border-radius: 5px;
-        padding: 16px 24px;
-        background: #fafafa;
-        color: #666666;
-        font-size: 18px;
-        line-height: 30px;
-        resize: none;
-      }
+    p {
+      color: #999;
+      font-size: 40px;
+      line-height: 24px;
+      cursor: pointer;
+      font-weight: 300;
+    }
+  }
+  .inner {
+    padding: 30px 60px;
+    textarea {
+      width: 100%;
+      outline: none;
+      height: 250px;
+      box-sizing: border-box;
+      border-color: #f2f2f2;
+      border-radius: 5px;
+      padding: 16px 24px;
+      background: #fafafa;
+      color: #666666;
+      font-size: 18px;
+      line-height: 30px;
+      resize: none;
     }
   }
 }

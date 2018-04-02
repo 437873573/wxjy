@@ -11,6 +11,8 @@
 @import './module/sprite-fav';
 @import './module/course-item';
 @import "./module/sprite-question";
+@import './module/select-types';
+
 .page-user-inner {
   @extend %clearfix;
   .content {
@@ -24,8 +26,27 @@
     line-height: 34px;
     padding: 0 23px;
   }
-  .des {
+  .select-types {
+    border-top: 1px solid #f6f6f6;
     margin-top: 17px;
+    padding: 10px 20px;
+    .title-bg{
+      width: 110px;
+    }
+    li.col{
+      padding: 10px 0;
+    }
+    .title {
+      margin: 0;
+      padding: 0;
+      line-height: 1;
+    }
+    .list {
+      width: 500px;
+    }
+  }
+  .des {
+
     height: 48px;
     padding-left: 40px;
     line-height: 48px;
@@ -49,7 +70,7 @@
     &.bg-gray {
       background: #f9f9f9;
     }
-    input{
+    input {
       margin-right: 10px;
       width: 17px;
       height: 17px;
@@ -68,7 +89,7 @@
     .right {
       float: right;
       width: 590px;
-      >div table{
+      > div table {
         width: 100% !important;
       }
     }
@@ -91,7 +112,7 @@
         margin-right: 15px;
       }
     }
-    .error,.correct {
+    .error, .correct {
       padding-top: 15px;
       color: #fe7171;
       line-height: 30px;
@@ -101,10 +122,10 @@
         margin-right: 15px;
       }
     }
-    .correct{
+    .correct {
       color: $themeColor;
     }
-    .icon-question-ok{
+    .icon-question-ok {
       position: relative;
       top: 7px;
       margin-right: 5px;
@@ -114,16 +135,16 @@
       top: 7px;
       margin-right: 5px;
     }
-    .my-note{
+    .my-note {
       margin-top: 20px;
-      border-top:1px solid #f0f0f0;
+      border-top: 1px solid #f0f0f0;
     }
-    .right-title{
+    .right-title {
       font-size: 16px;
       color: #666666;
       padding: 30px 0 10px;
     }
-    .icon-fav-edit{
+    .icon-fav-edit {
       position: relative;
       top: 5px;
       margin-right: 10px;

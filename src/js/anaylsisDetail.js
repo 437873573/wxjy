@@ -3,18 +3,40 @@ import './modules/header'
 $(function () {
     $('.iframe', window.parent.document).css('height', $('body').outerHeight() + 20);
     let play, audio = $('.audio').get(0);
+    //音频播放
     $('.icon-mp3-play').click(function () {
+        if(audio.readyState<4){
+            pop('音频资源加载中，请稍等','#fa8c16');
+            return
+        }
         if (!$(this).hasClass('p')) {
-            $(this).addClass('p');
+            $(this).addClass('p icon-mp3-parse').removeClass('icon-mp3-play');
             audio.play();
             play = setInterval(() => {
                 let tt = audio.duration, ct = audio.currentTime;
-                $('.userright .rate').width(ct / tt * 280)
+                if(parseInt(ct/2)===parseInt(tt/2)){
+                    audio.currentTime=0;
+                    audio.pause();
+                    $('.icon-mp3-parse').removeClass('p icon-mp3-parse').addClass('icon-mp3-play');
+                    clearInterval(play)
+                }else{
+                    $('.userright .rate').width(ct / tt * 280);
+                }
             }, 1000)
         } else {
-            $(this).removeClass('p');
+            $(this).removeClass('p icon-mp3-parse').addClass('icon-mp3-play');
             audio.pause();
             clearInterval(play)
+        }
+    });
+    //音频静音
+    $('.icon-volume').click(function () {
+        if($(this).hasClass('no')){
+            $(this).removeClass('no icon-novolume').addClass('icon-volume');
+            audio.volume=1
+        }else{
+            $(this).addClass('no icon-novolume').removeClass('icon-volume');
+            audio.volume=0
         }
     });
     //讨论与解析切换
@@ -51,7 +73,8 @@ $(function () {
                 }
             }
         })
-    })
+    });
+
     //点赞
     $('.feature span:first-of-type').click(function () {
         // console.log($(this).find('b').text())
