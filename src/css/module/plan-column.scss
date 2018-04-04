@@ -52,6 +52,7 @@
       color: #666;
     }
     .item {
+      height: 32px;
       padding: 10px 0;
       border-bottom: 1px solid #f0f0f0;
       display: flex;
@@ -60,6 +61,9 @@
       &:last-child{
         border-bottom: none;
         padding-bottom: 0;
+      }
+      &:hover .btns{
+        display: block;
       }
     }
     input {
@@ -75,6 +79,7 @@
       @extend %ellipsis;
     }
     .btns {
+      display: none;
       .btn-go,
       .btn-cancle {
         float: left;

@@ -145,6 +145,15 @@ body {
       }
     }
   }
+  .monthTotal{
+    display: inline-block;
+    background: $themeColor;
+    color: #ffffff;
+    line-height: 20px;
+    padding:0 20px 0 10px;
+    border-bottom-right-radius: 100px;
+    border-top-right-radius: 100px;
+  }
   .test-item {
     height: 63px;
     line-height: 63px;
@@ -393,6 +402,18 @@ body {
   .page-inner {
     padding: 15px 0;
   }
+  .table-test,.test-list{
+    .row-1{
+      width: 150px;
+    }
+    .row-2,.row-3{
+      margin-right: 50px;
+    }
+    .row-6{
+      width: 180px;
+      text-align: center;
+    }
+  }
 }
 
 .user-info-score {
@@ -502,15 +523,6 @@ body {
       li{
         list-style-type: upper-latin;
         list-style-position: inside;
-      }
-      p,p span,td{
-        color: #666666 !important;
-        background: transparent !important;
-        font: 14px/24px "Hiragino Sans GB","STHeiti","Microsoft Yahei" !important;
-      }
-      table{
-        width: 100% !important;
-        background: transparent !important;
       }
     }
     &.row-3 {

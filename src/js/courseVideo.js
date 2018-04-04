@@ -61,7 +61,7 @@ $(function () {
     });
     $('.form-wrapper input').click(function () {
         let id=$(this).parent().data('testVolumeId'),c=$(this).siblings('textarea').val();
-        $.post('/api/volume/addComment',{test_volume_id:id,content:c},()=>window.location.reload())
+        $.post('/api/volume/addComment',{test_volume_id:id,content:c})
     });
     function jia(that,c1,c2) {
         $(that).addClass('added-zan').find('span').text(parseInt($(that).find('span').text())+1).end().find('i').removeClass(c1).addClass(c2)

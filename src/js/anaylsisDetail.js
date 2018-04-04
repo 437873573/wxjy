@@ -1,8 +1,14 @@
 import './modules/header'
-
+import './lib/mathquill.min'
 $(function () {
     $('.iframe', window.parent.document).css('height', $('body').outerHeight() + 20);
     let play, audio = $('.audio').get(0);
+    //数学公式
+    var MQ = MathQuill.getInterface(2);
+    $('.mathquill-embedded-latex').each((i,v)=>{
+        MQ.StaticMath(v);
+    });
+
     //音频播放
     $('.icon-mp3-play').click(function () {
         if(audio.readyState<4){
