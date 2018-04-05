@@ -131,10 +131,13 @@ $(function () {
 
     //发表评论
     $('.form-wrapper input').click(function () {
-        let c = $(this).siblings('textarea').val();
+        let c = $(this).siblings('textarea').val(), that=this;
         $.post('/api/volume/addComment', {test_volume_id: id, content: c}, function (mess) {
             if (mess.code === 0 && !$.isEmptyObject(mess.data)) {
                 if (mess.data.comment) {
+                    let h = $('.commont-list').offset().top - 100;
+                    $('html,body').animate({'scrollTop': h});
+                    $(that).siblings('textarea').val('');
                     let comment = mess.data.comment;
                     let li = `<li>
                             <div class="left">
@@ -154,6 +157,7 @@ $(function () {
                             </div>
                         </li>`;
                     $(li).prependTo('.commont-list ul')
+                    $(li).animate({backgroundColor: "rgba(0xff,0xef,0,0)"}, 1000)
                 }
             }
         })
