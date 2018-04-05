@@ -51,7 +51,7 @@ otherjs: video
 </div>
 
 {{!-- 目录 --}}
-<div class="page-content" data-test-volume-id="195">
+<div class="page-content" data-test-volume-id="1">
     <!--已赞-->
     <!--<div class="title-zan added-zan"><i class="icon-video-zan-big"></i> 点赞 <span>64</span></div>-->
     <!--未赞(默认)-->
@@ -75,14 +75,14 @@ otherjs: video
             答疑互动（<span>0</span>）
             <select name="" id="" class="butn-sort fr">
                 <option value="">默认排序</option>
-                <option value="">点赞数量</option>
-                <option value="">评论数量</option>
+                <option value="vote">点赞数量</option>
             </select>
         </h3>
-        <ul>
-
-        </ul>
-        {{> page-navgator}}
+        <ul></ul>
+        <div class="page-navgator">
+            <a href="javaScript:;" >上一页</a>
+            <a href="javaScript:;" >下一页</a>
+        </div>
 
         <div class="form-wrapper" data-test-volume-id="1">
             <textarea name="content" placeholder="我也说两句.."></textarea>

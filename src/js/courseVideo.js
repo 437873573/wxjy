@@ -37,8 +37,9 @@ import './modules/header'
 
 $(function () {
     let id = $('.page-content').data('testVolumeId');
+    //视频点赞操作
     $('.title-zan').click(function () {
-        let id = $(this).parent().data('testVolumeId'), that = this;
+        let that = this;
         if (!$(this).hasClass('added-zan')) {
             $.post('/api/volume/vote', {test_volume_id: id, vote_type: 1}, function (mess) {
                 if (mess && mess.code === 0) {
@@ -53,7 +54,65 @@ $(function () {
             })
         }
     });
-    $('.foot>span:first-of-type').click(function () {
+
+    getComment();
+
+    //获取评论列表
+    function getComment(num) {
+        let order = $('.butn-sort').val();
+        $.get(`/api/volume/video/${id}`, {page: num ? num : 1, order: order}, function (mess) {
+            if (mess.code === 0 && !$.isEmptyObject(mess.data)) {
+                if (mess.data.comments.total > 0) {
+                    let data = mess.data.comments;
+                    $('.commont-list h3 span').text(data.total);
+                    $('.commont-list ul').html('');
+                    if (data.next_page_url || data.prev_page_url) {
+                        $('.page-navgator').show();
+                        $('.page-navgator a:first-child').attr({
+                            'class': data.prev_page_url ? '' : 'disabled',
+                            'data-url': data.prev_page_url
+                        });
+                        $('.page-navgator a:last-child').attr({
+                            'class': data.next_page_url ? '' : 'disabled',
+                            'data-url': data.next_page_url
+                        })
+                    }
+                    if (data.data.length > 0) {
+                        let comments = data.data;
+                        let lis = '';
+                        $.each(comments, (i, v) => {
+                            lis += `<li>
+                                    <div class="left">
+                                        ${v.avatar ?
+                                `<img src=${v.avatar} alt="">` :
+                                `<img src="/static/imgs/header.png" alt="">`}
+                                    </div>
+                                    <div class="right">
+                                        <p class="title">${v.nickname}</p>
+                                        <p>${v.content}</p>
+                                        <p class="foot" data-comment-id=${v.comment_id}>
+                                        ${v.is_voted ?
+                                `<span class="added-zan"><i class="icon-video-zan"></i> 赞同 <span>${v.vote_count}</span></span>` :
+                                `<span><i class="icon-video-nozan"></i> 赞同 <span>${v.vote_count}</span></span>`}
+                                            <!--<span><i class="icon-video-message"></i> 评论 <span>2</span></span>-->
+                                            <!--<span><i class="icon-video-share"></i> 分享 <span>2</span></span>-->
+                                            <span class="fr">${v.created_at}</span>
+                                        </p>
+                                    </div>
+                                </li>`
+                        });
+                        $(lis).appendTo('.commont-list ul')
+                    }
+                } else if (mess.code === 0 && mess.data.comments.total === 0) {
+                    $('.commont-list h3 span').text(0);
+                    $('.commont-list ul').html(`<span>暂无评论</span>`)
+                }
+            }
+        })
+    }
+
+    //评论点赞
+    $('.commont-list ul').on('click', '.foot>span:first-of-type', function () {
         let id = $(this).parent().data('commentId'), that = this;
         if (!$(this).hasClass('added-zan')) {
             $.post('/api/comment/vote', {comment_id: id, vote_type: 1}, function (mess) {
@@ -69,54 +128,60 @@ $(function () {
             })
         }
     });
+
+    //发表评论
     $('.form-wrapper input').click(function () {
-        let id = $(this).parent().data('testVolumeId'), c = $(this).siblings('textarea').val();
-        $.post('/api/volume/addComment', {test_volume_id: id, content: c})
-    });
-    getComment();
-
-    function getComment() {
-        $.get(`/api/volume/video/${id}`, function (mess) {
-            if (mess.code === 0 && mess.data.comments.total > 0) {
-                let data = mess.data.comments;
-                $('.commont-list h3 span').text(data.total);
-                $('.commont-list ul').html('');
-                if (data.next_page_url || data.prev_page_url) {
-
+        let c = $(this).siblings('textarea').val();
+        $.post('/api/volume/addComment', {test_volume_id: id, content: c}, function (mess) {
+            if (mess.code === 0 && !$.isEmptyObject(mess.data)) {
+                if (mess.data.comment) {
+                    let comment = mess.data.comment;
+                    let li = `<li>
+                            <div class="left">
+                                ${comment.user.avatar ?
+                        `<img src=${comment.user.avatar} alt="">` :
+                        `<img src="/static/imgs/header.png" alt="">`}
+                            </div>
+                            <div class="right">
+                                <p class="title">${comment.user.nickname}</p>
+                                <p>${comment.content}</p>
+                                <p class="foot" data-comment-id=${comment.id}>
+                                    <span><i class="icon-video-nozan"></i> 赞同 <span>0</span></span>
+                                    <!--<span><i class="icon-video-message"></i> 评论 <span>2</span></span>-->
+                                    <!--<span><i class="icon-video-share"></i> 分享 <span>2</span></span>-->
+                                    <span class="fr">${comment.created_at}</span>
+                                </p>
+                            </div>
+                        </li>`;
+                    $(li).prependTo('.commont-list ul')
                 }
-                if (data.data.length > 0) {
-                    let comments = data.data;
-                    let lis = '';
-                    $.each(comments, (i, v) => {
-                        let user = v.user, comment = v.comment_votes;
-                        lis += `<li>
-                                    <div class="left">
-                                        ${user.avatar ?
-                                        `<img src=${user.avatar} alt="">` :
-                                        `<img src="/static/imgs/header.png" alt="">`}
-                                    </div>
-                                    <div class="right">
-                                        <p class="title">${user.nickname}</p>
-                                        <p>${v.content}</p>
-                                        <p class="foot" data-comment-id="1">
-                                            <!--未赞(默认)-->
-                                            <span><i class="icon-video-nozan"></i> 赞同 <span>2</span></span>
-                                            <!--已赞-->
-                                            <span><i class="icon-video-zan"></i> 赞同 <span>2</span></span>
-                                            <!--<span><i class="icon-video-message"></i> 评论 <span>2</span></span>-->
-                                            <!--<span><i class="icon-video-share"></i> 分享 <span>2</span></span>-->
-                                            <span class="fr">${v.created_at}</span>
-                                        </p>
-                                    </div>
-                                </li>`});
-                    $(lis).appendTo('.commont-list ul')
-                }
-            } else if (mess.code === 0 && mess.data.comments.total === 0) {
-                $('.commont-list h3 span').text(0);
-                $('.commont-list ul').html(`<span>暂无评论</span>`)
             }
         })
-    }
+    });
+
+    //筛选条件改变
+    $('.butn-sort').change(() => {
+        getComment()
+    });
+    //分页
+    $('.page-navgator a').click(function () {
+
+        if ($(this).data('url')) {
+            let h = $('.commont-list').offset().top - 100;
+            $('html,body').animate({'scrollTop': h});
+
+            function getCaption(obj) {
+                let index = obj.lastIndexOf("=");
+                obj = obj.substring(index + 1, obj.length);
+                return obj;
+            }
+
+            let num = getCaption($(this).data('url'));
+            getComment(num);
+
+        }
+
+    });
 
     function jia(that, c1, c2) {
         $(that).addClass('added-zan').find('span').text(parseInt($(that).find('span').text()) + 1).end().find('i').removeClass(c1).addClass(c2)
