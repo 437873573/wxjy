@@ -158,6 +158,9 @@ body {
     border-bottom: 1px solid #ededed;
     padding: 28px 0;
     @extend %clearfix;
+    &.newComment{
+      animation: slide 1s 0.8s;
+    }
     .left {
       float: left;
       width: 80px;
@@ -233,5 +236,16 @@ body {
     margin: 0 auto;
     color: #ffffff;
     font-size: 18px;
+  }
+}
+@keyframes slide {
+  0%{
+    background: #ffffff;
+  }
+  50%{
+    background: #cccccc;
+  }
+  100%{
+    background: #ffffff;
   }
 }

@@ -136,10 +136,10 @@ $(function () {
             if (mess.code === 0 && !$.isEmptyObject(mess.data)) {
                 if (mess.data.comment) {
                     let h = $('.commont-list').offset().top - 100;
-                    $('html,body').animate({'scrollTop': h});
+                    $('html,body').animate({'scrollTop': h},800);
                     $(that).siblings('textarea').val('');
                     let comment = mess.data.comment;
-                    let li = `<li>
+                    let li = `<li class="newComment">
                             <div class="left">
                                 ${comment.user.avatar ?
                         `<img src=${comment.user.avatar} alt="">` :
@@ -156,8 +156,8 @@ $(function () {
                                 </p>
                             </div>
                         </li>`;
-                    $(li).prependTo('.commont-list ul')
-                    $(li).animate({backgroundColor: "rgba(0xff,0xef,0,0)"}, 1000)
+                    $(li).prependTo('.commont-list ul');
+                    let remC=setTimeout(()=>$(li).removeClass('newComment'),2000)
                 }
             }
         })

@@ -76,8 +76,13 @@ main {
           text-align: center;
           line-height: 40px;
           cursor: pointer;
+          &.wrong{
+            background: #fe7171;
+            color: #fff;
+          }
           &.clicked {
             background: $themeColor;
+            color: #666;
           }
         }
       }
