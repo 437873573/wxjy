@@ -34,6 +34,7 @@ $(function () {
             collect.push(v.split('=')[1])
             // console.log(collect)
         });
+        window.location.hash=collect[1];
         $('.translation').hide()
     });
     $('.domark').click(() => {

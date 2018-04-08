@@ -123,15 +123,20 @@ main {
         border-bottom: 1px dashed #333;
         padding-bottom: 3px;
       }
+      .mathquill-embedded-latex{
+        margin: 0 4px;
+      }
     }
     .question {
       padding: 0 30px;
     }
     .test {
       .table-custom {
+        margin-top: 10px;
         width: 100%;
       }
       .table-custom td {
+        padding: 10px;
         border: none;
         text-align: center;
       }
