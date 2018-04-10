@@ -8,8 +8,8 @@ $(function () {
         // console.log(collect)
     });
     if (parseInt(tlist.css('width')) < 700) {
-        $('.icon-butn-left').css('display', 'none');
-        $('.icon-burn-right').css('display', 'none')
+        $('.icon-left').css('display', 'none');
+        $('.icon-right').css('display', 'none')
     }
     $('.anaylsis .left .next').click(() => {
         let l = tlist.css('left');
@@ -34,7 +34,7 @@ $(function () {
             collect.push(v.split('=')[1])
             // console.log(collect)
         });
-        window.location.hash=collect[1];
+        window.location.hash = collect[1];
         $('.translation').hide()
     });
     $('.domark').click(() => {
@@ -132,6 +132,7 @@ $(function () {
             })
         }
     });
+
     //隐藏划词浮层
     $(document).click(function (e) {
         if (e.target !== $('.translate')[0] && $('.translate').css('display') == 'block') {
@@ -159,6 +160,7 @@ $(function () {
     //划词输入框查询单词功能
     $('.translation .select .btn').click(function () {
         let w = $(this).siblings('input').val();
+        $(this).siblings('input').val('');
         $.get('/api/word/query', {word: w, type: 'search'}, function (mess) {
             if (mess && mess.code === 0) {
                 let tran = $('.translation'), data = mess.data.word;

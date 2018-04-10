@@ -116,8 +116,8 @@ main {
       font-size: 22px;
     }
     .question, .options, .mymark {
-        font-size: 16px;
-        line-height: 24px;
+        font-size: 18px;
+        line-height: 26px;
       .translate {
         cursor: pointer;
         border-bottom: 1px dashed #333;
@@ -161,17 +161,15 @@ main {
           table {
             width: 290px;
             margin: 0 20px;
-            tr {
-              height: 30px;
-              text-align: left;
-              line-height: 30px;
-            }
             th {
+              text-align: center;
               font-size: 22px;
-              line-height: 35px;
+              line-height: 38px;
+              padding-bottom: 5px;
               border-bottom: 1px solid #666;
             }
             td {
+              text-align: left;
               padding: 5px;
               width: 290px;
               border: 1px solid #666;
@@ -617,7 +615,7 @@ main {
   width: 330px;
   background: white;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
-  z-index: 202;
+  z-index: 100;
   color: #666;
   &::before, &::after {
     position: absolute;
@@ -784,7 +782,7 @@ main {
       }
       .bug-but {
         display: inline-block;
-        margin: 10px 10px 0 auto;
+        margin: 10px 7px 0 auto;
         height: 30px;
         padding: 0 20px;
         border-radius: 100px;

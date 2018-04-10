@@ -39,14 +39,25 @@ tipsUser.on('mouseleave', function () {
 
 var btnSoso = $('.page-header__search .butn-soso');
 btnSoso.on('click', function() {
-    console.info("RUN");
+    // console.info("RUN");
     var soso = $('.page-header__search input').val();
     if (soso && soso.length > 0) {
         window.open('/search?keywords=' + soso, '_blank');
-        console.info(soso);
+        // console.info(soso);
     }
 });
-
+$(".page-header__search input").keyup(()=>{
+    $(document).keypress(function(e) {
+        // 回车键事件
+        if(e.which == 13) {
+            var soso = $('.page-header__search input').val();
+            if (soso && soso.length > 0) {
+                window.open('/search?keywords=' + soso, '_blank');
+                // console.info(soso);
+            }
+        }
+    });
+});
 if(location.hostname=='localhost'){
     $.ajaxSetup({
         beforeSend: function (xhr,settings) {

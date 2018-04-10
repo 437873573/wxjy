@@ -179,13 +179,16 @@ $(function () {
                                 data: {word: txt},
                                 success: function (mess) {
                                     if (mess.code === 0 && mess.data.word) {
-                                        let data = mess.data.word
-                                        tran.css({"display": "block", "left": `${left}px`, "top": `${top}px`})
+                                        let data = mess.data.word;
+                                        tran.css({"display": "block", "left": `${left}px`, "top": `${top}px`});
+                                        tran.find('.select input').val('');
                                         tran.find('.word b').html(txt);
                                         tran.attr('id', data.id);
                                         tran.find('.phonetic span').html(data.phonetic);
                                         tran.find('.meaning div span').html(data.interpretation);
                                         tran.find('.example div span').html(data.example);
+                                        tran.find('.selRec,.wordBug,.addWordMark').hide();
+                                        tran.find('.foot').show();
                                         if (data.test_method != '') {
                                             tran.find('.moreMeaning p').html(data.test_method)
                                         } else {
