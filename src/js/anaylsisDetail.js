@@ -35,6 +35,21 @@ $(function () {
             clearInterval(play)
         }
     });
+    let tag=false,left=0,bgleft=0;
+    $('.userright .progress').click(function(e) {//鼠标点击
+        if (!tag) {
+            bgleft = $(this).offset().left;
+            left = e.pageX - bgleft;
+            if (left <= 0) {
+                left = 0;
+            }else if (left > 280) {
+                left = 280;
+            }
+            // $('.progress_btn').css('left', left);
+            $('.userright .progress .rate').css('width',left);
+            audio.currentTime=left/280*audio.duration
+        }
+    });
     //音频静音
     $('.icon-volume').click(function () {
         if($(this).hasClass('no')){

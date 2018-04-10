@@ -76,7 +76,7 @@ main {
           text-align: center;
           line-height: 40px;
           cursor: pointer;
-          &.wrong{
+          &.wrong {
             background: #fe7171;
             color: #fff;
           }
@@ -116,19 +116,16 @@ main {
       font-size: 22px;
     }
     .question, .options, .mymark {
-        font-size: 18px;
-        line-height: 26px;
+      font-size: 18px;
+      line-height: 26px;
       .translate {
         cursor: pointer;
         border-bottom: 1px dashed #333;
         padding-bottom: 3px;
       }
-      .mathquill-embedded-latex{
+      .mathquill-embedded-latex {
         margin: 0 4px;
       }
-    }
-    .question {
-      padding: 0 30px;
     }
     .test {
       .table-custom {
@@ -152,12 +149,14 @@ main {
         font-size: 20px;
       }
       .multiple {
+        box-sizing: border-box;
+        padding: 30px;
+        border-bottom: 1px solid #f2f2f2;
         .options {
           display: flex;
           justify-content: center;
           align-items: center;
-          padding: 0 30px 30px;
-          border-bottom: 1px solid #f2f2f2;
+          padding-top: 50px;
           table {
             width: 290px;
             margin: 0 20px;
@@ -170,13 +169,17 @@ main {
             }
             td {
               text-align: left;
-              padding: 5px;
+              padding: 10px 15px;
+              box-sizing: border-box;
               width: 290px;
               border: 1px solid #666;
               border-top: none;
               &.answer {
                 color: #fff;
                 background: $themeColor;
+              }
+              span{
+                margin-right: 10px;
               }
             }
           }
@@ -189,7 +192,7 @@ main {
           float: left;
           width: 60%;
           .question {
-            padding: 0 30px;
+            padding: 30px 30px 0;
             box-sizing: border-box;
             height: 600px;
             overflow-y: scroll;
@@ -201,15 +204,12 @@ main {
           float: right;
           box-sizing: border-box;
           border-left: 1px solid #f2f2f2;
+          padding: 30px 30px 0;
+          height: 600px;
+          overflow-y: scroll;
           .options {
-            height: 600px;
-            overflow-y: scroll;
-            p {
-              padding: 0 30px;
-            }
             ul {
               box-sizing: border-box;
-              padding: 0 30px;
               margin-top: 40px;
               display: flex;
               flex-direction: column;
