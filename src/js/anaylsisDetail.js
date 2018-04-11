@@ -53,7 +53,8 @@ $(function () {
             }
             // $('.progress_btn').css('left', left);
             $('.userright .progress .rate').css('width', left);
-            audio.currentTime = left / 280 * audio.duration
+            audio.currentTime = left / 280 * audio.duration;
+            $('.audio-time').find('.cur').text(`${format(audio.currentTime)}`);
         }
     });
 
