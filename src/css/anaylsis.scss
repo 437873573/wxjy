@@ -76,13 +76,38 @@ main {
           text-align: center;
           line-height: 40px;
           cursor: pointer;
+          position: relative;
           &.wrong {
             background: #fe7171;
-            color: #fff;
+            color: #ffffff;
+          }
+          &.correct{
+            background: $themeColor;
+            color: #ffffff;
+          }
+          &.wrong.clicked{
+            &::after{
+              background: #fe7171;
+            }
+          }
+          &.correct.clicked{
+            &::after{
+              background: $themeColor;
+            }
           }
           &.clicked {
-            background: $themeColor;
-            color: #666;
+            &::after{
+              content: '';
+              display: block;
+              position: absolute;
+              bottom: -14px;
+              left: 50%;
+              width: 10px;
+              height: 10px;
+              border-radius: 10px;
+              transform: translate3d(-50%,0,0);
+              background: #bbb;
+            }
           }
         }
       }
@@ -178,7 +203,7 @@ main {
                 color: #fff;
                 background: $themeColor;
               }
-              span{
+              span {
                 margin-right: 10px;
               }
             }
@@ -223,7 +248,7 @@ main {
               display: flex;
               justify-content: flex-start;
               align-items: flex-start;
-              i {
+              i[class^='icon'] {
                 flex: none;
                 margin: 4px 28px 4px 0;
               }
@@ -258,7 +283,13 @@ main {
         i {
           margin: 0 8px;
         }
-
+        .audio-time {
+          font-size: 14px;
+          margin-left: 8px;
+          .line {
+            margin: 0 4px;
+          }
+        }
       }
     }
     .mark {

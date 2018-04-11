@@ -247,7 +247,34 @@ $(function () {
     //展开详细考法（如果有）
     $('.translation .moreMeaning').click(function () {
         $(this).find('p').slideToggle()
-    })
+    });
+    drag()
+    function drag() {
+        let  oDiv = $('.translation');
+        oDiv.mousedown(function (e) {
+            //鼠标按下，计算当前元素距离可视区的距离
+            let disX = e.pageX - oDiv.offset().left;
+            let disY = e.pageY - oDiv.offset().top;
+            $(document).mousemove(function (e) {
+                //通过事件委托，计算移动的距离
+                let l = e.clientX - disX;
+                let t = e.clientY - disY;
+                //移动当前元素(限制在窗口内)
+                let maxL = $(document).width() - oDiv.outerWidth(true);
+                let maxT = $(document).height() - oDiv.outerHeight(true);
+                l=l<0?0:l>maxL?maxL:l;
+                t=t<0?0:t>maxT?maxT:t;
+                oDiv.css({
+                    'left':l+'px',
+                    "top":t+'px'
+                });
+            });
+            $(document).mouseup(function () {
+                $(document).off('mousemove');
+                $(document).off('mouseup');
+            });
+        });
+    }
 });
 
 

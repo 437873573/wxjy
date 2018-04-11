@@ -93,6 +93,7 @@
         text-align: center;
         border-radius: 50px;
         border: 1px solid #00e290;
+        cursor: pointer;
       }
       .btn-go {
         color: #fff;
@@ -100,6 +101,10 @@
       }
       .btn-cancle {
         color: #00e290;
+      }
+      .btn-cancle.noRes{
+        border-color: #bbb;
+        color: #bbb;
       }
     }
   }

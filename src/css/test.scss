@@ -3,6 +3,7 @@
 @import './lib/normalize';
 @import './module/header';
 @import './module/footer';
+@import "./module/apply";
 @import './module/page-navgator';
 @import './module/sprite-common';
 @import './module/sprite-login';
@@ -200,6 +201,9 @@ body {
       float: right;
       color: #666;
       margin-left: 30px;
+    }
+    .noRes{
+      color: #bbb;
     }
     .btn-go,
     .btn-cancle {

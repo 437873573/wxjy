@@ -1,0 +1,46 @@
+.applyBox{
+  display: none;
+  z-index: 200;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background: rgba(0,0,0,0.4);
+  .apply{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%,-50%,0);
+    background: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    .head{
+      box-sizing: border-box;
+      padding: 6px 10px;
+      border-bottom: 3px solid $themeColor;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      h3 {
+        border-left: 3px solid $themeColor;
+        padding-left: 8px;
+        font-size: 14px;
+        line-height: 14px;
+        color: black;
+      }
+      p {
+        display: block;
+        color: #999;
+        font-size: 24px;
+        cursor: pointer;
+      }
+    }
+    .inner{
+      padding: 20px;
+      img{
+        margin: 20px auto 0;
+      }
+    }
+  }
+}

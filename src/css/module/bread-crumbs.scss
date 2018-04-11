@@ -1,7 +1,11 @@
 .bread-crumbs {
-  padding: 20px 0;
+  padding: 18px 0;
   font-size: 14px;
   color: #666;
+  height: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   a {
     margin: 0 5px;
     color: #666;

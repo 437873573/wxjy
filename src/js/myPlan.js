@@ -48,6 +48,7 @@ $(function () {
             data: `planDate=${w}`,
             success: function (mess) {
                 $('.detailplan,.recite,.program').html('');
+                let userLevel=mess.user.current_level;
                 if (mess.planTodos.length >= 1) {
                     let lis = '', todo = mess.planTodos;
                     $.each(todo, (i, v) => {
@@ -145,7 +146,7 @@ $(function () {
                                                     <span class="row row-4">正确率 ${t.correct_rate}%</span>
                                                 </div>
                                                 <div class="btns">
-                                                    ${t.done_num==0?
+                                                    ${t.done_num==0||t.done_num==t.total_num?
                                                     `<a href=${t.test_do_url+'?restart=0'} class="btn-go do" target="_blank">做题</a>`:
                                                     `<div class="btn btn-go new-go">
                                                         <span>做题</span>
@@ -166,8 +167,16 @@ $(function () {
                                                         </div>
                                                     </div>`}
                                                     <a href=${t.test_view_url} class="btn-cancle see">查看</a>
-                                                    <a href=${t.test_video_url} class="btn-cancle video">视频</a>
-                                                    <a href=${t.test_download_url} class="btn-cancle download">下载</a>
+                                                    ${t.test_video_url?
+                                                        `${t.resource_video.level<userLevel?
+                                                        `<span class="btn-cancle noLev">视频</span>`:
+                                                        `<a href=${t.test_video_url} class="btn-cancle video">视频</a>`}`:
+                                                        `<span class="btn-cancle noRes">视频</span>`}
+                                                    ${t.test_download_url?
+                                                        `${t.resource_document.level<userLevel?
+                                                        `<span class="btn-cancle noLev">下载</span>`:
+                                                        `<a href=${t.test_download_url} class="btn-cancle download">下载</a>`}`:
+                                                        `<span class="btn-cancle noRes">下载</span>`}
                                                 </div>
                                             </li>`});
                                 $(`<div class="column-bd">
@@ -191,6 +200,8 @@ $(function () {
             $('.new-go').click(()=> $('.reorco').show());
         }else if(e.target==$('.reorco a')[0]){
             $('.reorco').hide()
+        }else if($(e.target).hasClass('noLev')){
+            $('.applyBox').show()
         }
     });
 

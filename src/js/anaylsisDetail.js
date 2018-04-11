@@ -1,33 +1,39 @@
 import './modules/header'
 import './lib/mathquill.min'
+
 $(function () {
     $('.iframe', window.parent.document).css('height', $('body').outerHeight() + 20);
     let play, audio = $('.audio').get(0);
     //数学公式
     var MQ = MathQuill.getInterface(2);
-    $('.mathquill-embedded-latex').each((i,v)=>{
+    $('.mathquill-embedded-latex').each((i, v) => {
         MQ.StaticMath(v);
     });
 
     //音频播放
     $('.icon-mp3-play').click(function () {
-        if(audio.readyState<4){
-            pop('音频资源加载中，请稍等','#fa8c16');
+        if (audio.readyState < 4) {
+            pop('音频资源加载中，请稍等', '#fa8c16');
             return
+        }else{
+            $('.audio-time').find('.dur').text(`${format(audio.duration)}`);
         }
         if (!$(this).hasClass('p')) {
             $(this).addClass('p icon-mp3-parse').removeClass('icon-mp3-play');
             audio.play();
             play = setInterval(() => {
                 let tt = audio.duration, ct = audio.currentTime;
-                if(parseInt(ct/2)===parseInt(tt/2)){
-                    audio.currentTime=0;
+                if (parseInt(ct / 2) === parseInt(tt / 2)) {
+                    ct=audio.currentTime = 0;
+                    // $('.audio-time').find('.cur').text(`${format(ct)}`);
                     audio.pause();
                     $('.icon-mp3-parse').removeClass('p icon-mp3-parse').addClass('icon-mp3-play');
+                    $('.userright .progress .rate').css('width', 0);
                     clearInterval(play)
-                }else{
+                } else {
                     $('.userright .rate').width(ct / tt * 280);
                 }
+                $('.audio-time').find('.cur').text(`${format(ct)}`);
             }, 1000)
         } else {
             $(this).removeClass('p icon-mp3-parse').addClass('icon-mp3-play');
@@ -35,31 +41,39 @@ $(function () {
             clearInterval(play)
         }
     });
-    let tag=false,left=0,bgleft=0;
-    $('.userright .progress').click(function(e) {//鼠标点击
-        if (!tag) {
+    let tag = false, left = 0, bgleft = 0;
+    $('.userright .progress').click(function (e) {//鼠标点击
+        if (!audio.paused) {
             bgleft = $(this).offset().left;
             left = e.pageX - bgleft;
             if (left <= 0) {
                 left = 0;
-            }else if (left > 280) {
+            } else if (left > 280) {
                 left = 280;
             }
             // $('.progress_btn').css('left', left);
-            $('.userright .progress .rate').css('width',left);
-            audio.currentTime=left/280*audio.duration
+            $('.userright .progress .rate').css('width', left);
+            audio.currentTime = left / 280 * audio.duration
         }
     });
-    //音频静音
-    $('.icon-volume').click(function () {
-        if($(this).hasClass('no')){
-            $(this).removeClass('no icon-novolume').addClass('icon-volume');
-            audio.volume=1
-        }else{
-            $(this).addClass('no icon-novolume').removeClass('icon-volume');
-            audio.volume=0
+
+    //时间展示
+    function format(time) {
+        time = time | 0;
+        const minute = time / 60 | 0;
+        const second = _pad(time % 60);
+        return `${_pad(minute)}:${second}`
+    }
+
+    function _pad(num, n = 2) {
+        let len = num.toString().length;
+        while (len < n) {
+            num = "0" + num;
+            len++
         }
-    });
+        return num
+    }
+
     //讨论与解析切换
     $('.discuss .left header div').click(function () {
         $(this).addClass('active').siblings().removeClass('active');
@@ -179,7 +193,7 @@ $(function () {
     function hoverWord(tran, ele) {
         ele.hover(
             function (e) {
-                let that=this
+                let that = this
                 timer = setTimeout(function () {
                     if (tran.css('display') == 'none') {
                         e = e || window.event;
