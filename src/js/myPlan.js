@@ -168,12 +168,12 @@ $(function () {
                                                     </div>`}
                                                     <a href=${t.test_view_url} class="btn-cancle see">查看</a>
                                                     ${t.test_video_url?
-                                                        `${t.resource_video.level<userLevel?
+                                                        `${userLevel<t.resource_video.level?
                                                         `<span class="btn-cancle noLev">视频</span>`:
                                                         `<a href=${t.test_video_url} class="btn-cancle video">视频</a>`}`:
                                                         `<span class="btn-cancle noRes">视频</span>`}
                                                     ${t.test_download_url?
-                                                        `${t.resource_document.level<userLevel?
+                                                        `${userLevel<t.resource_document.level?
                                                         `<span class="btn-cancle noLev">下载</span>`:
                                                         `<a href=${t.test_download_url} class="btn-cancle download">下载</a>`}`:
                                                         `<span class="btn-cancle noRes">下载</span>`}
