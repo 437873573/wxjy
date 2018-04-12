@@ -10,9 +10,9 @@ $(function () {
     });
     $('.words-item').click(function () {
         if($(this).hasClass('hidden-info')){
-            $(this).removeClass('hidden-info').find('.other').slideDown()
+            $(this).removeClass('hidden-info').find('.other').slideDown().end().find('.unfold i').attr('class','icon-nav-top')
         }else{
-            $(this).addClass('hidden-info').find('.other').slideUp()
+            $(this).addClass('hidden-info').find('.other').slideUp().end().find('.unfold i').attr('class','icon-nav-bottom')
         }
     });
     $('.alltimes').click(function (){
@@ -30,11 +30,11 @@ $(function () {
     });
     $('.row-3 .title').click(function () {
         if($(this).hasClass('b')){
-            $(this).addClass('d').removeClass('b').text('详细考法');
+            $(this).addClass('d').removeClass('b').find('span').text('详细考法');
             $('.mean.detail').show();
             $('.mean.basis').hide()
         }else{
-            $(this).addClass('b').removeClass('d').text('基础解义');
+            $(this).addClass('b').removeClass('d').find('span').text('基础解义');
             $('.mean.basis').show();
             $('.mean.detail').hide()
         }
