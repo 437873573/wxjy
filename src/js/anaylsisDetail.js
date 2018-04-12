@@ -3,6 +3,8 @@ import './lib/mathquill.min'
 
 $(function () {
     $('.iframe', window.parent.document).css('height', $('body').outerHeight() + 20);
+    let marked=$('.inner').data('mark');
+    $('.collect i',window.parent.document).attr('class',`${marked?'icon-collection1':'icon-collection'}`);
     let play, audio = $('.audio').get(0);
     //数学公式
     var MQ = MathQuill.getInterface(2);

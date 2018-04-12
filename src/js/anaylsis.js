@@ -2,14 +2,15 @@ import './modules/header';
 
 $(function () {
     let collect = [], arr = [], tlist = $('.testlist ul');
-    arr = $('.clicked').parent().attr('href');
+    arr = $('.clicked').data('url');
     $(arr.split('&')).each((i, v) => {
         collect.push(v.split('=')[1])
         // console.log(collect)
     });
-    if (parseInt(tlist.css('width')) < 700) {
-        $('.icon-left').css('display', 'none');
-        $('.icon-right').css('display', 'none')
+    if (parseInt(tlist.css('width')) <= 860) {
+        $('.testlist').css("width",'860px');
+        $('.anaylsis>header .left .prev').hide();
+        $('.anaylsis>header .left .next').hide();
     }
     $('.anaylsis .left .next').click(() => {
         let l = tlist.css('left');
@@ -24,17 +25,18 @@ $(function () {
             tlist.animate({left: `${parseInt(l) + 700}px`})
         }
     });
-    $('.testlist ul a').click(function () {
+    $('.testlist ul li').click(function () {
         arr = '';
         collect = [];
-        $(this).find('li').addClass('clicked').end().siblings().find('li').removeClass('clicked');
+        $(this).addClass('clicked').siblings().removeClass('clicked');
         $('.collect i').removeClass('icon-collection1').addClass('icon-collection');
-        arr = $('.clicked').parent().attr('href');
+        arr = $('.clicked').data('url');
         $(arr.split('&')).each((i, v) => {
             collect.push(v.split('=')[1])
             // console.log(collect)
         });
-        window.location.hash = collect[1];
+        $('.iframe')[0].contentWindow.location.replace(arr);
+        let marked=$('.iframe').contents().find('.inner').data('mark');
         $('.translation').hide()
     });
     $('.domark').click(() => {
@@ -248,7 +250,7 @@ $(function () {
     $('.translation .moreMeaning').click(function () {
         $(this).find('p').slideToggle()
     });
-    drag()
+    drag();
     function drag() {
         let  oDiv = $('.translation');
         oDiv.mousedown(function (e) {
