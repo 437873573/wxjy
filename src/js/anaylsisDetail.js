@@ -88,7 +88,7 @@ $(function () {
     $('.post p').click(() => {
         let comment = $('.post textarea').val();
         let collect = [];
-        let arr = $('.clicked', window.parent.document).parent().attr('href');
+        let arr = $('.clicked', window.parent.document).data('url');
         $(arr.split('&')).each((i, v) => {
             collect.push(v.split('=')[1])
             // console.log(collect)
@@ -104,7 +104,7 @@ $(function () {
             },
             success: function (mess) {
                 if (mess.code == 0) {
-                    window.parent.pop('评论成功')
+                    window.parent.pop('评论成功');
                     window.location.reload()
                 } else {
                     window.parent.pop('评论失败，请重试', 'red')
