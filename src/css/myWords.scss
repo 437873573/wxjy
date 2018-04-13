@@ -11,10 +11,12 @@
 @import "./module/sprite-fav";
 @import "./module/page-navgator";
 
+.content.my-words-block{
+  height: auto;
+}
 .my-words-block {
   position: relative;
   padding: 20px 0;
-  
   >.title {
     padding-left: 40px;
   }
@@ -90,7 +92,7 @@
     }
     .table-bd {
       font-size: 14px;
-      height: 442px;
+      //height: 442px;
     }
     .row {
       float: left;

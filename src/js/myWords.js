@@ -8,11 +8,14 @@ $(function () {
             $(this).closest('.words-item').removeClass('checked')
         }
     });
-    $('.words-item').click(function () {
-        if($(this).hasClass('hidden-info')){
-            $(this).removeClass('hidden-info').find('.other').slideDown().end().find('.unfold i').attr('class','icon-nav-top')
+    $('.unfold').click(function () {
+        let par=$(this).closest('.words-item')
+        if(par.hasClass('hidden-info')){
+            par.removeClass('hidden-info').find('.other').slideDown();
+            $(this).find('i').attr('class','icon-nav-top')
         }else{
-            $(this).addClass('hidden-info').find('.other').slideUp().end().find('.unfold i').attr('class','icon-nav-bottom')
+            par.addClass('hidden-info').find('.other').slideUp();
+            $(this).find('i').attr('class','icon-nav-bottom')
         }
     });
     $('.alltimes').click(function (){
