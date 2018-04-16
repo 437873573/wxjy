@@ -25,14 +25,14 @@ big_header: 1
             </div>
 
             <div class="day-plan">
-                <div class="plan-title">今日计划完成</div>
+                <div class="plan-title">当天计划完成</div>
                 <div class="done-circle">
                     <svg width="84" height="84" viewbox="0 0 84 84">
                         <circle cx="42" cy="42" r="32" stroke-width="10" stroke="#ffde00" fill="none"></circle>
                         <circle cx="42" cy="42" r="32" stroke-width="10" stroke="#00e290" fill="none"
-                                transform="matrix(0,-1,1,0,0,84)" stroke-dasharray="160 40"></circle>
+                                transform="matrix(0,-1,1,0,0,84)" stroke-dasharray="200 0"></circle>
                     </svg>
-                    <span class="inner">80%</span>
+                    <span class="inner">0%</span>
                 </div>
             </div>
 
@@ -63,7 +63,7 @@ big_header: 1
                 </div>
                 <ul class="right">
                     <!--<select>-->
-                        <!--<option value="任务">任务</option>-->
+                    <!--<option value="任务">任务</option>-->
                     <!--</select>-->
                     <li class="thistoday showed">今天</li>
                     <li class="thismon">本月</li>
@@ -375,6 +375,21 @@ big_header: 1
             <textarea name="todoContent" placeholder="请添加日程的详细内容,限100字" maxlength="100"></textarea>
         </div>
         <div class="bot">提交</div>
+    </div>
+</div>
+<div class="reorco hidden">
+    <div class="reorconwrap">
+        <div class="top">
+            <h3>提示</h3>
+            <a href="javaScript:;" class="reorco_close">×</a>
+        </div>
+        <div class="main">
+            <p>您上次在该试题集测试还没完成，是否继续？</p>
+        </div>
+        <div class="bot">
+            <a href="#" target="_blank" class="btn btn-go">继续上次</a>
+            <a href=# target="_blank" class="btn btn-re">重新开始</a>
+        </div>
     </div>
 </div>
 {{> apply}}

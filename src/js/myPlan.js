@@ -146,35 +146,16 @@ $(function () {
                                                     <span class="row row-4">正确率 ${t.correct_rate}%</span>
                                                 </div>
                                                 <div class="btns">
-                                                    ${t.done_num==0||t.done_num==t.total_num?
-                                                    `<a href=${t.test_do_url+'?restart=0'} class="btn-go do" target="_blank">做题</a>`:
-                                                    `<div class="btn btn-go new-go">
-                                                        <span>做题</span>
-                                                        <div class="reorco hidden">
-                                                            <div class="reorconwrap">
-                                                                <div class="top">
-                                                                    <h3>提示</h3>
-                                                                    <a href="javaScript:;" class="reorco_close">×</a>
-                                                                </div>
-                                                                <div class="main">
-                                                                    <p>您上次在该试题集测试还没完成，是否继续？</p>
-                                                                </div>
-                                                                <div class="bot">
-                                                                    <a href=${t.test_do_url+'?restart=0'} target="_blank" class="btn btn-go">继续上次</a>
-                                                                    <a href=${t.test_do_url+'?restart=1'} target="_blank" class="btn">重新开始</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>`}
+                                                    <a href="javaScript:;" class="btn-go do" data-date=${mess.planDate} data-id=${t.id}>做题</a>
                                                     <a href=${t.test_view_url} class="btn-cancle see">查看</a>
                                                     ${t.test_video_url?
                                                         `${userLevel<t.resource_video.level?
-                                                        `<span class="btn-cancle noLev">视频</span>`:
+                                                        `<span class="btn-cancle noLev" onclick=" $('.applyBox').show()">视频</span>`:
                                                         `<a href=${t.test_video_url} class="btn-cancle video">视频</a>`}`:
                                                         `<span class="btn-cancle noRes">视频</span>`}
                                                     ${t.test_download_url?
                                                         `${userLevel<t.resource_document.level?
-                                                        `<span class="btn-cancle noLev">下载</span>`:
+                                                        `<span class="btn-cancle noLev" onclick=" $('.applyBox').show()">下载</span>`:
                                                         `<a href=${t.test_download_url} class="btn-cancle download">下载</a>`}`:
                                                         `<span class="btn-cancle noRes">下载</span>`}
                                                 </div>
@@ -187,6 +168,9 @@ $(function () {
                             })
                         })
                     }
+                    let rate=mess.plan.today_complete_rate;
+                    $('.day-plan circle:nth-of-type(2)').attr('stroke-dasharray', `${rate * 2} ${200 - rate * 2}`)
+                    $('.day-plan span').text(`${rate}%`)
                 }
             },
             error: function () {
@@ -195,16 +179,23 @@ $(function () {
         })
     }
     //重做选择弹窗显示
-    $('.detailplan').click(function (e) {
-        if($(e.target).text()=='做题'){
-            $('.new-go').click(()=> $('.reorco').show());
-        }else if(e.target==$('.reorco a')[0]){
-            $('.reorco').hide()
-        }else if($(e.target).hasClass('noLev')){
-            $('.applyBox').show()
-        }
+    $('.detailplan').on('click','.do',function () {
+        let planDate=$(this).data('date'),id=$(this).data('id');
+        $.post('/api/volume/needConfirm',{plan_date:planDate,test_volume_id:id},function (mess) {
+            if(mess&&mess.code===0){
+                if(mess.data.needConfirm){
+                    $('.reorco .btn-go').attr('href',"/exam/test/"+id+"?restart=0");
+                    $('.reorco .btn-re').attr('href',"/exam/test/"+id+"?restart=1");
+                    $('.reorco').show()
+                }else{
+                    let openLink = $("<a>");
+                    openLink.attr('href', "/exam/test/"+id+"?restart=0");
+                    openLink[0].click()
+                }
+            }
+        })
     });
-
+    $('.detailplan').on('click','.reorco a',()=>$('.reorco').hide())
     //发送背诵完成状态
     $('.recite').click(function (e) {
         let ei = $(e.target), id = ei.parent().attr('id'), s = ei.parent().data('status');

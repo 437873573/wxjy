@@ -11,7 +11,7 @@ $(function () {
     $('.mathquill-embedded-latex').each((i, v) => {
         MQ.StaticMath(v);
     });
-
+    $('.mathquill-embedded-latex').css('width','auto')
     //音频播放
     $('.icon-mp3-play').click(function () {
         if (audio.readyState < 4) {
