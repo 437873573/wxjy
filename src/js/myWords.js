@@ -10,11 +10,11 @@ $(function () {
     });
     $('.unfold').click(function () {
         let par=$(this).closest('.words-item')
-        if(par.hasClass('hidden-info')){
-            par.removeClass('hidden-info').find('.other').slideDown();
+        if(!par.hasClass('hidden-info')){
+            par.addClass('hidden-info').find('.other').slideDown();
             $(this).find('i').attr('class','icon-nav-top')
         }else{
-            par.addClass('hidden-info').find('.other').slideUp();
+            par.removeClass('hidden-info').find('.other').slideUp();
             $(this).find('i').attr('class','icon-nav-bottom')
         }
     });

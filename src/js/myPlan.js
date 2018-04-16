@@ -195,7 +195,10 @@ $(function () {
             }
         })
     });
-    $('.detailplan').on('click','.reorco a',()=>$('.reorco').hide())
+    $('.reorco a').click(function (e) {
+        e.stopPropagation();
+        $('.reorco').hide()
+    })
     //发送背诵完成状态
     $('.recite').click(function (e) {
         let ei = $(e.target), id = ei.parent().attr('id'), s = ei.parent().data('status');
