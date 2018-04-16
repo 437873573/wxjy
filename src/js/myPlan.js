@@ -48,7 +48,7 @@ $(function () {
             data: `planDate=${w}`,
             success: function (mess) {
                 $('.detailplan,.recite,.program').html('');
-                let userLevel=mess.user.current_level;
+                let userLevel = mess.user.current_level;
                 if (mess.planTodos.length >= 1) {
                     let lis = '', todo = mess.planTodos;
                     $.each(todo, (i, v) => {
@@ -94,7 +94,8 @@ $(function () {
                                     <a href="javaScript:;" class="btn-go do" id="2">完成</a>
                                     <a href="javaScript:;" class="btn-cancle" id="1">未完成</a>
                                 </div>
-                           </li>`});
+                           </li>`
+                        });
                         $(`<div class="plan-column">
                                 <div class="column-hd">
                                     <h3 class="title">背诵</h3>
@@ -146,20 +147,21 @@ $(function () {
                                                     <span class="row row-4">正确率 ${t.correct_rate}%</span>
                                                 </div>
                                                 <div class="btns">
-                                                    <a href="javaScript:;" class="btn-go do" data-date=${mess.planDate} data-id=${t.id}>做题</a>
+                                                    <a href="javascript:;" class="btn-go do" data-date=${mess.planDate} data-id=${t.id}>做题</a>
                                                     <a href=${t.test_view_url} class="btn-cancle see">查看</a>
-                                                    ${t.test_video_url?
-                                                        `${userLevel<t.resource_video.level?
-                                                        `<span class="btn-cancle noLev" onclick=" $('.applyBox').show()">视频</span>`:
-                                                        `<a href=${t.test_video_url} class="btn-cancle video">视频</a>`}`:
-                                                        `<span class="btn-cancle noRes">视频</span>`}
-                                                    ${t.test_download_url?
-                                                        `${userLevel<t.resource_document.level?
-                                                        `<span class="btn-cancle noLev" onclick=" $('.applyBox').show()">下载</span>`:
-                                                        `<a href=${t.test_download_url} class="btn-cancle download">下载</a>`}`:
-                                                        `<span class="btn-cancle noRes">下载</span>`}
-                                                </div>
-                                            </li>`});
+                                                    ${t.test_video_url ?
+                                        `${userLevel < t.resource_video.level ?
+                                            `<span class="btn-cancle noLev" onclick=" $('.applyBox').show()">视频</span>` :
+                                            `<a href=${t.test_video_url} class="btn-cancle video">视频</a>`}` :
+                                        `<span class="btn-cancle noRes">视频</span>`}
+                                                                    ${t.test_download_url ?
+                                        `${userLevel < t.resource_document.level ?
+                                            `<span class="btn-cancle noLev" onclick=" $('.applyBox').show()">下载</span>` :
+                                            `<a href=${t.test_download_url} class="btn-cancle download">下载</a>`}` :
+                                        `<span class="btn-cancle noRes">下载</span>`}
+                                                                </div>
+                                                            </li>`
+                                });
                                 $(`<div class="column-bd">
                                         <ul class="list">
                                             ${lis}
@@ -168,7 +170,7 @@ $(function () {
                             })
                         })
                     }
-                    let rate=mess.plan.today_complete_rate;
+                    let rate = mess.plan.today_complete_rate;
                     $('.day-plan circle:nth-of-type(2)').attr('stroke-dasharray', `${rate * 2} ${200 - rate * 2}`)
                     $('.day-plan span').text(`${rate}%`)
                 }
@@ -178,23 +180,36 @@ $(function () {
             }
         })
     }
+
     //重做选择弹窗显示
-    $('.detailplan').on('click','.do',function () {
-        let planDate=$(this).data('date'),id=$(this).data('id');
-        $.post('/api/volume/needConfirm',{plan_date:planDate,test_volume_id:id},function (mess) {
-            if(mess&&mess.code===0){
-                if(mess.data.needConfirm){
-                    $('.reorco .btn-go').attr('href',"/exam/test/"+id+"?restart=0");
-                    $('.reorco .btn-re').attr('href',"/exam/test/"+id+"?restart=1");
-                    $('.reorco').show()
-                }else{
-                    let openLink = $("<a>");
-                    openLink.attr('href', "/exam/test/"+id+"?restart=0");
-                    openLink[0].click()
+    $('.detailplan').on('click', '.do', function () {
+        let planDate = $(this).data('date'), id = $(this).data('id'), flag = true;
+        $.ajax({
+            async: false,
+            type: 'post',
+            url: '/api/volume/needConfirm',
+            data: {plan_date: planDate, test_volume_id: id},
+            success: function (mess) {
+                if (mess && mess.code === 0) {
+                    if (mess.data.needConfirm) {
+                        $('.reorco .btn-go').attr('href', "/exam/test/" + id + "?restart=0");
+                        $('.reorco .btn-re').attr('href', "/exam/test/" + id + "?restart=1");
+                        $('.reorco').show()
+                        flag = true
+                    } else {
+                        flag = false
+                    }
                 }
             }
-        })
+        });
+        flag ? `` : window.open("/exam/test/" + id + "?restart=0")
+        // }) === false ? window.open("/exam/test/" + id + "?restart=0") : console.log(flag)
     });
+
+    function re() {
+
+    }
+
     $('.reorco a').click(function (e) {
         e.stopPropagation();
         $('.reorco').hide()
