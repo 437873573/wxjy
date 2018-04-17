@@ -189,7 +189,9 @@ $(function () {
                 $(that).parent().remove();
                 $(`<li>
                     <div class="left">
-                        <img src="${mess.data.comment.user.avatar}" alt="">
+                        ${v.user.avatar ?
+                    `<img src=${v.user.avatar} alt="">` :
+                    `<img src="/static/imgs/header.png" alt="">`}
                     </div>
                     <div class="right">
                         <p class="title">${mess.data.comment.user.nickname}</p>
