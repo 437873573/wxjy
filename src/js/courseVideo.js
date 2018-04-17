@@ -197,7 +197,6 @@ $(function () {
                     </div>
                 </li>`).prependTo($('.advice-sub', $parent))
                 $connum.parent().removeClass('s')
-
             }
         })
     });
@@ -211,8 +210,8 @@ $(function () {
                     $('html,body').animate({'scrollTop': h},800);
                     $(that).siblings('textarea').val('');
                     let comment = mess.data.comment;
-                    let li = `<li class="newComment">
-                                    <div class="advice-par">
+                    let li = `<li class="newComment" data-comment-id=${comment.id}>
+                                    <div class="advice-par clearfix">
                                     <div class="left">
                                         ${comment.user.avatar ?
                                 `<img src=${comment.user.avatar} alt="">` :
@@ -221,7 +220,7 @@ $(function () {
                                     <div class="right">
                                         <p class="title">${comment.user.nickname}</p>
                                         <p>${comment.content}</p>
-                                        <p class="foot" data-comment-id=${comment.id}>
+                                        <p class="foot">
                                             <span><i class="icon-video-nozan"></i> 赞同 <span>0</span></span>
                                             <span><i class="icon-video-message"></i> 评论 <span class="connum">0</span></span>
                                             <!--<span><i class="icon-video-share"></i> 分享 <span>2</span></span>-->
