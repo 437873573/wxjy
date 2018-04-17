@@ -87,20 +87,18 @@ $(function () {
                                 children_html = '<ul class="advice-sub">';
                                 $.each(v.children, (i2, v2) => {
                                     children_html+=`<li>
-                        <div class="left">
-                            ${v2.user.avatar ?
-                                    `<img src=${v2.user.avatar} alt="">` :
-                                    `<img src="/static/imgs/header.png" alt="">`}
-                        </div>
-                        <div class="right">
-                            <p class="title">${v2.user.nickname}</p>
-                            <p>${v2.content}</p>
-                        </div>
-                    </li>`
-                                })
+                                        <div class="left">
+                                            ${v2.user.avatar ?
+                                                    `<img src=${v2.user.avatar} alt="">` :
+                                                    `<img src="/static/imgs/header.png" alt="">`}
+                                        </div>
+                                        <div class="right">
+                                            <p class="title">${v2.user.nickname}</p>
+                                            <p>${v2.content}</p>
+                                        </div>
+                                    </li>`})
                                 children_html += '</ul>';
                             }
-
                             lis += `<li data-comment-id=${v.id}>
                                     <div class="advice-par clearfix">
                                         <div class="left">
@@ -115,7 +113,7 @@ $(function () {
                                             ${v.is_voted ?
                                     `<span class="added-zan"><i class="icon-video-zan"></i> 赞同 <span>${v.vote_count}</span></span>` :
                                     `<span><i class="icon-video-nozan"></i> 赞同 <span>${v.vote_count}</span></span>`}
-                                                <span><i class="icon-video-message"></i> 评论 <span class="connum">0</span></span>
+                                                <span><i class="icon-video-message"></i> 评论 <span class="connum">${v.children.length}</span></span>
                                                 <!--<span><i class="icon-video-share"></i> 分享 <span>2</span></span>-->
                                                 <span class="fr">${v.created_at}</span>
                                             </p>
@@ -189,8 +187,8 @@ $(function () {
                 $(that).parent().remove();
                 $(`<li>
                     <div class="left">
-                        ${v.user.avatar ?
-                    `<img src=${v.user.avatar} alt="">` :
+                        ${mess.data.comment.user.avatar ?
+                    `<img src=${mess.data.comment.user.avatar} alt="">` :
                     `<img src="/static/imgs/header.png" alt="">`}
                     </div>
                     <div class="right">
