@@ -55,7 +55,7 @@ $(function () {
         }
     });
 
-    // getComment();
+    getComment();
 
     //获取评论列表
     function getComment(num) {
@@ -81,31 +81,55 @@ $(function () {
                         let comments = data.data;
                         let lis = '';
                         $.each(comments, (i, v) => {
-                            lis += `<li data-comment-id=${v.comment_id}>
-                                    <div class="left">
-                                        ${v.avatar ?
-                                `<img src=${v.avatar} alt="">` :
-                                `<img src="/static/imgs/header.png" alt="">`}
-                                    </div>
-                                    <div class="right">
-                                        <p class="title">${v.nickname}</p>
-                                        <p>${v.content}</p>
-                                        <p class="foot">
-                                        ${v.is_voted ?
-                                `<span class="added-zan"><i class="icon-video-zan"></i> 赞同 <span>${v.vote_count}</span></span>` :
-                                `<span><i class="icon-video-nozan"></i> 赞同 <span>${v.vote_count}</span></span>`}
-                                            <span><i class="icon-video-message"></i> 评论 <span>0</span></span>
-                                            <!--<span><i class="icon-video-share"></i> 分享 <span>2</span></span>-->
-                                            <span class="fr">${v.created_at}</span>
-                                        </p>
-                                    </div>
-                                </li>`
+
+                            var children_html = '';
+                            if (v.children.length > 0) {
+                                children_html = '<ul class="advice-sub">';
+                                $.each(v.children, (i2, v2) => {
+                                    children_html+=`<li>
+                        <div class="left">
+                            ${v2.user.avatar ?
+                                    `<img src=${v2.user.avatar} alt="">` :
+                                    `<img src="/static/imgs/header.png" alt="">`}
+                        </div>
+                        <div class="right">
+                            <p class="title">${v2.user.nickname}</p>
+                            <p>${v2.content}</p>
+                        </div>
+                    </li>`
+                                })
+                                children_html += '</ul>';
+                            }
+
+                            lis += `<li data-comment-id=${v.id}>
+                                    <div class="advice-par clearfix">
+                                        <div class="left">
+                                            ${v.user.avatar ?
+                                    `<img src=${v.user.avatar} alt="">` :
+                                    `<img src="/static/imgs/header.png" alt="">`}
+                                        </div>
+                                        <div class="right">
+                                            <p class="title">${v.user.nickname}</p>
+                                            <p>${v.content}</p>
+                                            <p class="foot">
+                                            ${v.is_voted ?
+                                    `<span class="added-zan"><i class="icon-video-zan"></i> 赞同 <span>${v.vote_count}</span></span>` :
+                                    `<span><i class="icon-video-nozan"></i> 赞同 <span>${v.vote_count}</span></span>`}
+                                                <span><i class="icon-video-message"></i> 评论 <span class="connum">0</span></span>
+                                                <!--<span><i class="icon-video-share"></i> 分享 <span>2</span></span>-->
+                                                <span class="fr">${v.created_at}</span>
+                                            </p>
+                                        </div>
+                                        </div>
+                                        ${children_html}
+                                    </li>`
                         });
+
                         $(lis).appendTo('.commont-list ul')
                     }
                 } else if (mess.code === 0 && mess.data.comments.total === 0) {
                     $('.commont-list h3 span').text(0);
-                    $('.commont-list ul').html(`<span>暂无评论</span>`)
+                    $('.commont-list').html(`<span>暂无评论</span>`)
                 }
             }
         })
@@ -144,12 +168,37 @@ $(function () {
     $('.commont-list ul').on('click','.advice-adv p',function () {
         let comment = $('.advice-adv textarea').val();
         let pid = $(this).closest('li').data('commentId');
-        $.post('/api/comment', {
+        let that=this;
+        $.post('/api/volume/addComment', {
             content: comment,
             test_volume_id: id,
             pid: pid
-        }, function () {
-            window.location.reload()
+        }, function (mess) {
+            if(mess&&mess.code===0){
+                if($.isEmptyObject(mess.data.comment)){
+                   return
+                }
+                var $parent = $(that).closest('li');
+                var $connum = $parent.find('.connum');
+                let t=parseInt($connum.text())
+                t++;
+                $connum.text(t)
+
+                $('.advice-sub', $parent).size() || $('.advice-par', $parent).after($('<ul/>', {class: 'advice-sub'}))
+
+                $(that).parent().remove();
+                $(`<li>
+                    <div class="left">
+                        <img src="${mess.data.comment.user.avatar}" alt="">
+                    </div>
+                    <div class="right">
+                        <p class="title">${mess.data.comment.user.nickname}</p>
+                        <p>${mess.data.comment.content}</p>
+                    </div>
+                </li>`).prependTo($('.advice-sub', $parent))
+                $connum.parent().removeClass('s')
+
+            }
         })
     });
     //发表评论
@@ -163,24 +212,26 @@ $(function () {
                     $(that).siblings('textarea').val('');
                     let comment = mess.data.comment;
                     let li = `<li class="newComment">
-                            <div class="left">
-                                ${comment.user.avatar ?
-                        `<img src=${comment.user.avatar} alt="">` :
-                        `<img src="/static/imgs/header.png" alt="">`}
-                            </div>
-                            <div class="right">
-                                <p class="title">${comment.user.nickname}</p>
-                                <p>${comment.content}</p>
-                                <p class="foot" data-comment-id=${comment.id}>
-                                    <span><i class="icon-video-nozan"></i> 赞同 <span>0</span></span>
-                                    <span><i class="icon-video-message"></i> 评论 <span>0</span></span>
-                                    <!--<span><i class="icon-video-share"></i> 分享 <span>2</span></span>-->
-                                    <span class="fr">${comment.created_at}</span>
-                                </p>
-                            </div>
-                        </li>`;
-                    $('.commont-list ul>span').remove()
-                    $(li).prependTo('.commont-list ul');
+                                    <div class="advice-par">
+                                    <div class="left">
+                                        ${comment.user.avatar ?
+                                `<img src=${comment.user.avatar} alt="">` :
+                                `<img src="/static/imgs/header.png" alt="">`}
+                                    </div>
+                                    <div class="right">
+                                        <p class="title">${comment.user.nickname}</p>
+                                        <p>${comment.content}</p>
+                                        <p class="foot" data-comment-id=${comment.id}>
+                                            <span><i class="icon-video-nozan"></i> 赞同 <span>0</span></span>
+                                            <span><i class="icon-video-message"></i> 评论 <span class="connum">0</span></span>
+                                            <!--<span><i class="icon-video-share"></i> 分享 <span>2</span></span>-->
+                                            <span class="fr">${comment.created_at}</span>
+                                        </p>
+                                    </div>
+                                    </div>
+                                </li>`;
+                    $('.commont-list>span').remove();
+                    $(li).prependTo('.commont-list>ul');
                     let remC=setTimeout(()=>$(li).removeClass('newComment'),2000)
                 }
             }

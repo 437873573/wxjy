@@ -376,6 +376,9 @@ main {
       >ul>li{
         padding: 10px 0;
         border-bottom: 1px solid #ccc;
+        &:last-of-type{
+          border-bottom: none;
+        }
       }
       .advice-par,.advice-sub li{
         display: flex;

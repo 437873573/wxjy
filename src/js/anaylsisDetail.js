@@ -107,8 +107,6 @@ $(function () {
                 if (mess.code == 0) {
                     window.parent.pop('评论成功');
                     window.location.reload()
-                } else {
-                    window.parent.pop('评论失败，请重试', 'red')
                 }
             }
         })
@@ -143,14 +141,19 @@ $(function () {
     };
     //参与评论文本区展开
     $('.feature span:nth-of-type(2)').click(function () {
+        let h=$('body').outerHeight()
         if (!$(this).hasClass('s')) {
             $(`<div class="advice-adv clearfix">
                     <textarea placeholder='请输入内容'></textarea>
                     <p>提交</p>
                 </div>`).insertAfter($(this).closest('.advice-par'))
             $(this).addClass('s').closest('.advice-par').siblings('.advice-adv').slideDown()
+            $('.iframe', window.parent.document).animate({height:h + 182},500);
         } else {
-            $(this).removeClass('s').closest('.advice-par').siblings('.advice-adv').slideUp(()=>$(this).closest('.advice-par').siblings('.advice-adv').remove())
+            $(this).removeClass('s').closest('.advice-par').siblings('.advice-adv').slideUp(()=>{
+                $(this).closest('.advice-par').siblings('.advice-adv').remove();
+            });
+            $('.iframe', window.parent.document).animate({height:h-142},500);
         }
     });
     //参与评论提交
