@@ -370,14 +370,15 @@ main {
       }
     }
     .advice{
-      height: 600px;
-      overflow-y: scroll;
       background: white;
       box-sizing: border-box;
       padding: 0 30px 30px;
       >ul>li{
         padding: 10px 0;
         border-bottom: 1px solid #ccc;
+        &:last-of-type{
+          border-bottom: none;
+        }
       }
       .advice-par,.advice-sub li{
         display: flex;

@@ -163,6 +163,7 @@ body {
       border-bottom: 1px dotted #e2e2e2;
       &:last-of-type{
         border-bottom: none;
+        padding-bottom: 0;
       }
     }
   }
@@ -213,6 +214,9 @@ body {
     border-bottom: 1px solid #bbb;
     padding: 28px 0;
     @extend %clearfix;
+    &:last-of-type{
+      border-bottom: none;
+    }
     &.newComment{
       animation: slide 1s 0.8s;
     }
@@ -241,7 +245,6 @@ body {
       display: inline-block;
       margin-right: 35px;
       font-size: 14px;
-      line-height: 52px;
       color: #00c47d;
       cursor: pointer;
       user-select: none;
