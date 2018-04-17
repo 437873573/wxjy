@@ -137,7 +137,7 @@ $(function () {
 
     //评论点赞
     $('.commont-list ul').on('click', '.foot>span:first-of-type', function () {
-        let id = $(this).parent().data('commentId'), that = this;
+        let id = $(this).closest('li').data('commentId'), that = this;
         if (!$(this).hasClass('added-zan')) {
             $.post('/api/comment/vote', {comment_id: id, vote_type: 1}, function (mess) {
                 if (mess && mess.code === 0) {
