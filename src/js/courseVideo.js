@@ -55,7 +55,7 @@ $(function () {
         }
     });
 
-    getComment();
+    // getComment();
 
     //获取评论列表
     function getComment(num) {
@@ -81,7 +81,7 @@ $(function () {
                         let comments = data.data;
                         let lis = '';
                         $.each(comments, (i, v) => {
-                            lis += `<li>
+                            lis += `<li data-comment-id=${v.comment_id}>
                                     <div class="left">
                                         ${v.avatar ?
                                 `<img src=${v.avatar} alt="">` :
@@ -90,11 +90,11 @@ $(function () {
                                     <div class="right">
                                         <p class="title">${v.nickname}</p>
                                         <p>${v.content}</p>
-                                        <p class="foot" data-comment-id=${v.comment_id}>
+                                        <p class="foot">
                                         ${v.is_voted ?
                                 `<span class="added-zan"><i class="icon-video-zan"></i> 赞同 <span>${v.vote_count}</span></span>` :
                                 `<span><i class="icon-video-nozan"></i> 赞同 <span>${v.vote_count}</span></span>`}
-                                            <!--<span><i class="icon-video-message"></i> 评论 <span>2</span></span>-->
+                                            <span><i class="icon-video-message"></i> 评论 <span>0</span></span>
                                             <!--<span><i class="icon-video-share"></i> 分享 <span>2</span></span>-->
                                             <span class="fr">${v.created_at}</span>
                                         </p>
@@ -128,7 +128,30 @@ $(function () {
             })
         }
     });
-
+    //参与评论
+    $('.commont-list ul').on('click', '.foot>span:nth-of-type(2)', function () {
+        if (!$(this).hasClass('s')) {
+            $(`<div class="advice-adv clearfix">
+                    <textarea placeholder='请输入内容'></textarea>
+                    <p>提交</p>
+                </div>`).insertAfter($(this).closest('.advice-par'))
+            $(this).addClass('s').closest('.advice-par').siblings('.advice-adv').slideDown()
+        } else {
+            $(this).removeClass('s').closest('.advice-par').siblings('.advice-adv').slideUp(()=>$(this).closest('.advice-par').siblings('.advice-adv').remove())
+        }
+    });
+    //参与评论提交
+    $('.commont-list ul').on('click','.advice-adv p',function () {
+        let comment = $('.advice-adv textarea').val();
+        let pid = $(this).closest('li').data('commentId');
+        $.post('/api/comment', {
+            content: comment,
+            test_volume_id: id,
+            pid: pid
+        }, function () {
+            window.location.reload()
+        })
+    });
     //发表评论
     $('.form-wrapper input').click(function () {
         let c = $(this).siblings('textarea').val(), that=this;
@@ -150,12 +173,13 @@ $(function () {
                                 <p>${comment.content}</p>
                                 <p class="foot" data-comment-id=${comment.id}>
                                     <span><i class="icon-video-nozan"></i> 赞同 <span>0</span></span>
-                                    <!--<span><i class="icon-video-message"></i> 评论 <span>2</span></span>-->
+                                    <span><i class="icon-video-message"></i> 评论 <span>0</span></span>
                                     <!--<span><i class="icon-video-share"></i> 分享 <span>2</span></span>-->
                                     <span class="fr">${comment.created_at}</span>
                                 </p>
                             </div>
                         </li>`;
+                    $('.commont-list ul>span').remove()
                     $(li).prependTo('.commont-list ul');
                     let remC=setTimeout(()=>$(li).removeClass('newComment'),2000)
                 }

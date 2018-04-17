@@ -369,23 +369,47 @@ main {
         margin-left: 10px;
       }
     }
-    .advice {
-      height: 590px;
-      padding-bottom: 30px;
+    .advice{
+      height: 600px;
       overflow-y: scroll;
-    }
-    .advice, .post {
       background: white;
       box-sizing: border-box;
-      padding-left: 30px;
-      padding-right: 30px;
-      ul li {
-        height: 150px;
-        border-bottom: 1px dashed #f2f2f2;
+      padding: 0 30px 30px;
+      >ul>li{
+        padding: 10px 0;
+        border-bottom: 1px solid #ccc;
+      }
+      .advice-par,.advice-sub li{
         display: flex;
         justify-content: space-between;
         align-items: center;
-        line-height: 24px;
+      }
+      .advice-sub{
+        margin-top: 15px;
+        margin-left: 90px;
+        padding-top: 4px;
+        border-top: 1px dotted #e2e2e2;
+      }
+      .advice-sub li{
+        padding: 6px 0;
+        border-bottom: 1px dotted #e2e2e2;
+        &:last-of-type{
+          padding-bottom: 0;
+          border-bottom: none;
+        }
+        .headimg{
+          width: 60px;
+          height: 60px;
+        }
+        .main{
+          width: 100%;
+          font-size: 14px;
+        }
+        .foot{
+          justify-content: flex-end !important;
+        }
+      }
+      ul li {
         .headimg {
           flex: none;
           width: 90px;
@@ -404,6 +428,7 @@ main {
           flex-direction: column;
           align-items: flex-start;
           font-size: 14px;
+          line-height: 24px;
           .speech {
             min-height: 48px;
           }
@@ -435,11 +460,11 @@ main {
         }
       }
     }
-    .post textarea {
+    .post textarea ,.advice-adv textarea{
       border-radius: 5px;
       width: 100%;
       resize: none;
-      height: 160px;
+      height: 120px;
       font-size: 16px;
       background: #fafafa;
       outline: none;
@@ -447,9 +472,10 @@ main {
       box-sizing: border-box;
       border-color: #bbb;
     }
-    .post {
-      padding-top: 20px;
-      padding-bottom: 20px;
+    .post ,.advice-adv{
+      background: white;
+      box-sizing: border-box;
+      padding: 20px 30px;
       p {
         margin: 10px auto 0;
         width: 100px;
@@ -461,6 +487,14 @@ main {
         line-height: 30px;
         cursor: pointer;
         float: right
+      }
+    }
+    .advice-adv{
+      padding: 20px 0;
+      display: none;
+      textarea{
+        height: 80px;
+        padding: 10px;
       }
     }
     .keyanswer {

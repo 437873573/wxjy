@@ -154,8 +154,63 @@ body {
     line-height: 40px;
     outline: none;
   }
+  .advice-sub{
+    margin-left:80px;
+    margin-top: 10px;
+    border-top: 1px dotted #e2e2e2;
+    li{
+      padding: 10px 0;
+      border-bottom: 1px dotted #e2e2e2;
+      &:last-of-type{
+        border-bottom: none;
+      }
+    }
+  }
+  .advice-par{
+    .right{
+      width: 1120px;
+    }
+  }
+  .advice-adv textarea{
+    border-radius: 5px;
+    width: 100%;
+    resize: none;
+    height: 120px;
+    font-size: 16px;
+    background: #fafafa;
+    outline: none;
+    padding: 20px;
+    box-sizing: border-box;
+    border-color: #bbb;
+  }
+  .advice-adv{
+    background: white;
+    box-sizing: border-box;
+    padding: 20px 30px;
+    p {
+      margin: 10px auto 0;
+      width: 100px;
+      height: 30px;
+      border-radius: 100px;
+      background: #00e290;
+      color: white;
+      text-align: center;
+      line-height: 30px;
+      cursor: pointer;
+      float: right
+    }
+  }
+  .advice-adv{
+    padding: 20px 0;
+    margin-left: 80px;
+    display: none;
+    textarea{
+      height: 80px;
+      padding: 10px;
+    }
+  }
   li {
-    border-bottom: 1px solid #ededed;
+    border-bottom: 1px solid #bbb;
     padding: 28px 0;
     @extend %clearfix;
     &.newComment{
@@ -172,7 +227,6 @@ body {
     }
     .right {
       float: left;
-      width: 1040px;
     }
     p {
       font-size: 16px;
@@ -193,6 +247,7 @@ body {
       user-select: none;
       &:last-of-type {
         color: #a1a4a3;
+        margin-right: 0;
       }
       i {
         position: relative;
