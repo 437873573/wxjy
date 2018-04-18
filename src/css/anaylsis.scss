@@ -193,10 +193,22 @@ main {
           table {
             width: 300px;
             margin: 0 5px;
+            display: flex;
+            align-items: stretch;
+            tbody{
+              display: flex;
+              flex-direction: column;
+            }
             tr{
-              height: 33.33333%;
+              flex-grow: 1;
+              display: flex;
+              &:first-of-type{
+                height: 45px;
+                flex-grow: 0;
+              }
             }
             th {
+              box-sizing: border-box;
               width: 300px;
               text-align: center;
               line-height: 38px;
