@@ -1,6 +1,19 @@
 import './modules/header'
 import './lib/mathquill.min'
 
+$.ajaxSetup({
+    statusCode: {
+        401: function () {
+            top.window.location.href = '/login'
+        }
+    },
+    error: function (mess) {
+        if (mess.error == 'Unauthenticated.') {
+            top.window.location.href = '/login'
+        }
+    }
+});
+
 $(function () {
     $('.iframe', window.parent.document).css('height', $('body').outerHeight() + 20);
     let marked = $('.inner').data('mark');
@@ -141,23 +154,23 @@ $(function () {
     };
     //参与评论文本区展开
     $('.feature span:nth-of-type(2)').click(function () {
-        let h=$('body').outerHeight()
+        let h = $('body').outerHeight()
         if (!$(this).hasClass('s')) {
             $(`<div class="advice-adv clearfix">
                     <textarea placeholder='请输入内容'></textarea>
                     <p>提交</p>
                 </div>`).insertAfter($(this).closest('.advice-par'))
             $(this).addClass('s').closest('.advice-par').siblings('.advice-adv').slideDown()
-            $('.iframe', window.parent.document).animate({height:h + 182},500);
+            $('.iframe', window.parent.document).animate({height: h + 182}, 500);
         } else {
-            $(this).removeClass('s').closest('.advice-par').siblings('.advice-adv').slideUp(()=>{
+            $(this).removeClass('s').closest('.advice-par').siblings('.advice-adv').slideUp(() => {
                 $(this).closest('.advice-par').siblings('.advice-adv').remove();
             });
-            $('.iframe', window.parent.document).animate({height:h-142},500);
+            $('.iframe', window.parent.document).animate({height: h - 142}, 500);
         }
     });
     //参与评论提交
-    $('.advice').on('click','.advice-adv p',function () {
+    $('.advice').on('click', '.advice-adv p', function () {
         let comment = $('.advice-adv textarea').val();
         let collect = [];
         let arr = $('.clicked', window.parent.document).data('url');
