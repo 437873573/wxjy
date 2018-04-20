@@ -126,8 +126,10 @@ $(function () {
                         $(lis).appendTo('.commont-list ul')
                     }
                 } else if (mess.code === 0 && mess.data.comments.total === 0) {
+                    $('.page-navgator').hide()
                     $('.commont-list h3 span').text(0);
-                    $('.commont-list').html(`<span>暂无评论</span>`)
+                    $('.commont-list ul').html('');
+                    $(`<span>暂无评论</span>`).prependTo($('.commont-list'))
                 }
             }
         })
