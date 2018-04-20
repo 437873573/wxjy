@@ -23,6 +23,11 @@
       .txt {
         float: left;
       }
+      .num{
+        display: inline-block;
+        text-align: right;
+        width: 46px;
+      }
     }
     .done-range {
       float: left;
