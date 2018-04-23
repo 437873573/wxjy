@@ -127,6 +127,7 @@
     .tab {
       margin: 0 auto;
       width: 240px;
+      overflow: hidden;
       a {
         display: inline-block;
         float: left;
@@ -145,10 +146,22 @@
     }
     .cont {
       margin-top: 20px;
+      height: 299px;
+      overflow: hidden;
+      position: relative;
+      ul{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+      }
       .item {
         @extend %clearfix;
         padding: 20px 0;
         border-bottom: 1px solid #eaeaea;
+        height: 100px;
+        box-sizing: border-box;
         &:last-child {
           border-bottom: 0;
         }
@@ -194,16 +207,41 @@
   }
 
   .col-msjs {
-    .list {
-      //@extend %clearfix;
-      width: 100%;
+    position: relative;
+    .prev, .next {
+      position: absolute;
+      top: 140px;
+      width: 80px;
+      height: 80px;
       display: flex;
-      justify-content: space-around;
+      justify-content: center;
       align-items: center;
+      cursor: pointer;
+      background: #fff;
+    }
+    .prev{
+      left:-60px;
+    }
+    .next{
+      right: -60px;
+    }
+    .bd{
+      height: 400px;
+      overflow: hidden;
+      position: relative;
+    }
+    .list {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      width: auto;
+      position: absolute;
+      left: 0;
+      top: 0;
     }
     .item {
-      //float: left;
-      //margin: 0 30px;
+      flex: none;
+      width: 300px;
       text-align: center;
     }
     .avator {
@@ -236,6 +274,7 @@
     }
     .txt {
       font-size: 14px;
+      line-height: 20px;
       color: #bbb;
     }
   }

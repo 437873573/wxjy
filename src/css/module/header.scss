@@ -34,6 +34,9 @@ body {
         .page-header_sec {
           display: block;
         }
+        span[class^="sanjiao"]{
+          display: block;
+        }
       }
       > a {
         display: block;
@@ -47,9 +50,7 @@ body {
         &:active {
           color: #00e290;
           border-bottom-color: #00e290;
-          span[class^="sanjiao"]{
-            display: block;
-          }
+
         }
         &.active {
           color: #00e290;
@@ -60,14 +61,14 @@ body {
           &:hover,
           &:active {
             border: none;
-            span {
+            span:first-of-type {
               background: url(../imgs/sprite-common.png) no-repeat -241px -67px;
             }
           }
           &.active {
             color: #00e290;
             border-bottom: 3px solid #00e290;
-            span {
+            span:first-of-type {
               background: url(../imgs/sprite-common.png) no-repeat -241px -67px;
             }
           }
@@ -81,7 +82,9 @@ body {
           border: 10px solid transparent;
           border-bottom-color: #e9e9e9;
           transform: translateX(-50%);
+          z-index: 101;
           &.sanjiao-2 {
+            bottom: -5px;
             border-bottom-color: #fff;
           }
         }
