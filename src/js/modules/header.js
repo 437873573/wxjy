@@ -43,6 +43,7 @@ btnSoso.on('click', function() {
     var soso = $('.page-header__search input').val();
     if (soso && soso.length > 0) {
         window.open('/search?keywords=' + soso, '_blank');
+        $('.page-header__search input').val('')
         // console.info(soso);
     }
 });

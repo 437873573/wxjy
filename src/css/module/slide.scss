@@ -2,7 +2,7 @@
   position: fixed;
   right: 28px;
   top: 50%;
-  height: 289px;
+  //height: 289px;
   width: 94px;
   margin-top: -144px;
   background-color: #ffffff;
@@ -26,6 +26,19 @@
         margin-top: 9px;
       }
     }
-    
+  }
+  .advisory{
+    position: relative;
+    img{
+      display: none;
+      width: 200px;
+      height: 200px;
+      position: absolute;
+      bottom: 0;
+      left: -201px;
+    }
+    &:hover img{
+      display: block;
+    }
   }
 }

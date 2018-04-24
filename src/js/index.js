@@ -26,8 +26,9 @@ $(function () {
             tlist.animate({top: `${parseInt(l) - 300}px`})
         }
     });
-    var tlist=$('.col-msjs .bd ul');
+    var tlist=$('.col-msjs .bd .list');
     if (parseInt(tlist.css('width')) <= 1200) {
+        tlist.css({'justifyContent':'space-around','width':'1200px'});
         $('.col-msjs .prev').hide();
         $('.col-msjs .next').hide();
     }
