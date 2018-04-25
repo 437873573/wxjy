@@ -18,6 +18,9 @@ $(function () {
             $(this).find('i').attr('class','icon-nav-bottom')
         }
     });
+    $('.juicy i').click(function () {
+        $(this).next()[0].play()
+    });
     $('.alltimes').click(function (){
         if(!$(this).hasClass('all')){
             $(this).addClass('all')

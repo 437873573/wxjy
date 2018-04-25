@@ -189,60 +189,60 @@ $(function () {
     });
 
     //划词翻译
-    function selectWord(eleShare, eleContainer) {
-        function funGetSelectTxt() {
-            var txt = "";
-            if (document.selection) {
-                txt = document.selection.createRange().text;    // IE
-            } else {
-                txt = document.getSelection();
-            }
-            let t = txt.toString().split(' ').shift()
-            return t;
-        };
-        eleContainer.mouseup(function (e) {
-            e = e || window.event;
-            var txt = funGetSelectTxt(),
-                pw = window.parent.document.documentElement.clientWidth,
-                sh = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-            // var left = (e.clientX - 40 < 0) ? e.clientX + 20 : e.clientX - 40,
-            //     top = (e.clientY - 40 < 0) ? e.clientY + sh + 20 : e.clientY + sh - 40;
-            // console.log(pw)
-            var left = pw - 1200 >= 0 ? (pw - 1200) / 2 + e.clientX - 40 : e.clientX - 40, top = e.clientY + sh + 240;
-            // var left = e.clientX + 300, top = e.clientY + sh + 240
-            if (txt) {
-                $.ajax({
-                    // url:'http://wxjy-mingyang.mion.cn/api/word/query',
-                    url: '/api/word/query',
-                    data: {word: txt},
-                    success: function (mess) {
-                        if (mess.code === 0 && mess.data.word) {
-                            let data = mess.data.word
-                            eleShare.css({"display": "block", "left": `${left}px`, "top": `${top}px`})
-                            eleShare.find('.word b').html(txt)
-                            eleShare.find('.phonetic span').html(data.phonetic)
-                            eleShare.find('.meaning div span').html(data.interpretation)
-                            eleShare.find('.example div span').html(data.example)
-                            if (data.is_marked) {
-                                eleShare.find('.but').attr('id', 0)
-                                eleShare.find('.but').text('已添加到生词本')
-                            } else {
-                                eleShare.find('.but').attr('id', data.id)
-                                eleShare.find('.but').text('添加到生词本')
-                            }
-                        } else {
-                            eleShare.css("display", "none");
-                        }
-                    }
-                })
-            } else {
-                eleShare.css("display", "none");
-            }
-        });
-        // eleShare.click(function () {
-        //     alert(1)
-        // });
-    };
+    // function selectWord(eleShare, eleContainer) {
+    //     function funGetSelectTxt() {
+    //         var txt = "";
+    //         if (document.selection) {
+    //             txt = document.selection.createRange().text;    // IE
+    //         } else {
+    //             txt = document.getSelection();
+    //         }
+    //         let t = txt.toString().split(' ').shift()
+    //         return t;
+    //     };
+    //     eleContainer.mouseup(function (e) {
+    //         e = e || window.event;
+    //         var txt = funGetSelectTxt(),
+    //             pw = window.parent.document.documentElement.clientWidth,
+    //             sh = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    //         // var left = (e.clientX - 40 < 0) ? e.clientX + 20 : e.clientX - 40,
+    //         //     top = (e.clientY - 40 < 0) ? e.clientY + sh + 20 : e.clientY + sh - 40;
+    //         // console.log(pw)
+    //         var left = pw - 1200 >= 0 ? (pw - 1200) / 2 + e.clientX - 40 : e.clientX - 40, top = e.clientY + sh + 240;
+    //         // var left = e.clientX + 300, top = e.clientY + sh + 240
+    //         if (txt) {
+    //             $.ajax({
+    //                 // url:'http://wxjy-mingyang.mion.cn/api/word/query',
+    //                 url: '/api/word/query',
+    //                 data: {word: txt},
+    //                 success: function (mess) {
+    //                     if (mess.code === 0 && mess) {
+    //                         let data = mess.data.word
+    //                         eleShare.css({"display": "block", "left": `${left}px`, "top": `${top}px`})
+    //                         eleShare.find('.word b').html(txt)
+    //                         eleShare.find('.phonetic span').html(data.phonetic)
+    //                         eleShare.find('.meaning').html(data.interpretation)
+    //                         eleShare.find('.example div span').html(data.example)
+    //                         if (data.is_marked) {
+    //                             eleShare.find('.but').attr('id', 0)
+    //                             eleShare.find('.but').text('已添加到生词本')
+    //                         } else {
+    //                             eleShare.find('.but').attr('id', data.id)
+    //                             eleShare.find('.but').text('添加到生词本')
+    //                         }
+    //                     } else {
+    //                         eleShare.css("display", "none");
+    //                     }
+    //                 }
+    //             })
+    //         } else {
+    //             eleShare.css("display", "none");
+    //         }
+    //     });
+    //     // eleShare.click(function () {
+    //     //     alert(1)
+    //     // });
+    // };
     // selectWord($('.translation', window.parent.document), $('.inner>section'))
     //新移词翻译
     let timer = null;
@@ -269,9 +269,10 @@ $(function () {
                                         tran.css({"display": "block", "left": `${left}px`, "top": `${top}px`});
                                         tran.find('.select input').val('');
                                         tran.find('.word b').html(txt);
+                                        tran.find('.phonetics').attr('src','http://dict.youdao.com/dictvoice?audio='+txt);
                                         tran.attr('id', data.id);
                                         tran.find('.phonetic span').html(data.phonetic);
-                                        tran.find('.meaning div span').html(data.interpretation);
+                                        tran.find('.meaning').html(data.interpretation);
                                         tran.find('.example div span').html(data.example);
                                         tran.find('.selRec,.wordBug,.addWordMark').hide();
                                         tran.find('.foot').show();

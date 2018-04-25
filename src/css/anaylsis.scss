@@ -812,8 +812,10 @@ main {
   .meaning div, .example div {
     margin-bottom: 10px;
   }
-  .phonetic i, .meaning span {
+  .phonetic i{
+    cursor: pointer;
     margin-left: 10px;
+    vertical-align: middle;
   }
   .abut {
     position: relative;

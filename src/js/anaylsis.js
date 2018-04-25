@@ -167,9 +167,10 @@ $(function () {
             if (mess && mess.code === 0) {
                 let tran = $('.translation'), data = mess.data.word;
                 tran.find('.word b').html(w);
+                tran.find('.phonetics').attr('src','http://dict.youdao.com/dictvoice?audio='+w);
                 tran.attr('id', data.id);
                 tran.find('.phonetic span').html(data.phonetic);
-                tran.find('.meaning div span').html(data.interpretation);
+                tran.find('.meaning').html(data.interpretation);
                 tran.find('.example div span').html(data.example);
                 if (data.test_method != '') {
                     tran.find('.moreMeaning p').html(data.test_method)
@@ -221,6 +222,8 @@ $(function () {
     });
     //划词报错关闭
     $('.wordBug .o').click(() => $('.wordBug').hide());
+    //发音
+    $('.translation .phonetic i').click(() => $('.phonetics')[0].play());
     //添加单词笔记
     $('.translation .foot .doWordMark').click(() => {
         let w = $('.translation .wordMark p').html();
