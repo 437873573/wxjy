@@ -31,11 +31,11 @@
     position: relative;
     img{
       display: none;
-      width: 200px;
-      height: 200px;
+      width: 150px;
+      height: 150px;
       position: absolute;
-      bottom: 0;
-      left: -201px;
+      bottom: -35px;
+      left: -155px;
     }
     &:hover img{
       display: block;

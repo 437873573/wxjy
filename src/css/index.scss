@@ -16,7 +16,7 @@
 
 .page-inner-index {
   .col-ts {
-    margin: 100px auto;
+    margin: 100px auto 80px;
     text-align: center;
     .hd {
       .title {
@@ -279,11 +279,7 @@
   }
 }
 .page-banner-col{
-  display: block;
   width: 100%;
-  &:last-of-type{
-    margin-bottom: 20px;
-  }
   img{
     width: 100%;
   }
