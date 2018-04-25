@@ -10,6 +10,14 @@ $(function () {
     $('.dialog-wrapper .btn-close').click(()=>{
         $('.dialog-wrapper').hide()
     });
+    $(window).scroll(function () {
+        let t=$(this).scrollTop();
+        if(t>332){
+            $('.page-slide').fadeIn()
+        }else{
+            $('.page-slide').fadeOut()
+        }
+    });
     toTop();
     let i=0;
     $('.rank-list .tab a').hover(function () {
