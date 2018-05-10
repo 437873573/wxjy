@@ -1,3 +1,4 @@
+require('babel-polyfill')
 const path = require('path');
 const globby = require('globby');
 const webpack = require('webpack')

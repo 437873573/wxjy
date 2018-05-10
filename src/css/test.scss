@@ -36,7 +36,7 @@ body {
   text-align: center;
   .hd {
     color: #999;
-    h5{
+    h5 {
       display: block;
       font-size: 24px;
       line-height: 40px;
@@ -147,12 +147,12 @@ body {
       }
     }
   }
-  .monthTotal{
+  .monthTotal {
     display: inline-block;
     background: $themeColor;
     color: #ffffff;
     line-height: 20px;
-    padding:0 20px 0 10px;
+    padding: 0 20px 0 10px;
     border-bottom-right-radius: 100px;
     border-top-right-radius: 100px;
   }
@@ -174,7 +174,7 @@ body {
       display: block;
       color: #666;
     }
-    .status{
+    .status {
       text-align: right;
       .icon-done {
         margin-right: 20px;
@@ -193,7 +193,7 @@ body {
         color: #fe7171;
       }
     }
-    .unuser{
+    .unuser {
       display: block;
       color: $themeColor;
       text-align: center;
@@ -203,7 +203,7 @@ body {
       color: #666;
       margin-left: 30px;
     }
-    .noRes{
+    .noRes {
       color: #bbb;
     }
     .btn-go,
@@ -222,18 +222,18 @@ body {
       color: #fff;
       background: $themeColor;
     }
-    .new-go span{
+    .new-go span {
       cursor: pointer;
     }
-    .new-go .reorco{
+    .new-go .reorco {
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.2);
+      background: rgba(0, 0, 0, 0.2);
       position: fixed;
       top: 0;
       left: 0;
       z-index: 200;
-      .reorconwrap{
+      .reorconwrap {
         width: 320px;
         height: 150px;
         position: absolute;
@@ -243,8 +243,8 @@ body {
         bottom: 0;
         margin: auto;
         background: white;
-        box-shadow: 0 0 10px rgba(0,0,0,0.4);
-        .top{
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+        .top {
           box-sizing: border-box;
           padding: 6px 10px;
           border-bottom: 3px solid $themeColor;
@@ -265,20 +265,20 @@ body {
             cursor: pointer;
           }
         }
-        .main p{
+        .main p {
           font-size: 14px;
           line-height: 22px;
           padding: 20px;
           color: #000000;
         }
-        .bot{
+        .bot {
           box-sizing: border-box;
           height: 40px;
           padding: 6px 10px;
           display: flex;
           justify-content: flex-end;
           align-items: center;
-          .btn{
+          .btn {
             margin-top: 0;
             margin-bottom: 0;
             box-sizing: border-box;
@@ -293,7 +293,7 @@ body {
             color: $themeColor;
             cursor: pointer;
           }
-          .btn-go{
+          .btn-go {
             background: $themeColor;
             color: white;
           }
@@ -407,14 +407,14 @@ body {
   .page-inner {
     padding: 15px 0;
   }
-  .table-test,.test-list{
-    .row-1{
+  .table-test, .test-list {
+    .row-1 {
       width: 150px;
     }
-    .row-2,.row-3{
+    .row-2, .row-3 {
       margin-right: 50px;
     }
-    .row-6{
+    .row-6 {
       width: 180px;
       text-align: center;
     }
@@ -525,7 +525,7 @@ body {
       width: 730px;
       margin: 0;
       text-align: left;
-      li{
+      li {
         list-style-type: upper-latin;
         list-style-position: inside;
       }
@@ -536,7 +536,7 @@ body {
       margin-left: 0;
       margin-right: 20px;
       width: 160px;
-      .btn{
+      .btn {
         float: left;
       }
     }
@@ -613,6 +613,27 @@ body {
 }
 
 // 作文习题练习
+.do-or-see {
+  width: 140px;
+  height: 40px;
+  a {
+    float: left;
+    display: block;
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    line-height: 40px;
+    color: #333;
+    background: #fff;
+    box-sizing: border-box;
+    &.active {
+      color: #fff;
+      background: $themeColor;
+      //border-color: $themeColor;
+    }
+  }
+}
+
 .page-test-practice {
   @extend %clearfix;
   width: 1200px;
@@ -628,6 +649,32 @@ body {
   .right {
     float: left;
     width: 533px;
+    .answer-content {
+      width: 100%;
+      height: 81px;
+      margin-bottom: 20px;
+      div {
+        float: left;
+        width: 50%;
+        height: 100%;
+        box-sizing: border-box;
+        line-height: 80px;
+        font-size: 26px;
+        color: #000;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+        border-top: 6px solid transparent;
+        cursor: pointer;
+        &.active {
+          color: $themeColor;
+          border-top-color: $themeColor;
+          border-bottom: none;
+        }
+        &.left{
+          border-left: none;
+        }
+      }
+    }
   }
 }
 
@@ -652,9 +699,9 @@ body {
     li {
       border-bottom: solid 1px #f2f2f2;
       padding: 0 28px;
-      cursor: pointer;
       overflow: hidden;
       h5 {
+        cursor: pointer;
         line-height: 68px;
         font-size: 18px;
         color: #333333;
@@ -677,7 +724,7 @@ body {
         }
       }
     }
-    .essay-title{
+    .essay-title, .essay-content {
       display: none;
       p {
         height: 180px;
@@ -687,11 +734,17 @@ body {
         color: #666;
       }
     }
+    .essay-content {
+      height: 720px;
+      p{
+        height: auto;
+      }
+    }
   }
 }
 
 .sel {
-  margin: 28px auto;
+  margin: 20px auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -707,6 +760,7 @@ body {
   line-height: 50px;
   text-align: center;
   margin-right: 16px;
+  cursor: pointer;
 }
 
 .sec {
