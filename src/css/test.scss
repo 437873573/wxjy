@@ -634,10 +634,10 @@ body {
   }
 }
 
-.page-test-practice {
+.page-test-practice ,.page-test-lists{
   @extend %clearfix;
   width: 1200px;
-  height: 923px;
+  height: 800px;
   background-color: #ffffff;
   border: solid 1px #f2f2f2;
   margin: 20px auto;
@@ -645,6 +645,18 @@ body {
     float: left;
     width: 665px;
     border-right: 1px solid #eeeeee;
+    .essay-content {
+      height: 720px;
+      p{
+        padding: 28px;
+        height: auto;
+        line-height: 20px;
+        font-size: 16px;
+        margin-bottom: 30px;
+        color: #666;
+        text-align: justify;
+      }
+    }
   }
   .right {
     float: left;
@@ -654,7 +666,7 @@ body {
     .answer-content {
       width: 100%;
       height: 81px;
-      margin-bottom: 20px;
+      border-right: 1px solid #fafafa;
       div {
         float: left;
         width: 50%;
@@ -678,14 +690,15 @@ body {
       }
     }
     .did{
-      height: 768px;
+      height: 720px;
       box-sizing: border-box;
-      padding: 20px 30px;
+      padding: 28px;
       overflow: auto;
+      border-right: 1px solid #fafafa;
       p{
         text-align: justify;
-        line-height: 20px;
-        font-size: 16px;
+        line-height: 24px;
+        font-size: 18px;
         margin-bottom: 30px;
         color: #666;
       }
@@ -698,7 +711,12 @@ body {
     }
   }
 }
-
+.page-test-practice{
+  border-right: none;
+}
+.page-test-lists{
+  height: 923px;
+}
 .question {
   &-title {
     line-height: 80px;
@@ -746,7 +764,7 @@ body {
         }
       }
     }
-    .essay-title, .essay-content {
+    .essay-title{
       display: none;
       p {
         height: 180px;
@@ -756,12 +774,7 @@ body {
         color: #666;
       }
     }
-    .essay-content {
-      height: 720px;
-      p{
-        height: auto;
-      }
-    }
+
   }
 }
 
@@ -799,10 +812,10 @@ body {
     color: #000;
     padding-left: 28px;
   }
+
   &-options {
     justify-content: flex-start;
     padding-left: 28px;
-    margin-top: 0;
     .sec {
       margin-right: 16px;
     }
@@ -816,8 +829,11 @@ body {
     .cut{
       border: none;
     }
+    .count{
+      float: right;
+      margin-right: 30px;
+    }
   }
-
 }
 
 textarea {
@@ -835,3 +851,278 @@ textarea {
   font-size: 16px;
   outline: none;
 }
+.discuss {
+  overflow: hidden;
+  width: 100%;
+  transform: translateY(-100px);
+  .left {
+    float: left;
+    width: 650px;
+    border: 1px solid #f2f2f2;
+    box-sizing: border-box;
+    header {
+      @extend %clearfix;
+      div {
+        width: 50%;
+        height: 80px;
+        float: left;
+        text-align: center;
+        font-size: 24px;
+        line-height: 80px;
+        color: #818181;
+        background: #eee;
+        cursor: pointer;
+        &.active {
+          box-sizing: border-box;
+          border-top: 4px solid $themeColor;
+          background: white;
+          color: $themeColor;
+        }
+      }
+    }
+    .order {
+      padding: 0 30px;
+      box-sizing: border-box;
+      height: 40px;
+      background: white;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      i {
+        margin-left: 10px;
+      }
+    }
+    .advice{
+      background: white;
+      box-sizing: border-box;
+      padding: 0 30px 30px;
+      >ul>li{
+        padding: 10px 0;
+        border-bottom: 1px solid #ccc;
+        &:last-of-type{
+          border-bottom: none;
+        }
+      }
+      .advice-par,.advice-sub li{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .advice-sub{
+        margin-top: 15px;
+        margin-left: 90px;
+        padding-top: 4px;
+        border-top: 1px dotted #e2e2e2;
+      }
+      .advice-sub li{
+        padding: 6px 0;
+        border-bottom: 1px dotted #e2e2e2;
+        &:last-of-type{
+          padding-bottom: 0;
+          border-bottom: none;
+        }
+        .headimg{
+          width: 60px;
+          height: 60px;
+        }
+        .main{
+          width: 100%;
+          font-size: 14px;
+        }
+        .foot{
+          justify-content: flex-end !important;
+        }
+      }
+      ul li {
+        .headimg {
+          flex: none;
+          width: 90px;
+          height: 90px;
+          margin-right: 15px;
+          border-radius: 50%;
+          overflow: hidden;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .main {
+          width: 490px;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          font-size: 14px;
+          line-height: 24px;
+          .speech {
+            min-height: 48px;
+          }
+          .foot {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .feature {
+              display: flex;
+              justify-content: flex-start;
+              align-items: center;
+              color: $themeColor;
+              span {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                margin-right: 30px;
+                cursor: pointer;
+                i {
+                  margin-right: 8px;
+                }
+              }
+            }
+            .time {
+              color: #ccc;
+            }
+          }
+        }
+      }
+    }
+    .post textarea ,.advice-adv textarea{
+      margin: 0;
+      border-radius: 5px;
+      width: 100%;
+      resize: none;
+      height: 120px;
+      font-size: 16px;
+      background: #fafafa;
+      outline: none;
+      padding: 20px;
+      box-sizing: border-box;
+      border-color: #bbb;
+    }
+    .post ,.advice-adv{
+      background: white;
+      box-sizing: border-box;
+      padding: 20px 30px;
+      p {
+        margin: 10px auto 0;
+        width: 100px;
+        height: 30px;
+        border-radius: 100px;
+        background: #00e290;
+        color: white;
+        text-align: center;
+        line-height: 30px;
+        cursor: pointer;
+        float: right
+      }
+    }
+    .advice-adv{
+      padding: 20px 0;
+      display: none;
+      textarea{
+        height: 80px;
+        padding: 10px;
+      }
+    }
+    .keyanswer {
+      .p {
+        box-sizing: border-box;
+        padding: 30px;
+        min-height: 360px;
+        background: white;
+        color: #666666;
+        line-height: 22px;
+      }
+      footer {
+        height: 80px;
+        background: white;
+        border-top: 1px solid #f2f2f2;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-size: 18px;
+        line-height: 22px;
+        .peo {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+        }
+        .headimg {
+          width: 60px;
+          height: 60px;
+          overflow: hidden;
+          border-radius: 50%;
+          margin: 16px;
+        }
+        .time {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  .right {
+    float: right;
+    width: 520px;
+    .top, .bot {
+      border: 1px solid #f2f2f2;
+      box-sizing: border-box;
+      h3 {
+        height: 80px;
+        text-align: center;
+        font-size: 24px;
+        line-height: 80px;
+        color: #818181;
+        background: #eee;
+      }
+    }
+    .top {
+      margin-bottom: 20px;
+    }
+  }
+  .top ul, .bot ul {
+    background: white;
+    padding: 30px;
+    li {
+      padding-left: 55px;
+      height: 50px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      span {
+        margin: 0 10px;
+      }
+    }
+  }
+
+  .bot ul {
+    padding-top: 15px;
+    padding-bottom: 0;
+  }
+
+  .top .answer {
+    background: white;
+    border-top: 1px solid #f2f2f2;
+    height: 80px;
+    color: $themeColor;
+    text-align: center;
+    line-height: 80px;
+  }
+
+  .bot ul li {
+    border-bottom: 1px dashed #f2f2f2;
+    padding: 15px;
+    line-height: 24px;
+    text-align: left;
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+
+  .bot .more {
+    text-align: center;
+    color: $themeColor;
+    line-height: 40px;
+    font-size: 24px;
+    background: white;
+    border-top: 1px solid #f2f2f2;
+  }
+}
+
