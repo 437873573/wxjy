@@ -82,7 +82,7 @@ $(function () {
             },
             success: function (mess) {
                 if (mess.code == 0) {
-                    window.parent.pop('评论成功');
+                    pop('评论成功');
                     window.location.reload()
                 }
             }
@@ -136,6 +136,7 @@ $(function () {
     //参与评论提交
     $('.advice').on('click', '.advice-adv p', function () {
         let comment = $('.advice-adv textarea').val();
+        let id = $(this).closest('li').data('commentId'), that = this;
         $.post('/api/comment', {
             content: comment,
             test_topic_id: collect[1],
