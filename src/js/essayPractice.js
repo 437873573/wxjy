@@ -5,6 +5,11 @@ $(function () {
         let x=$(this).val().length
         $('.answer-options .count span').text(x)
     })
+    $('.answer-content div').click(function () {
+        $(this).addClass('active').siblings().removeClass('active')
+        let n = $(this).index()
+        $('.do-answer>div').eq(n).show().siblings().hide()
+    })
     $('.cut').click(()=>cut())
     $('.paste').click(()=>paste())
     $('.undo').click(()=>undo())
