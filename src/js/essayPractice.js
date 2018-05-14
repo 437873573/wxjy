@@ -4,6 +4,13 @@ $(function () {
     $('.text-do textarea').keyup(function () {
         let x=$(this).val().length
         $('.answer-options .count span').text(x)
+    });
+    $('.countDown i').click(function () {
+        if(!$(this).hasClass('show')){
+            $(this).addClass('show').text('Show').siblings().hide()
+        }else{
+            $(this).removeClass('show').text('Hide').siblings().show()
+        }
     })
     $('.answer-content div').click(function () {
         $(this).addClass('active').siblings().removeClass('active')
