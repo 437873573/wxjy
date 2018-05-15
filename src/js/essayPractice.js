@@ -1,9 +1,10 @@
 import './modules/header';
-
+import Countable from './modules/Countable.min'
 $(function () {
     $('.text-do textarea').keyup(function () {
-        let x=$(this).val().length
-        $('.text-do .count span').text(x)
+        Countable.count($(this)[0], counter => {
+            $('.text-do .count span').text(counter.words)
+        })
     });
     $('.countDown i').click(function () {
         if(!$(this).hasClass('show')){
