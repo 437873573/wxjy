@@ -1,5 +1,6 @@
 import './modules/header';
 import Countable from './modules/Countable.min'
+window.Countable=Countable
 $(function () {
     $('.text-do textarea').keyup(function () {
         Countable.count($(this)[0], counter => {
