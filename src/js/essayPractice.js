@@ -3,7 +3,7 @@ import './modules/header';
 $(function () {
     $('.text-do textarea').keyup(function () {
         let x=$(this).val().length
-        $('.answer-options .count span').text(x)
+        $('.text-do .count span').text(x)
     });
     $('.countDown i').click(function () {
         if(!$(this).hasClass('show')){

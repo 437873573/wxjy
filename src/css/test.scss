@@ -735,19 +735,26 @@ body {
 }
 .page-test-practice{
   border-right: none;
+  .right textarea{
+    height: 532px;
+  }
 }
 .page-test-lists{
-  height: 923px;
+  height: 800px;
+  .left,.right{
+    height: 100%;
+  }
 }
 .question {
   &-title {
     line-height: 80px;
     font-size: 24px;
+    box-sizing: border-box;
+    height: 80px;
     border-bottom: solid 1px #f2f2f2;
     color: #666666;
     padding-left: 28px;
     .btns{
-      width: 150px;
       height: 30px;
       border: 1px solid #ccc;
       border-radius: 10px;
@@ -756,7 +763,7 @@ body {
       margin-top: 23px;
       div{
         float: left;
-        width: 33.3333333%;
+        width: 50px;
         height: 100%;
         border-right: 1px solid #ccc;
         box-sizing: border-box;
@@ -781,7 +788,7 @@ body {
     border-bottom: solid 1px #f2f2f2;
   }
   &-list {
-    height: 790px;
+    height: 720px;
     overflow-y: scroll;
     position: relative;
     li {
@@ -898,7 +905,7 @@ textarea {
   margin: 0 30px;
   box-sizing: border-box;
   width: 473px;
-  height: 532px;
+  height: 414px;
   background: #fafafa;
   padding: 20px;
   border: 1px solid #f2f2f2;
