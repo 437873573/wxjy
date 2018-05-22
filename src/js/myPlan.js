@@ -147,7 +147,7 @@ $(function () {
                                                     <span class="row row-4">正确率 ${t.correct_rate}%</span>
                                                 </div>
                                                 <div class="btns">
-                                                    <a href="javascript:;" class="btn-go do" data-date=${mess.planDate} data-id=${t.id}>做题</a>
+                                                    <a href="javascript:;" class="btn-go do" data-date=${mess.planDate} data-id=${t.id} data-url=${t.test_do_url}>做题</a>
                                                     <a href=${t.test_view_url} class="btn-cancle see">查看</a>
                                                     ${t.test_video_url ?
                                         `${userLevel < t.resource_video.level ?
@@ -183,7 +183,7 @@ $(function () {
 
     //重做选择弹窗显示
     $('.detailplan').on('click', '.do', function () {
-        let planDate = $(this).data('date'), id = $(this).data('id'), flag = true;
+        let planDate = $(this).data('date'), id = $(this).data('id'),url=$(this).data('url'), flag = true;
         $.ajax({
             async: false,
             type: 'post',
@@ -192,8 +192,8 @@ $(function () {
             success: function (mess) {
                 if (mess && mess.code === 0) {
                     if (mess.data.needConfirm) {
-                        $('.reorco .btn-go').attr('href', "/exam/test/" + id + "?restart=0");
-                        $('.reorco .btn-re').attr('href', "/exam/test/" + id + "?restart=1");
+                        $('.reorco .btn-go').attr('href', url + "&restart=0");
+                        $('.reorco .btn-re').attr('href', url + "&restart=1");
                         $('.reorco').show()
                         flag = true
                     } else {
@@ -202,13 +202,9 @@ $(function () {
                 }
             }
         });
-        flag ? `` : window.open("/exam/test/" + id + "?restart=0")
+        flag ? `` : window.open(url + "?restart=0")
         // }) === false ? window.open("/exam/test/" + id + "?restart=0") : console.log(flag)
     });
-
-    function re() {
-
-    }
 
     $('.reorco a').click(function (e) {
         e.stopPropagation();
