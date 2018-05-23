@@ -147,7 +147,7 @@ $(function () {
                                                     <span class="row row-4">正确率 ${t.correct_rate}%</span>
                                                 </div>
                                                 <div class="btns">
-                                                    <a href="javascript:;" class="btn-go do" data-date=${mess.planDate} data-id=${t.id} data-url=${t.test_do_url}>做题</a>
+                                                    <a href="javascript:;" class="btn-go do" data-date=${mess.planDate} data-id=${t.id} data-url=${t.test_do_url} data-planId=${mess.id}>做题</a>
                                                     <a href=${t.test_view_url} class="btn-cancle see">查看</a>
                                                     ${t.test_video_url ?
                                         `${userLevel < t.resource_video.level ?
@@ -183,12 +183,12 @@ $(function () {
 
     //重做选择弹窗显示
     $('.detailplan').on('click', '.do', function () {
-        let planDate = $(this).data('date'), id = $(this).data('id'),url=$(this).data('url'), flag = true;
+        let planDate = $(this).data('date'), id = $(this).data('id'),url=$(this).data('url'), planId=$(this).data('planId'),flag = true;
         $.ajax({
             async: false,
             type: 'post',
             url: '/api/volume/needConfirm',
-            data: {plan_date: planDate, test_volume_id: id},
+            data: {plan_date: planDate, test_volume_id: id,plan_id:planId},
             success: function (mess) {
                 if (mess && mess.code === 0) {
                     if (mess.data.needConfirm) {
