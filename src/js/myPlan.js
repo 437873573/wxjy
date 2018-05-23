@@ -202,7 +202,7 @@ $(function () {
                 }
             }
         });
-        flag ? `` : window.open(url + "?restart=0")
+        flag ? `` : window.open(url + "?restart=1")
         // }) === false ? window.open("/exam/test/" + id + "?restart=0") : console.log(flag)
     });
 
