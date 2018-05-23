@@ -202,7 +202,7 @@ $(function () {
                 }
             }
         });
-        flag ? `` : url.search('?')!=-1?window.open(url + "&restart=1"):window.open(url + "?restart=1")
+        flag ? `` : url.search('planId')!=-1?window.open(url + "&restart=1"):window.open(url + "?restart=1")
         // }) === false ? window.open("/exam/test/" + id + "?restart=0") : console.log(flag)
     });
 
